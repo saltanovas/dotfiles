@@ -1,0 +1,38 @@
+{
+  "name": "My Custom Theme",
+  "version": "1.0",
+  "description": "",
+  "manifest_version": 3,
+  "theme": {
+    "images": {
+      "theme_ntp_background": "images/theme_ntp_background.png",
+      "theme_button_background": "images/theme_button_background.png",
+      "theme_frame": "images/theme_frame.png",
+      "theme_tab_background": "images/theme_tab_background.png",
+      "theme_toolbar": "images/theme_toolbar.png",
+      "theme_window_control_background": "images/theme_window_control_background.png"
+    },
+    "colors": {
+      "bookmark_text": [255, 255, 255],
+      "button_background": [0, 0, 0],
+      "frame": [51, 178, 205],
+      "ntp_background": [238, 208, 159],
+      "ntp_header": [41, 172, 199, 1],
+      "ntp_link": [34, 34, 34],
+      "ntp_section": [237, 224, 205, 1],
+      "ntp_section_link": [126, 49, 34],
+      "ntp_section_text": [126, 49, 34],
+      "ntp_text": [34, 34, 34],
+      "tab_background_text": [126, 48, 35],
+      "tab_text": [255, 255, 255],
+      "toolbar": [126, 48, 35]
+    },
+    "tints": {
+      "buttons": [0.6, 0.5, 0.75]
+    },
+    "properties": {
+      "ntp_background_alignment": "left top",
+      "ntp_background_repeat": "no-repeat"
+    }
+  }
+}
