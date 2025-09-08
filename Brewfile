@@ -4,14 +4,6 @@ tap "homebrew/cask-fonts"
 tap "homebrew/services"
 
 # ========================================
-# 📟 Terminal
-# ========================================
-# Terminal emulator
-cask "alacritty"
-# UNIX shell
-brew "zsh"
-
-# ========================================
 # 🛠️ Shell Utilities
 # ========================================
 # Alternative to cat(1)
@@ -28,7 +20,7 @@ brew "tlrc"
 brew "tree"
 
 # ========================================
-# 🕹 CLI Utilities
+# 🕹 CLI Tools
 # ========================================
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
@@ -64,7 +56,7 @@ brew "openjdk@21"
 brew "yarn"
 
 # ========================================
-# 🧰 GUI Utilities
+# 🧰 GUI Tools
 # ========================================
 # Application uninstaller
 cask "appcleaner"
@@ -84,6 +76,8 @@ cask "the-unarchiver"
 # ========================================
 # 🧑‍💻 Dev Apps
 # ========================================
+# Terminal emulator
+cask "alacritty"
 # JetBrains tools manager
 cask "jetbrains-toolbox"
 # Replacement for Docker Desktop
