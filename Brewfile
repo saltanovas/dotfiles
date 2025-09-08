@@ -4,6 +4,46 @@ tap "homebrew/cask-fonts"
 tap "homebrew/services"
 
 # ========================================
+# 📟 Terminal
+# ========================================
+# Terminal emulator
+cask "alacritty"
+# UNIX shell
+brew "zsh"
+
+# ========================================
+# 🛠️ Shell Utilities
+# ========================================
+# Alternative to cat(1)
+brew "bat"
+# Alternative to find(1)
+brew "fd"
+# Fuzzy finder
+brew "fzf"
+# Alternative to grep(1)
+brew "ripgrep"
+# Simplified, community-driven man pages
+brew "tlrc"
+# Display directories as trees
+brew "tree"
+
+# ========================================
+# 🕹 CLI Utilities
+# ========================================
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+# A youtube-dl fork to download audio/video from YouTube and other sites
+brew "yt-dlp"
+# Quickly generate a disposable email using mail.tm API
+brew "mailsy"
+# Reverse proxy from a public endpoint to localhost
+brew "ngrok"
+# Password generator
+brew "pwgen"
+# Internet file retriever
+brew "wget"
+
+# ========================================
 # 📦 Languages & Runtimes
 # ========================================
 # AWS Cloud Development Kit - framework for defining AWS infra as code
@@ -24,30 +64,6 @@ brew "openjdk@21"
 brew "yarn"
 
 # ========================================
-# 🛠️ CLI Tools
-# ========================================
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
-# Feature-rich command-line audio/video downloader
-brew "yt-dlp"
-# Quickly generate a temporary email address
-brew "mailsy"
-# Reverse proxy, secure introspectable tunnels to localhost
-brew "ngrok"
-# Password generator
-brew "pwgen"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
-# Internet file retriever
-brew "wget"
-# Display directories as trees (with optional color/HTML output)
-brew "tree"
-
-# ========================================
 # 🧰 GUI Utilities
 # ========================================
 # Application uninstaller
@@ -60,8 +76,8 @@ cask "caffeine"
 cask "meetingbar"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
-# Window manager
-cask "tiles"
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle"
 # Unpacks archive files
 cask "the-unarchiver"
 
@@ -84,6 +100,8 @@ cask "zed"
 # ========================================
 # Web browser
 cask "google-chrome"
+# Client for the Google Drive storage service
+cask "google-drive"
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Music streaming service
