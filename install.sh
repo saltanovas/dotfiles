@@ -30,6 +30,9 @@ case "$(/usr/bin/uname -m)" in
 esac
 
 ohai "Installing Homebrew packages..."
+if [ ! -f Brewfile ]; then
+    abort "Brewfile not found in the current directory. Please ensure a Brewfile is present before running this script."
+fi
 brew bundle
 brew cleanup
 ohai "Homebrew packages installed successfully."
