@@ -52,13 +52,17 @@ brew "go"
 brew "node"
 # Development kit for the Java programming language
 brew "openjdk@21"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
+# Python environment management
+brew "pyenv"
 # JavaScript package manager
 brew "yarn"
 
 # ========================================
 # 🧰 GUI Tools
 # ========================================
-# Application uninstaller
+# Uninstall apps with all their related files
 cask "appcleaner"
 # Focus-follows-mouse
 cask "autoraiseapp"
