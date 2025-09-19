@@ -32,6 +32,10 @@ brew "mailsy"
 brew "ngrok"
 # Password generator
 brew "pwgen"
+# RAR Archiver
+cask "rar"
+# 7-Zip is a file archiver with a high compression ratio
+brew "sevenzip"
 # Internet file retriever
 brew "wget"
 
