@@ -34,7 +34,7 @@ brew "ngrok"
 brew "pwgen"
 # RAR Archiver
 cask "rar"
-# 7-Zip is a file archiver with a high compression ratio
+# 7-Zip archiver
 brew "sevenzip"
 # Internet file retriever
 brew "wget"
