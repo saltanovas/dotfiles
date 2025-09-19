@@ -50,6 +50,10 @@ brew "git"
 brew "go"
 # Platform built on V8 to build network applications
 brew "node"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
+# Python environment management
+brew "pyenv"
 # Development kit for the Java programming language
 brew "openjdk@25"
 # JDK from the Eclipse Foundation (Adoptium)
