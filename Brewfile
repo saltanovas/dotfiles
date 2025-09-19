@@ -51,18 +51,18 @@ brew "go"
 # Platform built on V8 to build network applications
 brew "node"
 # Development kit for the Java programming language
-brew "openjdk@21"
-# Execute binaries from Python packages in isolated environments
-brew "pipx"
-# Python environment management
-brew "pyenv"
+brew "openjdk@25"
+# JDK from the Eclipse Foundation (Adoptium)
+cask "temurin@21"
+# JDK from the Eclipse Foundation (Adoptium)
+cask "temurin@17"
 # JavaScript package manager
 brew "yarn"
 
 # ========================================
 # 🧰 GUI Tools
 # ========================================
-# Uninstall apps with all their related files
+# Application uninstaller
 cask "appcleaner"
 # Focus-follows-mouse
 cask "autoraiseapp"
