@@ -32,6 +32,10 @@ brew "mailsy"
 brew "ngrok"
 # Password generator
 brew "pwgen"
+# RAR Archiver
+cask "rar"
+# 7-Zip archiver
+brew "sevenzip"
 # Internet file retriever
 brew "wget"
 
