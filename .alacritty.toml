@@ -1,0 +1,49 @@
+[general]
+live_config_reload = true
+working_directory = "/Users/saltanovas/desktop/p"
+ipc_socket = true
+
+[font]
+# Perfect fit on x/y-axis using both 'Buttonless-Maximized' and 'Fullscreen' windows on my Mac
+size = 17.0
+normal = { family = "Monaco", style = "Regular" }
+
+[window]
+# Full | None | Transparent | Buttonless
+decorations = "Buttonless"
+
+# Windowed | Maximized | Fullscreen | SimpleFullscreen
+# "SimpleFullscreen" hides menu bar on ALL monitors
+# "Fullscreen" does not make a window transparent, it just get
+startup_mode = "Maximized"
+
+# Normal | AlwaysOnTop
+# "AlwaysOnTop" windows do not appear in Mission Control
+level = "Normal"
+
+# tmux strip at the bottom is then as minimal as possible
+dynamic_padding = true
+padding = { x = 0, y = 0 }
+
+blur = true
+opacity = 1.0
+
+option_as_alt = "Both"
+
+[scrolling]
+history = 10000
+multiplier = 1
+
+[cursor]
+style.blinking = "Never"
+style.shape = "Block"
+unfocused_hollow = true
+thickness = 0.15
+
+[terminal]
+shell.program = "/opt/homebrew/bin/tmux"
+shell.args = [
+  "new-session",
+  "-As", "p", # [a]ttach to the [s]ession 'p' if it exists or create it
+  "-n", "main" # name the initial window 'main' if session is created
+]
