@@ -4,6 +4,14 @@ tap "homebrew/cask-fonts"
 tap "homebrew/services"
 
 # ========================================
+# 📟 Terminal
+# ========================================
+# Terminal emulator
+cask "alacritty"
+# Terminal multiplexer
+brew "tmux"
+
+# ========================================
 # 🛠️ Shell Utilities
 # ========================================
 # Alternative to cat(1)
@@ -88,8 +96,6 @@ cask "the-unarchiver"
 # ========================================
 # 🧑‍💻 Dev Apps
 # ========================================
-# Terminal emulator
-cask "alacritty"
 # JetBrains tools manager
 cask "jetbrains-toolbox"
 # Replacement for Docker Desktop
