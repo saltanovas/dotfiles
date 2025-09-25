@@ -1,7 +1,4 @@
 tap "dimentium/autoraise"
-tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
-tap "homebrew/services"
 
 # ========================================
 # 📟 Terminal
