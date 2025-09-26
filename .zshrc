@@ -34,7 +34,7 @@ ytd() {
     fi
     
     echo "❌ Download failed."
-    return 1;
+    return 1
 }
 
 extract() {
