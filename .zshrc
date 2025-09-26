@@ -24,13 +24,13 @@ ytd() {
     echo "🎧 Downloading the best available audio..."
     if yt-dlp -f bestaudio --extract-audio --audio-format m4a --no-playlist "$@"; then
         echo "✅ Download complete!"
-        return 0;
+        return 0
     fi
     
     echo "⚠️ High-quality stream is not available, falling back to MP4 and extracting audio..."
     if yt-dlp -f best --extract-audio --audio-format m4a --no-playlist "$@"; then
         echo "✅ Download complete!"
-        return 0;
+        return 0
     fi
     
     echo "❌ Download failed."
