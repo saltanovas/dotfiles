@@ -24,4 +24,5 @@ export PATH="$PATH:$HOME/.orbstack/bin"
 
 export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
+# See https://tldr.sh/tlrc/#configuration
 export TLRC_CONFIG="$XDG_CONFIG_HOME/tlrc/config.toml"
