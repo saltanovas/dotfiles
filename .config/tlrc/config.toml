@@ -1,0 +1,6 @@
+[cache]
+# You can also add other languages if you'd like to download translations.
+# English pages will always be downloaded.
+languages = ["custom"]
+# If you want the client to prioritize official pages, use this instead:
+#languages = ["en", "custom"]
