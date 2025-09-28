@@ -36,3 +36,12 @@ fi
 brew bundle
 brew cleanup
 ohai "Homebrew packages installed successfully."
+
+
+ohai "Setting up custom tldr pages..."
+if command -v tlrc >/dev/null 2>&1; then
+    mkdir -p "$HOME/Library/Caches/tlrc/pages.custom/common"
+else
+    warn "'tlrc' is not found. Install it via Homebrew or explicitly remove this configuration step, and run the script again."
+    exit 0
+fi
