@@ -79,8 +79,6 @@ brew "yarn"
 cask "appcleaner"
 # Focus-follows-mouse
 cask "autoraiseapp"
-# Utility that prevents the system from going to sleep
-cask "caffeine"
 # Shows the next meeting in the menu bar
 cask "meetingbar"
 # Tool to control external monitor brightness & volume
