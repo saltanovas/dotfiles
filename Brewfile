@@ -111,6 +111,8 @@ cask "google-chrome"
 cask "google-drive"
 # App to write, plan, collaborate, and get organised
 cask "notion"
+# Control your tools with a few keystrokes
+cask "raycast"
 # Music streaming service
 cask "spotify"
 # Video communication and virtual meeting platform
