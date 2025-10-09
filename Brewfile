@@ -77,14 +77,10 @@ brew "yarn"
 # ========================================
 # Application uninstaller
 cask "appcleaner"
-# Focus-follows-mouse
-cask "autoraiseapp"
 # Shows the next meeting in the menu bar
 cask "meetingbar"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
-# Move and resize windows using keyboard shortcuts or snap areas
-cask "rectangle"
 # Unpacks archive files
 cask "the-unarchiver"
 
@@ -115,6 +111,8 @@ cask "notion"
 cask "raycast"
 # Music streaming service
 cask "spotify"
+# Media player
+cask "vlc"
 # Video communication and virtual meeting platform
 cask "zoom"
 
