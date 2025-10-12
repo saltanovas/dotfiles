@@ -1,0 +1,409 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.configPath": "~/Desktop/p/dotfiles/.config/prettier/.prettierrc",
+    "[c][cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "[go]": {
+        "editor.defaultFormatter": "golang.go"
+    },
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    },
+    "[shellscript]": {
+        "editor.defaultFormatter": "shakram02.bash-beautify"
+    },
+    "editor.semanticHighlighting.enabled": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
+    "editor.renderWhitespace": "boundary",
+    "editor.renderControlCharacters": true,
+    "editor.formatOnPaste": false,
+    "editor.stickyScroll.enabled": true,
+    "editor.minimap.enabled": false,
+    "editor.smoothScrolling": false,
+    "editor.cursorSmoothCaretAnimation": "off",
+    "editor.wordWrap": "off",
+    "editor.renderFinalNewline": "on",
+    "editor.showUnused": true,
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "files.insertFinalNewline": true,
+    "files.simpleDialog.enable": true,
+    "amazonQ.suppressPrompts": {
+        "amazonQChatDisclaimer": true
+    },
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "*.plist": "binaryPlistEditor.edit"
+    },
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    },
+    "workbench.colorTheme": "Darcula IntelliJ",
+    "workbench.colorCustomizations": {
+        "editorUnnecessaryCode.opacity": "#00000049",
+        "editorUnnecessaryCode.border": "#4B6EAF80",
+        "editorGroup.border": "#2E2E2E",
+        "editorOverviewRuler.border": "#2E2E2E"
+    },
+    "editor.semanticTokenColorCustomizations": {
+        "[Darcula IntelliJ]": {
+            "enabled": true,
+            "rules": {
+                "namespace": { "foreground": "#D0D4D9" },
+                "keyword": { "foreground": "#CC7832" }
+                // "method.declaration.unused": { "foreground": "#f20000", "fontStyle": "strikethrough" },
+                // "namespace": { "foreground": "#D0D4D9" },
+                // "keyword.documentation": { "foreground": "#629755", "fontStyle": "italic bold underline" },
+                // "annotation": { "foreground": "#BBB529" },
+                // "annotationMember": { "foreground": "#D0D4D9" },
+                // "entity.name.type": { "foreground": "#D0D4D9" },
+                // "typeParameter": { "foreground": "#507874" },
+                // "modifier": { "foreground": "#CC7832" },
+                // "parameter": { "foreground": "#D0D4D9" },
+                // "property": { "foreground": "#9876AA" },
+                // "variable": { "foreground": "#D0D4D9" },
+                // "variable.defaultLibrary": { "foreground": "#9876AA", "fontStyle": "italic bold" },
+                // "class.defaultLibrary": { "foreground": "#FFC66D" }
+            }
+        }
+    },
+    "editor.tokenColorCustomizations": {
+        "[Darcula IntelliJ]": {
+            "textMateRules": [
+                {
+                    "scope": ["support.variable.property.js"],
+                    "settings": { "foreground": "#9876AA" }
+                },
+                {
+                    "scope": ["support.function.magic.python", "support.variable.magic.python"],
+                    "settings": { "foreground": "#B200B2" }
+                },
+                {
+                    "scope": ["variable.parameter.function.language.python"],
+                    "settings": { "foreground": "#94558D" }
+                },
+                {
+                    "scope": ["variable.parameter.function-call.python"],
+                    "settings": { "foreground": "#AA4926" }
+                },
+                {
+                    "scope": ["entity.name.type.class.python", "variable.parameter.function.language.python"],
+                    "settings": { "foreground": "#A9B7C6" }
+                },
+                {
+                    "scope": ["meta.item-access.python"],
+                    "settings": { "foreground": "#FFC66D" }
+                },
+                {
+                    "scope": ["meta.function-call.generic.python", "meta.item-access.arguments.python"],
+                    "settings": { "foreground": "#A9B7C6" }
+                },
+                {
+                    "scope": ["support.function.builtin.python"],
+                    "settings": {
+                        "foreground": "#8888C6"
+                    }
+                },
+                {
+                    "scope": [
+                        "punctuation.definition.arguments.begin.python",
+                        "punctuation.definition.arguments.end.python"
+                    ],
+                    "settings": { "foreground": "#FFC66D" }
+                },
+                {
+                    "scope": ["constant.character.format.placeholder.other.python"],
+                    "settings": { "foreground": "#CC7832" }
+                },
+                {
+                    "scope": ["support.type.python"],
+                    "settings": { "foreground": "#CC7832" }
+                },
+                // =====================================================
+                // =====================================================
+                // =====================================================
+                // =====================================================
+                // =====================================================
+                // =====================================================
+                // =====================================================
+                // =====================================================
+                // =====================================================
+                // =====================================================
+                {
+                    "name": "JSX components",
+                    "scope": ["meta.tag.js entity.name.tag.js support.class.component.js"],
+                    "settings": { "foreground": "#27BDA4" }
+                },
+                // =====================================================
+                // Strings
+                // =====================================================
+                {
+                    "name": "Text inside quotes",
+                    "scope": ["string", "string.tag", "string.value", "string.regexp"],
+                    "settings": {
+                        "foreground": "#6A8759"
+                    }
+                },
+                {
+                    "name": "String templates",
+                    "scope": ["meta.template"],
+                    "settings": {
+                        "foreground": "#D0D4D9"
+                    }
+                },
+                // =====================================================
+                // Functions, methods, entities
+                // =====================================================
+                {
+                    "name": "Function name",
+                    "scope": ["entity.name.function", "support.function"],
+                    "settings": {
+                        "foreground": "#FFC66D"
+                    }
+                },
+                {
+                    "name": "Special case for Java function & method calls",
+                    "scope": [
+                        "meta.function-call.java entity.name.function", // function()
+                        "meta.method-call.java entity.name.function" // object.method()
+                    ],
+                    "settings": {
+                        "foreground": "#D0D4D9"
+                    }
+                },
+                {
+                    "name": "Class, interface, enum type name",
+                    "scope": ["entity.name.type"],
+                    "settings": {
+                        "foreground": "#D0D4D9"
+                    }
+                },
+                {
+                    "name": "Fallback",
+                    "scope": "entity.other",
+                    "settings": {
+                        "foreground": "#FFC66D"
+                    }
+                },
+                // =====================================================
+                // Constants
+                // =====================================================
+                {
+                    "name": "Numeric constants",
+                    "scope": ["constant.numeric"],
+                    "settings": {
+                        "foreground": "#6897BB"
+                    }
+                },
+                {
+                    "scope": [
+                        "constant.language", // true, false, null etc.
+                        "constant.character.escape", // \n, \t, \g", \' etc.
+                        "constant.character.entity", // &nbsp;, &amp; etc.
+                        "constant.regexp" // .*, \d, \w etc.
+                    ],
+                    "settings": {
+                        "foreground": "#CC7832"
+                    }
+                },
+                {
+                    "name": "Special case for import/export all constants (e.g. import * as name from 'module')",
+                    "scope": ["constant.language.import-export-all.js"],
+                    "settings": {
+                        "foreground": "#D0D4D9"
+                    }
+                },
+                {
+                    "name": "All other constants",
+                    "scope": ["constant.other"],
+                    "settings": {
+                        "foreground": "#9876AA"
+                    }
+                },
+                // =====================================================
+                // Variables, properties, parameters, arguments, fields etc.
+                // =====================================================
+                {
+                    "name": "Variable names inside a class body",
+                    "scope": ["meta.class.body variable"],
+                    "settings": {
+                        "foreground": "#9876AA"
+                    }
+                },
+                {
+                    "name": "Variable names inside a method body",
+                    "scope": ["meta.method.body variable"], // meta.definition.variable.local
+                    "settings": {
+                        "foreground": "#D0D4D9"
+                    }
+                },
+                {
+                    "name": "Parameters inside method/function definitions",
+                    "scope": ["variable.parameter"],
+                    "settings": {
+                        "foreground": "#D0D4D9"
+                    }
+                },
+                {
+                    "name": "'this' variable",
+                    "scope": ["variable.language.this"],
+                    "settings": {
+                        "foreground": "#CC7832"
+                    }
+                },
+                {
+                    "name": "Record fields",
+                    "scope": ["meta.record.identifier"],
+                    "settings": {
+                        "foreground": "#9876AA"
+                    }
+                },
+                {
+                    "name": "Object properties & Keys",
+                    "scope": [
+                        "variable.other.object.property", // object.property
+                        // TODO: check if needed below
+                        "support.variable.property.dom",
+                        "meta.object-literal.key",
+                        "meta.object-literal.key entity.name.function",
+                        "meta.structure.dictionary.key.python"
+                    ],
+                    "settings": {
+                        "foreground": "#9876AA"
+                    }
+                },
+                // =====================================================
+                // Decorators
+                // =====================================================
+                {
+                    "name": "Decorators",
+                    "scope": [
+                        "punctuation.decorator.js",
+                        "meta.decorator.js variable.other.readwrite.js",
+                        "meta.decorator.js entity.name.function.js",
+                        "punctuation.definition.annotation.java",
+                        "meta.declaration.annotation.java storage.type.annotation.java",
+                        "punctuation.definition.decorator.python",
+                        "meta.function.decorator.python entity.name.function.decorator.python"
+                    ],
+                    "settings": {
+                        "foreground": "#BBB529"
+                    }
+                },
+
+                // =====================================================
+                // 💬 COMMENTS
+                // =====================================================
+                {
+                    "name": "Generic comments",
+                    "scope": "comment",
+                    "settings": {
+                        "foreground": "#808080"
+                    }
+                },
+                {
+                    "name": "Generic docstrings",
+                    "scope": [
+                        "comment.block.documentation.js",
+                        "string.quoted.docstring.multi.python",
+                        "comment.block.javadoc.java"
+                    ],
+                    "settings": {
+                        "fontStyle": "italic",
+                        "foreground": "#629755"
+                    }
+                },
+                {
+                    "name": "Keywords inside docstrings (@description, @param, @return etc.)",
+                    "scope": ["comment.block.documentation.js storage.type.class.jsdoc"],
+                    "settings": {
+                        "foreground": "#629755",
+                        "fontStyle": "italic bold underline"
+                    }
+                },
+                {
+                    "name": "Variables inside docstrings",
+                    "scope": [
+                        // Curly brackets has a bug: https://github.com/microsoft/vscode/issues/187307
+                        "comment.block.documentation.js entity.name.type.instance.jsdoc",
+                        "comment.block.documentation.js variable.other.jsdoc"
+                    ],
+                    "settings": {
+                        "foreground": "#8A643B",
+                        "fontStyle": "italic"
+                    }
+                },
+                // =====================================================
+                // Keywords, operators, modifiers, constants etc.
+                // =====================================================
+                {
+                    "scope": [
+                        "keyword", // if, else, switch, case, for, while, do, return, break, throw, catch, try, finally, with, async, await etc.
+                        "keyword.operator.new", // new keyword
+                        "storage.modifier", // public, private, static, final, abstract, class, enum, synchronized, extends etc.
+                        "storage.type" // int, double, boolean & const, let, var etc.
+                    ],
+                    "settings": {
+                        "foreground": "#CC7832"
+                    }
+                },
+                {
+                    "scope": [
+                        "keyword.operator", // Keyword operators (=, +, -, etc.)
+                        "storage.type.java" // Java object types (e.g. String, Integer, CustomClass etc.)
+                    ],
+                    "settings": {
+                        "foreground": "#D0D4D9"
+                    }
+                },
+                // =====================================================
+                // Punctuation
+                // ====================================================
+                {
+                    "name": "Statement terminators (e.g. semicolons)",
+                    "scope": ["punctuation.terminator"],
+                    "settings": { "foreground": "#CC7832" }
+                },
+                {
+                    "name": "Brackets",
+                    "scope": [
+                        "punctuation.separator",
+                        "punctuation.section.class.begin.bracket.curly",
+                        "punctuation.section.class.end.bracket.curly",
+                        "punctuation.section.inner-class.begin.bracket.curly",
+                        "punctuation.section.inner-class.end.bracket.curly",
+                        "punctuation.section.method.begin.bracket.curly",
+                        "punctuation.section.method.end.bracket.curly",
+                        "punctuation.section.block.begin.bracket.curly",
+                        "punctuation.section.block.end.bracket.curly",
+                        "punctuation.definition.parameters.begin.bracket.round",
+                        "punctuation.definition.parameters.end.bracket.round"
+                    ],
+                    "settings": { "foreground": "#D0D4D9" }
+                },
+                {
+                    "name": "String quotes",
+                    "scope": ["punctuation.definition.string"],
+                    "settings": { "foreground": "#6A8759" }
+                },
+                {
+                    "name": "Punctuation separators delimiters (e.g. commas)",
+                    "scope": ["punctuation.separator.delimiter"],
+                    "settings": { "foreground": "#CC7832" }
+                },
+                {
+                    "name": "Punctuation brackets",
+                    "scope": ["punctuation.bracket"],
+                    "settings": { "foreground": "#D0D4D9" }
+                }
+            ]
+        }
+    }
+}
