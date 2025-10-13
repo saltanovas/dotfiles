@@ -1,0 +1,27 @@
+{
+    "name": "darcula-intellij-theme",
+    "displayName": "Darcula IntelliJ Theme",
+    "description": "A dark theme for Visual Studio Code inspired by the Darcula theme from IntelliJ IDEA.",
+    "publisher": "saltanovas",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.70.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "homepage": "https://github.com/saltanovas/dotfiles/.config/vscode/extensions/darcula-intellij-theme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/saltanovas/dotfiles/.config/vscode/extensions/darcula-intellij-theme.git"
+    },
+    "contributes": {
+        "themes": [
+            {
+                "label": "Darcula IntelliJ",
+                "uiTheme": "vs-dark",
+                "path": "./darcula-intellij-theme.json"
+            }
+        ]
+    }
+}
