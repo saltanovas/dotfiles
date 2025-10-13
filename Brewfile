@@ -117,6 +117,31 @@ cask "zoom"
 # ========================================
 # 🔌 VS Code Plugins
 # ========================================
-vscode "golang.go"
+# C/C++ language support
 vscode "ms-vscode.cpptools"
+# Go language support
+vscode "golang.go"
+# Java language support
+vscode "redhat.java"
+# Unofficial PHP language support
+vscode "DEVSENSE.phptools-vscode"
+# Python language support
+vscode "ms-python.python"
+# TypeScript Next features
+vscode "ms-vscode.vscode-typescript-next"
+# XML language support
+vscode "redhat.vscode-xml"
+# YAML language support
+vscode "redhat.vscode-yaml"
+# Prettier code formatter
+vscode "esbenp.prettier-vscode"
+# Unofficial shell script formatter
+vscode "foxundermoon.shell-format"
+# Binary Plist viewer and editor
+vscode "dnicolson.binary-plist"
+# Live server for static & dynamic pages
 vscode "ritwickdey.liveserver"
+# GitHub Copilot inline coding suggestions
+vscode "github.copilot"
+# GitHub Copilot chat
+vscode "github.copilot-chat"
