@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-PLIST=~/Library/Preferences/com.apple.symbolichotkeys.plist
+PLIST="~/Library/Preferences/com.apple.symbolichotkeys.plist"
 PB="/usr/libexec/PlistBuddy"
 
 pb_add() { $PB -c "Add :$1 $2 $3" "$PLIST"; }
@@ -12,6 +12,7 @@ add_hotkey() {
     local id="$1" is_enabled="$2" key1="$3" key2="$4" mods="$5"
     
     pb_del "AppleSymbolicHotKeys:$id" 2>/dev/null || true
+    
     pb_add "AppleSymbolicHotKeys:$id" dict ""
     pb_add "AppleSymbolicHotKeys:$id:enabled" bool "$is_enabled"
     
@@ -73,6 +74,7 @@ add_hotkey 8 false 65535 99 8650752
 add_hotkey 9 false 65535 118 8650752
 add_hotkey 10 false 65535 96 8650752
 add_hotkey 11 false 65535 97 8650752
+# Change "Move focus to next window" default shortcut (hyperKey + `)
 add_hotkey 27 true 96 50 1835008
 add_hotkey 57 false 65535 100 8650752
 add_hotkey 159 false 65535 36 262144
