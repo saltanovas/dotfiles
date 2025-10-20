@@ -20,7 +20,7 @@ defaults write com.apple.dock mineffect -string "genie"
 # Don't minimize windows into application icon
 defaults write com.apple.dock minimize-to-applications -bool false
 # Double click a window's title bar to: Fill, Zoom, Minimize, None
-defaults read -g AppleActionOnDoubleClick -string "Zoom"
+defaults write -g AppleActionOnDoubleClick -string "Zoom"
 
 # Show indicators for open applications
 defaults write com.apple.dock show-process-indicators -bool true
