@@ -5,25 +5,24 @@ set -euo pipefail
 # ========================================
 # Touchbar
 # ========================================
-# 1. app = App Controls
-# 2. appWithControlStrip = App Controls + Mini Control Strip
-# 3. fullControlStrip = Expanded Control Strip
-# 4. functionKeys = F1, F2 etc. Keys
-# 5. workflows = Quick Actions
-# 6. workflowsWithControlStrip = Quick Actions + Mini Control Strip
-# 7. spaces = Spaces
-# 8. spacesWithControlStrip = Spaces + Mini Control Strip
 defaults write com.apple.touchbar.agent PresentationModeGlobal -string "appWithControlStrip"
 
-# Defines the behaviour on Fn key press
-# This key accepts a dictionary value, other entries act as defaults, but only the one matching PresentationModeGlobal applies
-# Values: app, fullControlStrip, functionKeys, workflows, spaces
+# Defines the behaviour of PresentationModeGlobal on Fn key press
+# While only the one matching PresentationModeGlobal applies, other entries act as default values
+# Possible values: app, fullControlStrip, functionKeys, workflows, spaces
 defaults write com.apple.touchbar.agent PresentationModeFnModes -dict \
-    "appWithControlStrip" -string "functionKeys"
+    "app" -string "functionKeys" \
+    "appWithControlStrip" -string "functionKeys" \
+    "fullControlStrip" -string "functionKeys" \
+    "functionKeys" -string "functionKeys" \
+    "workflows" -string "functionKeys" \
+    "workflowsWithControlStrip" -string "functionKeys" \
+    "spaces" -string "functionKeys" \
+    "spacesWithControlStrip" -string "functionKeys"
 
-# Key is app id (e.g. "org.alacritty")
-defaults write com.apple.touchbar.agent PresentationModePerApp -dict \
-
+# Key is bundle id of the app (e.g. "org.alacritty")
+# To find the bundle id, use: osascript -e 'id of app "AppName"'
+defaults write com.apple.touchbar.agent PresentationModePerApp -dict
 
 # ========================================
 # Control Strip appearance
