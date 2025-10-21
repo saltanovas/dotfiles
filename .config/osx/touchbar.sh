@@ -5,6 +5,7 @@ set -euo pipefail
 # ========================================
 # Touchbar
 # ========================================
+# Global Touch Bar appearance
 defaults write com.apple.touchbar.agent PresentationModeGlobal -string "appWithControlStrip"
 
 # Defines the behaviour of PresentationModeGlobal on Fn key press
@@ -25,7 +26,7 @@ defaults write com.apple.touchbar.agent PresentationModeFnModes -dict \
 defaults write com.apple.touchbar.agent PresentationModePerApp -dict
 
 # ========================================
-# Control Strip appearance
+# Control Strip
 # ========================================
 defaults write com.apple.controlstrip MiniCustomized -array \
     "com.apple.system.brightness" \
