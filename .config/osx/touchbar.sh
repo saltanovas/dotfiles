@@ -15,8 +15,8 @@ set -euo pipefail
 # 8. spacesWithControlStrip = Spaces + Mini Control Strip
 defaults write com.apple.touchbar.agent PresentationModeGlobal -string "appWithControlStrip"
 
-# Defines the behavior of the Fn key
-# Yes, it accepts a dictionary, while other values act as default values once PresentationModeGlobal is changed
+# Defines the behaviour on Fn key press
+# This key accepts a dictionary value, other entries act as defaults, but only the one matching PresentationModeGlobal applies
 # Values: app, fullControlStrip, functionKeys, workflows, spaces
 defaults write com.apple.touchbar.agent PresentationModeFnModes -dict \
     "appWithControlStrip" -string "functionKeys"
