@@ -193,6 +193,8 @@ MODS = {
 `98 = "{ enabled = 1; value = { parameters = ( 47, 44, 1179648 ); type = standard; }; };"`
 
 All macOS built-in command **overrides** are placed under `App Shortcuts`, but stored globally under `NSUserKeyEquivalents` and matched by the exact name:
+
+All macOS built-in shortcut customizations appear under `App Shortcuts` in `System Settings`, but are stored globally in `NSUserKeyEquivalents` and matched by the command’s exact menu item title:
 - **Emoji & Symbols** (`⌘⌃Space`)
 - **New Window** (`⌘N`)
 - **Minimize** (`⌘M`)
