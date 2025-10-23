@@ -192,6 +192,18 @@ MODS = {
 #### 11.1. Show Help menu (⇧⌘/)
 `98 = "{ enabled = 1; value = { parameters = ( 47, 44, 1179648 ); type = standard; }; };"`
 
+All macOS built-in shortcut overrides appear under `App Shortcuts` in `System Settings`, but are stored globally in `NSUserKeyEquivalents` and matched by the command’s exact menu item title:
+- **Emoji & Symbols** (`⌘⌃Space`)
+- **New Window** (`⌘N`)
+- **Minimize** (`⌘M`)
+- etc.
+
+If the entry does not exist, default shortcut is applied.
+
 ## 12. Function Keys
 
 ## 13. Modifier Keys
+
+## 14. Dictation
+#### 14.1. Enable dictation (Press 🌐 Twice)
+`164 = "{ enabled = 1; value = { parameters = ( 8388608, 4286578687 ); type = modifier; }; };"`
