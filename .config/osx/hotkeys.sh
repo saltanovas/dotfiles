@@ -10,18 +10,18 @@ pb_del() { $PB -c "Delete :$1" "$PLIST"; }
 
 add_hotkey() {
     local id="$1" is_enabled="$2" key1="$3" key2="$4" mods="$5"
-    
+
     pb_del "AppleSymbolicHotKeys:$id" 2>/dev/null || true
-    
+
     pb_add "AppleSymbolicHotKeys:$id" dict ""
     pb_add "AppleSymbolicHotKeys:$id:enabled" bool "$is_enabled"
-    
+
     pb_add "AppleSymbolicHotKeys:$id:value" dict ""
     pb_add "AppleSymbolicHotKeys:$id:value:parameters" array ""
     pb_add "AppleSymbolicHotKeys:$id:value:parameters:0" integer "$key1"
     pb_add "AppleSymbolicHotKeys:$id:value:parameters:1" integer "$key2"
     pb_add "AppleSymbolicHotKeys:$id:value:parameters:2" integer "$mods"
-    
+
     pb_add "AppleSymbolicHotKeys:$id:value:type" string standard
 }
 
@@ -106,3 +106,10 @@ add_hotkey 229 false 65535 65535 0
 # App Shortcuts
 # ========================================
 add_hotkey 98 false 47 44 1179648
+# The same trick works for any other built-in macOS command: https://stackoverflow.com/a/79797334/13047140
+defaults write -g NSUserKeyEquivalents -dict-add "Emoji & Symbols" "\0"
+
+# ========================================
+# Dictation
+# ========================================
+add_hotkey 164 false 65535 65535 0
