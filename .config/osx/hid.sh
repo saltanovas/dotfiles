@@ -14,11 +14,16 @@ defaults write NSGlobalDomain com.apple.springing.delay -float 0
 # TODO: cleanup below
 defaults write com.apple.AppleMultitouchTrackpad TrackpadMomentumScroll -bool true
 
+
 defaults write NSGlobalDomain com.apple.scrollwheel.scaling -float 0.3125
 defaults write NSGlobalDomain com.apple.trackpad.scrolling -float 0.1838
 
+# ========== Drag ==========
+# Tap → tap-and-hold | Cannot release a finger
 defaults write com.apple.AppleMultitouchTrackpad Dragging -bool true
+# Tap → tap-and-hold | Can release a finger, tap again to release
 defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
+# Drag with three finger
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
 
