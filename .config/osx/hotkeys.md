@@ -201,6 +201,17 @@ All macOS built-in shortcut overrides appear under `App Shortcuts` in `System Se
 If the entry does not exist, default shortcut is applied.
 
 ## 12. Function Keys
+Stored settings:
+
+```bash
+defaults read -g 'com.apple.keyboard.fnState'
+> 0
+```
+```bash
+defaults read com.apple.touchbar.agent PresentationModePerApp
+> {}
+> { "org.alacritty" = functionKeys; }
+```
 
 ## 13. Modifier Keys
 
