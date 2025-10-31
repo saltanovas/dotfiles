@@ -47,7 +47,7 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
 
 # ========== Sidebar ==========
-# Note: Icon size on the sidebar is controlled globally inside appearance settings, see `NSTableViewDefaultSizeMode`
+# Note: icon size on the sidebar is controlled globally inside appearance settings, see `NSTableViewDefaultSizeMode`
 defaults write com.apple.finder ShowSidebar -bool true
 defaults write com.apple.finder SidebarWidth -int 196
 defaults write com.apple.finder ShowPathbar -bool true
@@ -60,7 +60,7 @@ defaults write com.apple.Finder FXPreferredViewStyle icnv
 # Show folders at the top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 # When performing a search, search the current folder by default
-# 1. SCcf = current folder | 2. SCev = this mac | 3. SCsp = previous search scope
+# `SCcf` = current folder | `SCev` = this mac | `SCsp` = previous search scope
 defaults write com.apple.finder FXDefaultSearchScope -string SCcf
 # Expand/Shrink "Get Info" panes
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
