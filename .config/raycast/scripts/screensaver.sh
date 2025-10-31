@@ -2,7 +2,7 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Screen Saver
+# @raycast.title Start Screen Saver
 # @raycast.mode silent
 
 # Optional parameters:
