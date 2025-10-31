@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-PLIST="~/Library/Preferences/com.apple.symbolichotkeys.plist"
+PLIST="$HOME/Preferences/com.apple.symbolichotkeys.plist"
 PB="/usr/libexec/PlistBuddy"
 
 pb_add() { $PB -c "Add :$1 $2 $3" "$PLIST"; }
