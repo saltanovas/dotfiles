@@ -75,8 +75,6 @@ brew "yarn"
 # ========================================
 # Application uninstaller
 cask "appcleaner"
-# Shows the next meeting in the menu bar
-cask "meetingbar"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
 # Unpacks archive files
