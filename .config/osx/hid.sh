@@ -5,22 +5,23 @@ set -euo pipefail
 # Sensitivity
 defaults write NSGlobalDomain com.apple.trackpad.scaling -float 0.6875
 defaults write NSGlobalDomain com.apple.mouse.scaling -float 1.0
-# Scroll speed
-defaults write NSGlobalDomain com.apple.trackpad.scrolling -float 0.1838
-defaults write NSGlobalDomain com.apple.scrollwheel.scaling -float 0.3125
-# Enable inertia when scrolling
-defaults write com.apple.AppleMultitouchTrackpad TrackpadMomentumScroll -bool true
-defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseMomentumScroll -bool true
-# Double click speed
-# Affects both mouse and trackpad
-defaults write NSGlobalDomain com.apple.mouse.doubleClickThreshold -float 1.1
 
 # Enable mouse acceleration
 defaults write NSGlobalDomain com.apple.mouse.linear -bool true
 
-# Enable natural scrolling
-# Mimics touch devices
+# Scroll speed
+defaults write NSGlobalDomain com.apple.trackpad.scrolling -float 0.1838
+defaults write NSGlobalDomain com.apple.scrollwheel.scaling -float 0.3125
+
+# Enable inertia when scrolling
+defaults write com.apple.AppleMultitouchTrackpad TrackpadMomentumScroll -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseMomentumScroll -bool true
+
+# Enable natural scrolling | Mimics touch devices
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
+
+# Double click speed | Affects both mouse and trackpad
+defaults write NSGlobalDomain com.apple.mouse.doubleClickThreshold -float 1.1
 
 # Enable instant spring loading for directories or apps in dock when hovering files over them
 defaults write NSGlobalDomain com.apple.springing.enabled -bool true
@@ -28,6 +29,7 @@ defaults write NSGlobalDomain com.apple.springing.delay -float 0
 
 # Keep trackpad enabled when mouse is connected
 defaults write com.apple.AppleMultitouchTrackpad USBMouseStopsTrackpad -bool false
+
 
 # #######################################
 # Mouse gestures
