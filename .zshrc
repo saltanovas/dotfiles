@@ -1,3 +1,5 @@
+PROMPT="%n %1~ %# "
+
 # ==========================
 # ===       Fpaths       ===
 # ==========================
@@ -26,13 +28,13 @@ ytd() {
         echo "✅ Download complete!"
         return 0
     fi
-    
+
     echo "⚠️ High-quality stream is not available, falling back to MP4 and extracting audio..."
     if yt-dlp -f best --extract-audio --audio-format m4a --no-playlist "$@"; then
         echo "✅ Download complete!"
         return 0
     fi
-    
+
     echo "❌ Download failed."
     return 1
 }
