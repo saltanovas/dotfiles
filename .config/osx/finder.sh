@@ -5,29 +5,15 @@ set -euo pipefail
 # Enable quit the Finder
 defaults write com.apple.finder QuitMenuItem -bool true
 
-# ========== Desktop =========
-# Decrease grid spacing & icon size
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 43" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 60" ~/Library/Preferences/com.apple.finder.plist
-# Enable snap-to-grid & show icon previews
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showIconPreview true" ~/Library/Preferences/com.apple.finder.plist
-
-# Hide Volumes icons from Desktop
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
-defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
-defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
-defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
-
-
 # ========== Bin ==========
 # Disable the warning before emptying the Bin
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 # Remove items from the Bin after 30 days
 defaults write com.apple.finder FXRemoveOldTrashItems -bool true
 
-# Enable snap-to-grid & show icon previews
+# Enable snap-to-grid
 /usr/libexec/PlistBuddy -c "Set :TrashViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+# Show icon previews
 /usr/libexec/PlistBuddy -c "Set :TrashViewSettings:IconViewSettings:showIconPreview true" ~/Library/Preferences/com.apple.finder.plist
 
 
@@ -47,13 +33,7 @@ chflags nohidden /Volumes
 # ========== Window ==========
 # Set Desktop as the default location for new windows
 # For other paths, use `PfLo` and `NewWindowTargetPath "file://<path>/"`
-# Computer     : `PfCm`
-# Volume       : `PfVo`
-# $HOME        : `PfHm`
-# Desktop      : `PfDe`
-# Documents    : `PfDo`
-# All My Files : `PfAF`
-# Other        : `PfLo`
+# PfCm = Computer | PfVo = Volume | PfHm = $HOME | PfDe = Desktop | PfDo = Documents | PfAF = All My Files | PfLo = Other
 defaults write com.apple.finder NewWindowTarget -string "PfDe"
 # Show full POSIX path as window title
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
