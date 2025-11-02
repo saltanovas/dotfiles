@@ -7,3 +7,7 @@ set -euo pipefail
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 # Double click speed | Affects both mouse and trackpad
 defaults write NSGlobalDomain com.apple.mouse.doubleClickThreshold -float 1.1
+
+./mouse.sh
+./trackpad.sh
+./keyboard.sh
