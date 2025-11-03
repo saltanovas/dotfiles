@@ -70,14 +70,12 @@ defaults write com.apple.AppleMultitouchTrackpad TrackpadPinch -bool true
 # Two fingers | Rotate
 defaults write com.apple.AppleMultitouchTrackpad TrackpadRotate -bool true
 # Four fingers
-# 2 = Launchpad & Desktop
+# 2 = Desktop
 defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerPinchGesture -int 2
 # Five fingers
-# 2 = Launchpad & Desktop
+# 2 = Desktop
 defaults write com.apple.AppleMultitouchTrackpad TrackpadFiveFingerPinchGesture -int 2
 
-# Pinch | Launchpad
-defaults write com.apple.dock showLaunchpadGestureEnabled -bool true
 # Spread | Desktop
 defaults write com.apple.dock showDesktopGestureEnabled -bool true
 

@@ -10,7 +10,6 @@ set -euo pipefail
 #  5: Start screen saver
 #  6: Disable screen saver
 # 10: Put display to sleep
-# 11: Launchpad
 # 12: Notification Center
 # 13: Lock Screen
 # 14: Quick Note

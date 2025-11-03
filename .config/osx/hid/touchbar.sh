@@ -41,7 +41,6 @@ defaults write com.apple.controlstrip MiniCustomized -array \
 defaults write com.apple.controlstrip FullCustomized -array \
     "com.apple.system.group.brightness" \
     "com.apple.system.mission-control" \
-    "com.apple.system.launchpad" \
     "com.apple.system.group.keyboard-brightness" \
     "com.apple.system.group.media" \
     "com.apple.system.group.volume" \
