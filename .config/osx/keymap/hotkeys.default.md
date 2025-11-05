@@ -1,6 +1,6 @@
 # Mods
 
-```javascript
+```
 MODS = {
     0=>"No modifier",
     131072=>"Shift",
@@ -20,6 +20,7 @@ MODS = {
     1966080=>"Shift + Control + Option + Command",
 }
 ```
+
 # Shortcuts
 
 ## 1. Launchpad & Dock
@@ -81,7 +82,7 @@ MODS = {
 #### 3.22. Switch to Desktop 8 (⌃8)
 `125 = "{ enabled = 1; value = { parameters = ( 65535, 28, 262144 ); type = standard; }; };"`
 
-## 4. Keyboard
+## 4. Keyboard Navigation
 #### 4.1. Change the way Tab moves focus (⌃F7)
 `13 = "{ enabled = 1; value = { parameters = ( 65535, 98, 8650752 ); type = standard; }; };"`
 #### 4.2. Turn keyboard access on or off (⌃F1)
@@ -214,6 +215,8 @@ defaults read com.apple.touchbar.agent PresentationModePerApp
 ```
 
 ## 13. Modifier Keys
+
+- See how to remap modifier keys (and more): [hidutil-key-remapping-generator](https://github.com/amarsyla/hidutil-key-remapping-generator)
 
 ## 14. Dictation
 #### 14.1. Enable dictation (Press 🌐 Twice)
