@@ -122,3 +122,15 @@ add_hotkey 164 65535 65535 0
 add_hotkey 98 47 44 1179648
 # The same trick works for any other built-in macOS command: https://stackoverflow.com/a/79797334/13047140
 defaults write -g NSUserKeyEquivalents -dict-add "Emoji & Symbols" "\0"
+
+# ========================================
+# Services
+# ========================================
+$PB \
+    -c 'Delete :NSServicesStatus:"com.apple.SpotlightService - SEARCH_WITH_SPOTLIGHT - doSearchWithSpotlight"' \
+    -c 'Delete :NSServicesStatus:"com.apple.Safari - Search With %WebSearchProvider@ - searchWithWebSearchProvider"' \
+    -c 'Delete :NSServicesStatus:"com.apple.BluetoothFileExchange - Send File To Bluetooth Device - sendFileUsingBluetoothOBEXService"' \
+    -c 'Delete :NSServicesStatus:"com.apple.Stickies - Make Sticky - makeStickyFromTextService"' \
+    -c 'Delete :NSServicesStatus:"com.apple.Terminal - Open man Page in Terminal - openManPage' \
+    -c 'Delete :NSServicesStatus:"com.apple.Terminal - Search man Page Index in Terminal - searchManPages' \
+    "$HOME/Library/Preferences/pbs.plist"
