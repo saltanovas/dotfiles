@@ -1,7 +1,7 @@
 {
-  "name": "My Custom Theme",
+  "name": "Personal Chrome Theme",
+  "description": "Custom theme for personal use.",
   "version": "1.0",
-  "description": "",
   "manifest_version": 3,
   "theme": {
     "images": {
