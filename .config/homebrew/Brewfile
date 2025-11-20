@@ -32,7 +32,7 @@ brew "yt-dlp"
 # Quickly generate a disposable email using mail.tm API
 brew "mailsy"
 # Reverse proxy from a public endpoint to localhost
-brew "ngrok"
+cask "ngrok"
 # Password generator
 brew "pwgen"
 # RAR Archiver
@@ -87,24 +87,27 @@ cask "the-unarchiver"
 cask "google-chrome"
 # Client for the Google Drive storage service
 cask "google-drive"
-# JetBrains tools manager
-cask "jetbrains-toolbox"
 # App to write, plan, collaborate, and get organised
 cask "notion"
-# Replacement for Docker Desktop
-cask "orbstack"
-# Collaboration platform for API development
-cask "postman"
-# Control your tools with a few keystrokes
+# Replacement for Spotlight
 cask "raycast"
 # Music streaming service
 cask "spotify"
-# Open-source code editor
-cask "visual-studio-code"
 # Media player
 cask "vlc"
 # Video communication and virtual meeting platform
 cask "zoom"
+
+# ========================================
+# 🧑‍💻 Dev Apps
+# ========================================
+cask "jetbrains-toolbox"
+cask "intellij-idea"
+cask "datagrip"
+cask "goland"
+cask "orbstack"
+cask "postman"
+cask "visual-studio-code"
 
 # ========================================
 # 🔌 VS Code Plugins
