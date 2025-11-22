@@ -1,0 +1,5 @@
+# Safety-first rule: this directory may contain real ngrok configs & backup files with tokens.
+# To ensure we never commit secrets by mistake, we ignore all files here by default
+# and explicitly allow only the template file to be tracked.
+*
+!ngrok.dist.yml
