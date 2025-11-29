@@ -9,3 +9,4 @@ rm -rf /Applications/iMovie.app
 # Configure apps
 ./monitorcontrol.sh
 ./terminal.sh
+./timemachine.sh
