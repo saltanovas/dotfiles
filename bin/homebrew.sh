@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eu
+set -euo pipefail
 
 source ./utils.sh
 
@@ -22,6 +22,18 @@ HOMEBREW_BIN=$(
 
 brew() { HOMEBREW_NO_AUTO_UPDATE=1 "$HOMEBREW_BIN" "$@"; }
 
+brew_bundle() {
+    [ -n "$1" ] && local cmd=" $1"
+
+    if [ $# -gt 0 ]; then
+        shift
+        local flags="$*"
+        [ -n "$flags" ] && flags=" $flags"
+    fi
+
+    printf "${tty_blue}%s${tty_reset}" "brew bundle$cmd$flags --file=\"${BREWFILE/$HOME/\$HOME}\"";
+}
+
 if [[ ! -x "$HOMEBREW_BIN" ]]; then
     ohai "Setting up Homebrew..."
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -37,27 +49,13 @@ brew update
 
 # See: https://docs.brew.sh/Manpage#upgrade-options-installed_formulainstalled_cask-
 ohai "Upgrading installed Homebrew formulae..."
-if brew upgrade 2>&1 | tee /dev/tty | grep -q .; then
-    echo "Already up-to-date."
-fi
+brew upgrade
+ohai "Upgrade completed."
 
 # See: https://docs.brew.sh/Manpage#cleanup-options-formulacask-
 ohai "Removing old versions of installed Homebrew formulae..."
 brew cleanup
 ohai "Cleanup completed."
-
-brew_bundle() {
-    local cmd="$1"
-    [ -n "$cmd" ] && cmd=" $cmd"
-
-    if [ $# -gt 0 ]; then
-        shift
-        local flags="$*"
-        [ -n "$flags" ] && flags=" $flags"
-    fi
-
-    printf "${tty_blue}%s${tty_reset}" "brew bundle$cmd$flags --file=\"${BREWFILE/$HOME/\$HOME}\"";
-}
 
 ohai "Done. You may now perform optional actions if needed:"
 echo "- List Brewfile formulae not present on the system: $(brew_bundle check)"
