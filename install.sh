@@ -1,47 +1,50 @@
 #!/bin/bash
 
-# Strict mode
-set -e          # exit on any command failure
-set -u          # error on undefined variables
-set -o pipefail # pipelines fail on first error
+DOTFILES_HOSTNAME="github.com"
+DOTFILES_PATH="saltanovas/dotfiles.git"
+DOTFILES_ROOT="$HOME/.dotfiles"
 
 # String formatters
-tty_escape() { [ -t 1 ] && printf '\033[%sm' "$1"; }
-tty_mkbold() { tty_escape "1;$1"; }
-tty_reset="$(tty_escape 0)"
-tty_bold="$(tty_mkbold 39)"
-tty_blue="$(tty_mkbold 34)"
-tty_red="$(tty_mkbold 31)"
+if [ -t 1 ]; then _tty_escape() { printf '\033[%sm' "$1"; } else _tty_escape() { :; }; fi
+tty_reset="$(_tty_escape '0')"
+tty_bold="$(_tty_escape '1')"
+tty_blue="$(_tty_escape '1;34')"
+tty_red="$(_tty_escape '1;31')"
 
 # Logging
-ohai() { printf "${tty_blue}==>${tty_bold} %s${tty_reset}\n" "$1"; }
-warn()  { printf "${tty_red}Warning:${tty_reset} %s\n" "$1" >&2; }
-abort() { printf "%s\n" "$@" >&2; exit 1; }
+ohai() { printf "%b==>%b %s%b\n" "$tty_blue" "$tty_bold" "$@" "$tty_reset"; }
+abort() {
+    printf "%bError:%b %s\n" "$tty_red" "$tty_reset" "$1" >&2
+    [ "$#" -gt 1 ] && shift && printf "%s\n" "$@" >&2
+    exit 1
+}
 
-
-ohai "Installing Homebrew..."
-if ! command -v brew >/dev/null 2>&1; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
-
-case "$(/usr/bin/uname -m)" in
-    arm64) eval "$(/opt/homebrew/bin/brew shellenv)" ;;
-    *) eval "$(/usr/local/bin/brew shellenv)" ;;
-esac
-
-ohai "Installing Homebrew packages..."
-if [ ! -f Brewfile ]; then
-    abort "Brewfile not found in the current directory. Please ensure a Brewfile is present before running this script."
-fi
-brew bundle
-brew cleanup
-ohai "Homebrew packages installed successfully."
-
-
-ohai "Setting up custom tldr pages..."
-if command -v tlrc >/dev/null 2>&1; then
-    mkdir -p "$HOME/Library/Caches/tlrc/pages.custom/common"
-else
-    warn "'tlrc' is not found. Install it via Homebrew or explicitly remove this configuration step, and run the script again."
+if [ ! -d "$DOTFILES_ROOT" ]; then
+    ohai "Dotfiles repository is not found. Initializing..."
+    git clone "https://${DOTFILES_HOSTNAME}/${DOTFILES_PATH}" "$DOTFILES_ROOT" >/dev/null
+    ohai "Dotfiles repository initialized at $DOTFILES_ROOT"
+    exec "$DOTFILES_ROOT/bootstrap.sh"
     exit 0
 fi
+
+ohai "Dotfiles directory is found at $DOTFILES_ROOT..."
+
+if [ ! -d "$DOTFILES_ROOT/.git" ]; then
+    abort "Dotfiles directory is not a git repository."
+fi
+
+if output=$(git -C "$DOTFILES_ROOT" config --get remote.origin.url 2>&1); then
+    if [[ "$output" != *"$DOTFILES_HOSTNAME"[:/]"$DOTFILES_PATH" ]]; then
+        abort "Dotfiles directory points to an unexpected remote repository." \
+        "Expected: ${DOTFILES_HOSTNAME}[:/]${DOTFILES_PATH}" \
+        "Actual: $output"
+    fi
+else
+    abort "Failed to get a remote URL of dotfiles repository: $output";
+fi
+
+ohai "Updating..."
+git -C "$DOTFILES_ROOT" merge origin/HEAD >/dev/null || abort "Update failed."
+ohai "Update completed."
+
+exec "$DOTFILES_ROOT/bootstrap.sh"
