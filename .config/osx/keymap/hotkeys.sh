@@ -15,7 +15,10 @@ add_hotkey() {
     local id="$1" key1="$2" key2="$3" mods="$4" is_enabled=${5:-false}
 
     for arg in "$id" "$key1" "$key2" "$mods"; do
-        is_positive_int "$arg" || { echo "❌ Value must be a positive integer, got: '$arg'"; return 1; }
+        if is_positive_int "$arg"; then
+            echo "❌ Value must be a positive integer, got: '$arg'"
+            return 1;
+        fi
     done
 
     if ! is_bool "$is_enabled"; then
