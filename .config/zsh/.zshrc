@@ -15,12 +15,45 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ht="history | tail -20"
 alias ll="ls -lAhG"
-alias brewup="brew update && brew upgrade && brew cleanup && brew doctor"
 
 # ==========================
 # ===     Functions      ===
 # ==========================
-mkcd() { mkdir -p "$1" && cd "$1"; }
+mkcd() { mkdir -p "$1" && cd "$1" }
+
+brewup() {
+    brew_bundle() {
+        [ -n "$1" ] && local cmd=" $1"
+
+        if [ $# -gt 0 ]; then
+            shift
+            local flags="$*"
+            [ -n "$flags" ] && flags=" $flags"
+        fi
+
+        printf "${tty_blue}%s${tty_reset}" "brew bundle$cmd$flags --file=\"${BREWFILE/$HOME/\$HOME}\"";
+    }
+
+    brew update
+
+    # See: https://docs.brew.sh/Manpage#upgrade-options-installed_formulainstalled_cask-
+    ohai "Upgrading installed Homebrew formulae..."
+    brew upgrade
+    ohai "Upgrade completed."
+
+    # See: https://docs.brew.sh/Manpage#cleanup-options-formulacask-
+    ohai "Removing old versions of installed Homebrew formulae..."
+    brew cleanup
+    ohai "Cleanup completed."
+
+    ohai "Done. You may now perform optional actions if needed:"
+    echo "- List Brewfile formulae not present on the system: $(brew_bundle check)"
+    echo "- Install Brewfile formulae not present on the system: $(brew_bundle)"
+    echo "- List installed formulae that are not present in the Brewfile: $(brew_bundle cleanup)"
+    echo "- Uninstall formulae that are not present in the Brewfile: $(brew_bundle cleanup --force)"
+
+    unset -f brew_bundle
+}
 
 ytd() {
     echo "🎧 Downloading the best available audio..."
@@ -39,24 +72,32 @@ ytd() {
     return 1
 }
 
-extract() {
-    echo Extracting "$1" ...
-    if [ -f "$1" ] ; then
-        case "$1" in
-            *.tar.bz2)   tar xjf "$1" ;;
-            *.tar.gz)    tar xzf "$1" ;;
-            *.bz2)       bunzip2 "$1" ;;
-            *.rar)       unrar x "$1" ;;
-            *.gz)        gunzip "$1" ;;
-            *.tar)       tar xf "$1" ;;
-            *.tbz2)      tar xjf "$1" ;;
-            *.tgz)       tar xzf "$1" ;;
-            *.zip)       unzip "$1" ;;
-            *.Z)         uncompress "$1" ;;
-            *.7z)        7z x "$1" ;;
-            *)           echo "'$1' cannot be extracted via extract()" ;;
-        esac
-    else
-        echo "'$1' is not a valid file"
+unarchive() {
+    if [ $# -eq 0 ]; then
+        echo "Usage: unarchive <file>..."
+        return 1
     fi
+
+    for file in "$@"; do
+        if [ ! -f "$file" ]; then
+            echo "$file is not a valid file"
+            continue
+        fi
+
+        echo "Unarchiving $file ..."
+        case "$file" in
+            *.tar.bz2)   tar xjf "$file" ;;
+            *.tar.gz)    tar xzf "$file" ;;
+            *.bz2)       bunzip2 "$file" ;;
+            *.rar)       unrar x "$file" ;;
+            *.gz)        gunzip "$file" ;;
+            *.tar)       tar xf "$file" ;;
+            *.tbz2)      tar xjf "$file" ;;
+            *.tgz)       tar xzf "$file" ;;
+            *.zip)       unzip "$file" ;;
+            *.Z)         uncompress "$file" ;;
+            *.7z)        7z x "$file" ;;
+            *)           echo "'$file' file type is not supported" ;;
+        esac
+    done
 }
