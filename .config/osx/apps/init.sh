@@ -10,3 +10,4 @@ rm -rf /Applications/iMovie.app
 ./monitorcontrol.sh
 ./terminal.sh
 ./timemachine.sh
+./screencapture.sh

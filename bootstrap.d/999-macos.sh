@@ -19,7 +19,6 @@ if ! ls "$HOME/Library/Mail" &>/dev/null; then
 fi
 
 ./apps/init.sh
-./screencapture.sh
 
 ./hid/init.sh
 
