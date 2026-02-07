@@ -27,6 +27,8 @@ brew "tree"
 # ========================================
 # 🕹 CLI Tools
 # ========================================
+# Select default apps for documents and URL schemes on macOS
+brew "duti"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # GitHub command-line tool

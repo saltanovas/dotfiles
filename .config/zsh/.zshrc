@@ -15,6 +15,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ht="history | tail -20"
 alias ll="ls -lAhG"
+alias dutiup="duti $DOTFILES_ROOT/.config/duti/duti.conf"
 
 # ==========================
 # ===     Functions      ===
