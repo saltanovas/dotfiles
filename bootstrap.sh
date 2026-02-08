@@ -1,5 +1,15 @@
 #!/bin/bash
 
+if [[ -z "$DOTFILES_ROOT" ]]; then
+    printf "DOTFILES_ROOT environment variable is not set. Please set it to the root directory of the dotfiles repository."
+    exit 1
+fi
+
+if [[ ! -d "$DOTFILES_ROOT" ]]; then
+    printf "DOTFILES_ROOT is set to '%s', but this directory does not exist on the system." "$DOTFILES_ROOT"
+    exit 1
+fi
+
 COLS="$(tput cols)"
 if [ "$COLS" -le 0 ]; then
     COLS="${COLUMNS:-80}"
@@ -39,24 +49,19 @@ symlink() {
     err "Cannot create symlink, destination already exists: $src -> $dest"
 }
 
-if ! [[ -f "${BASH_SOURCE[0]:-}" ]] || [[ -z "$DOTFILES_ROOT" ]]; then
-  echo "Run the install.sh script instead" && exit 1
-fi
-
 hr
 
 ohai "Creating config symlinks..."
-symlink "$DOTFILES_ROOT/.zshenv" "$HOME/.zshenv" || exit 1
+symlink "$DOTFILES_ROOT/.config/zsh/.zshenv" "$HOME/.zshenv" || exit 1
 for config in .config/*; do
-   symlink "$DOTFILES_ROOT/$config" "$HOME/$config" || exit 1
+    symlink "$DOTFILES_ROOT/$config" "$HOME/$config" || exit 1
 done
 
 hr
 
 for script in "$DOTFILES_ROOT"/bootstrap.d/*.sh; do
-   # shellcheck source=/dev/null
-   . "$script" || exit 1
-   hr
+    ./"$script" || exit 1
+    hr
 done
 
 ohai "Dotfiles setup completed successfully! A reboot is a must for all changes to take effect."
