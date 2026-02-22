@@ -13,7 +13,8 @@ autoload -U compinit && compinit -i
 # ==========================
 alias ..="cd .."
 alias ...="cd ../.."
-alias ht="history | tail -20"
+# See: http://wiki.archlinux.org/index.php/Sudo#Passing_aliases
+alias sudo='sudo '
 alias ll="ls -lAhG"
 alias dutiup="duti $DOTFILES_ROOT/.config/duti/duti.conf"
 
@@ -21,6 +22,37 @@ alias dutiup="duti $DOTFILES_ROOT/.config/duti/duti.conf"
 # ===     Functions      ===
 # ==========================
 mkcd() { mkdir -p "$1" && cd "$1" }
+ht() { fc -l -"${1:-20}" }
+
+findport() {
+    local IFS=,
+    sudo lsof -nP -i:"$*"
+}
+
+killport() {
+    sudo -v || return 1
+    if [ "$#" -eq 0 ]; then
+        echo "Usage: killport <port> [port ...]"
+        return 1
+    fi
+
+    rc=0
+    for port in "$@"; do
+        if ! pids=$(sudo lsof -ti :"$port"); then
+            rc=1
+            [ -z "$pids" ] && printf 'No process found on port %s\n' "$port" >&2
+            continue
+        fi
+
+        if ! sudo kill -9 $pids; then
+            rc=1
+            printf 'Failed to kill process on port %s\n' "$port" >&2
+            continue
+        fi
+    done
+
+    return $rc
+}
 
 brewup() {
     brew_bundle() {
