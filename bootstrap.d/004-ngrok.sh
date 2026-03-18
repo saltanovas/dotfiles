@@ -10,11 +10,11 @@ NGROK_CONFIG_TEMPLATE="$HOME/ngrok.yml.template"
 
 open() {
     if command -v open >/dev/null 2>&1; then
-      open "$@"
+        open "$@"
     elif command -v xdg-open >/dev/null 2>&1; then
-      xdg-open "$@"
+        xdg-open "$@"
     else
-      printf "Could not perform automatic redirect. Please open the following resource manually:\n%s\n" "$@"
+        printf "Could not perform automatic redirect. Please open the following resource manually:\n%s\n" "$@"
     fi
 }
 
