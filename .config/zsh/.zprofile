@@ -8,6 +8,11 @@ export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export LESS="-RFK --mouse"
 export MANPAGER='sh -c "col -bx | bat -l man --theme \"ansi\""'
 
+# Update once every 30 days
+export HOMEBREW_AUTO_UPDATE_SECS=2592000
+export HOMEBREW_UPGRADE_GREEDY=1
+export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
+
 export JAVA_HOME="/opt/homebrew/Cellar/openjdk/25/libexec/openjdk.jdk/Contents/Home"
 # export JAVA_HOME=$(/usr/libexec/java_home -v 25)
 export PATH="$PATH:$JAVA_HOME/bin"
