@@ -1,0 +1,21 @@
+{
+    "name": "themes",
+    "displayName": "Aivaras Themes",
+    "version": "0.0.1",
+    "publisher": "saltanovas",
+    "engines": {
+        "vscode": "^1.105.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Aivaras Darcula IntelliJ",
+                "uiTheme": "vs-dark",
+                "path": "./themes/darcula.intellij.json"
+            }
+        ]
+    }
+}
