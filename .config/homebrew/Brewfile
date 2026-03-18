@@ -94,19 +94,13 @@ cask "the-unarchiver"
 # ========================================
 # 🖥️ Apps
 # ========================================
-# Web browser
+cask "chatgpt"
 cask "google-chrome"
-# Client for the Google Drive storage service
 cask "google-drive"
-# App to write, plan, collaborate, and get organised
 cask "notion"
-# Replacement for Spotlight
 cask "raycast"
-# Music streaming service
 cask "spotify"
-# Media player
 cask "vlc"
-# Video communication and virtual meeting platform
 cask "zoom"
 
 # ========================================
