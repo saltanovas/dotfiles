@@ -1,7 +1,7 @@
 # ========================================
 # 🔠Fonts
 # ========================================
-brew "font-jetbrains-mono-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
 
 # ========================================
 # 📟 Terminal
@@ -72,11 +72,9 @@ brew "node"
 brew "pipx"
 # Python environment management
 brew "pyenv"
-# Development kit for the Java programming language
-brew "openjdk@25"
-# JDK from the Eclipse Foundation (Adoptium)
+# JDKs
+cask "temurin@25"
 cask "temurin@21"
-# JDK from the Eclipse Foundation (Adoptium)
 cask "temurin@17"
 # JavaScript package manager
 brew "yarn"
