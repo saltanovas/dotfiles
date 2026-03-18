@@ -134,7 +134,7 @@ vscode "redhat.vscode-yaml"
 # Prettier code formatter
 vscode "esbenp.prettier-vscode"
 # Unofficial shell script formatter
-vscode "foxundermoon.shell-format"
+vscode "lumirelle.shell-format-rev"
 # Binary Plist viewer and editor
 vscode "dnicolson.binary-plist"
 # Live server for static & dynamic pages
