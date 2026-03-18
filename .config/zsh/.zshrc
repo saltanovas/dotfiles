@@ -55,18 +55,6 @@ killport() {
 }
 
 brewup() {
-    brew_bundle() {
-        [ -n "$1" ] && local cmd=" $1"
-
-        if [ $# -gt 0 ]; then
-            shift
-            local flags="$*"
-            [ -n "$flags" ] && flags=" $flags"
-        fi
-
-        printf "${tty_blue}%s${tty_reset}" "brew bundle$cmd$flags --file=\"${BREWFILE/$HOME/\$HOME}\"";
-    }
-
     brew update
 
     # See: https://docs.brew.sh/Manpage#upgrade-options-installed_formulainstalled_cask-
@@ -80,12 +68,10 @@ brewup() {
     ohai "Cleanup completed."
 
     ohai "Done. You may now perform optional actions if needed:"
-    echo "- List Brewfile formulae not present on the system: $(brew_bundle check)"
-    echo "- Install Brewfile formulae not present on the system: $(brew_bundle)"
-    echo "- List installed formulae that are not present in the Brewfile: $(brew_bundle cleanup)"
-    echo "- Uninstall formulae that are not present in the Brewfile: $(brew_bundle cleanup --force)"
-
-    unset -f brew_bundle
+    echo "- List Brewfile formulae not present on the system: $(brew bundle check)"
+    echo "- Install Brewfile formulae not present on the system: $(brew bundle)"
+    echo "- List installed formulae that are not present in the Brewfile: $(brew bundle cleanup)"
+    echo "- Uninstall formulae that are not present in the Brewfile: $(brew bundle cleanup --force)"
 }
 
 ytd() {
