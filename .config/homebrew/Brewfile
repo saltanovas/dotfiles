@@ -131,6 +131,8 @@ vscode "ms-vscode.vscode-typescript-next"
 vscode "redhat.vscode-xml"
 # YAML language support
 vscode "redhat.vscode-yaml"
+# Docker support
+vscode "docker.docker"
 # Prettier code formatter
 vscode "esbenp.prettier-vscode"
 # Unofficial shell script formatter
