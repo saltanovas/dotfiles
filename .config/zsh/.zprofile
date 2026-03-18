@@ -2,6 +2,12 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin"
 export PATH="$PATH:$HOME/.orbstack/bin"
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
+# -R      preserve ANSI colors (bat, git, grep, etc.)
+# -F      auto-exit if output fits on one screen
+# -K      quit immediately on ctrl+c
+export LESS="-RFK --mouse"
+export MANPAGER='sh -c "col -bx | bat -l man --theme \"ansi\""'
+
 export JAVA_HOME="/opt/homebrew/Cellar/openjdk/25/libexec/openjdk.jdk/Contents/Home"
 # export JAVA_HOME=$(/usr/libexec/java_home -v 25)
 export PATH="$PATH:$JAVA_HOME/bin"
@@ -18,5 +24,3 @@ export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
 # See https://tldr.sh/tlrc/#configuration
 export TLRC_CONFIG="$XDG_CONFIG_HOME/tlrc/config.toml"
-
-export BREWFILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
