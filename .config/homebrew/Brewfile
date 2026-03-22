@@ -123,6 +123,7 @@ vscode "golang.go"
 vscode "redhat.java"
 # Unofficial PHP language support
 vscode "DEVSENSE.phptools-vscode"
+vscode "bmewburn.vscode-intelephense-client"
 # Python language support
 vscode "ms-python.python"
 # TypeScript Next features
@@ -131,6 +132,8 @@ vscode "ms-vscode.vscode-typescript-next"
 vscode "redhat.vscode-xml"
 # YAML language support
 vscode "redhat.vscode-yaml"
+# TOML language support
+vscode "tamasfe.even-better-toml"
 # Docker support
 vscode "docker.docker"
 # Prettier code formatter
@@ -145,3 +148,5 @@ vscode "ritwickdey.liveserver"
 vscode "github.copilot"
 # GitHub Copilot chat
 vscode "github.copilot-chat"
+# Icon themes
+vscode "chadalen.vscode-jetbrains-icon-theme"
