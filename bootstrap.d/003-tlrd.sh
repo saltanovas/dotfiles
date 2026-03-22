@@ -9,7 +9,7 @@ TLRC_CUSTOM_PAGES_DIR="$HOME/Library/Caches/tlrc/pages.$TLRC_CUSTOM_PAGES_NAMESP
 
 ohai "Enabling custom tldr pages..."
 
-command -v tlrc >/dev/null 2>&1 || abort "Failed to enable custom tldr pages: 'tlrc' client is not found."
+command -v tlrd >/dev/null 2>&1 || abort "Failed to enable custom tldr pages: 'tldr' is not found."
 
 mkdir -p "$TLRC_CUSTOM_PAGES_DIR"
 
