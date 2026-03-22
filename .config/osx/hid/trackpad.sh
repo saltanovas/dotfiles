@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail
-
 # Sensitivity
 defaults write NSGlobalDomain com.apple.trackpad.scaling -float 0.6875
 # Scroll speed
@@ -9,10 +7,13 @@ defaults write NSGlobalDomain com.apple.trackpad.scrolling -float 0.1838
 # Enable inertia when scrolling
 defaults write com.apple.AppleMultitouchTrackpad TrackpadMomentumScroll -bool true
 
+
 # Keep trackpad enabled when mouse is connected
 defaults write com.apple.AppleMultitouchTrackpad USBMouseStopsTrackpad -bool false
 
 # ========== Click ==========
+# Tap to click
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 # Click pressure
 # 0 = light | 1 = medium | 2 = firm
 defaults write com.apple.AppleMultitouchTrackpad FirstClickThreshold -int 1
