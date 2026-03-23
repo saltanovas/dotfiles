@@ -19,6 +19,17 @@ abort() {
     exit 1
 }
 
+COLS="$(tput cols)"
+if [ "$COLS" -le 0 ]; then COLS="${COLUMNS:-80}"; fi
+
+# shellcheck disable=SC2120
+hr() {
+    for WORD in "${@:-#}"
+    do
+        printf '%*s' "$COLS" ' ' | sed "s/ /$WORD/g" | grep -o "^.\{$COLS\}"
+    done
+}
+
 if [ ! -d "$DOTFILES_ROOT" ]; then
     ohai "Dotfiles repository is not found. Initializing..."
     git clone "https://${DOTFILES_HOSTNAME}/${DOTFILES_PATH}" "$DOTFILES_ROOT" >/dev/null
@@ -47,4 +58,10 @@ ohai "Updating..."
 git -C "$DOTFILES_ROOT" merge origin/HEAD >/dev/null || abort "Update failed."
 ohai "Update completed."
 
-exec "$DOTFILES_ROOT/bootstrap.sh"
+for script in "$DOTFILES_ROOT"/bootstrap.d/*.sh; do
+    ./"$script" || exit 1
+    hr
+done
+
+ohai "Dotfiles setup completed successfully! A reboot is a must for all changes to take effect."
+if ask "Reboot now?"; then sudo reboot; else ohai "Reboot skipped."; fi
