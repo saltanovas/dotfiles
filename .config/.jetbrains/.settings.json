@@ -1,0 +1,11 @@
+{
+    "autostart": false,
+    "install_location": "/Applications",
+    "channel_rollback_max_history": 0,
+    "shell_scripts": {
+        "location": "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+    },
+    "ui": {
+        "theme": "dark"
+    }
+}

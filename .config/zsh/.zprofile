@@ -2,6 +2,8 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin"
 export PATH="$PATH:$HOME/.orbstack/bin"
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+
 # -R      preserve ANSI colors (bat, git, grep, etc.)
 # -F      auto-exit if output fits on one screen
 # -K      quit immediately on ctrl+c

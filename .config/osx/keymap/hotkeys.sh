@@ -3,7 +3,7 @@
 set -euo pipefail
 
 PB="/usr/libexec/PlistBuddy"
-plist="$HOME/Preferences/com.apple.symbolichotkeys.plist"
+plist="$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
 
 is_positive_int() { (( $1 >= 0 )) 2>/dev/null; }
 is_bool() { [[ "$1" == "true" || "$1" == "false" ]]; }
@@ -15,7 +15,7 @@ add_hotkey() {
     local id="$1" key1="$2" key2="$3" mods="$4" is_enabled=${5:-false}
 
     for arg in "$id" "$key1" "$key2" "$mods"; do
-        if is_positive_int "$arg"; then
+        if ! is_positive_int "$arg"; then
             echo "❌ Value must be a positive integer, got: '$arg'"
             return 1;
         fi
@@ -134,6 +134,6 @@ $PB \
     -c 'Delete :NSServicesStatus:"com.apple.Safari - Search With %WebSearchProvider@ - searchWithWebSearchProvider"' \
     -c 'Delete :NSServicesStatus:"com.apple.BluetoothFileExchange - Send File To Bluetooth Device - sendFileUsingBluetoothOBEXService"' \
     -c 'Delete :NSServicesStatus:"com.apple.Stickies - Make Sticky - makeStickyFromTextService"' \
-    -c 'Delete :NSServicesStatus:"com.apple.Terminal - Open man Page in Terminal - openManPage' \
-    -c 'Delete :NSServicesStatus:"com.apple.Terminal - Search man Page Index in Terminal - searchManPages' \
+    -c 'Delete :NSServicesStatus:"com.apple.Terminal - Open man Page in Terminal - openManPage"' \
+    -c 'Delete :NSServicesStatus:"com.apple.Terminal - Search man Page Index in Terminal - searchManPages"' \
     "$HOME/Library/Preferences/pbs.plist"
