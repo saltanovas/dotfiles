@@ -3,7 +3,6 @@
 
 ### IDE settings ###
 .idea
-.vscode
 
 ### macOS files ###
 .DS_Store

@@ -1,0 +1,5 @@
+[includeIf "hasconfig:remote.*.url:git@github.com:saltanovas/**"]
+    path = ~/.config/git/personal.saltanovas.conf
+
+[includeIf "hasconfig:remote.*.url:git@github.com:nononetwork/**"]
+    path = ~/.config/git/work.nono.conf
