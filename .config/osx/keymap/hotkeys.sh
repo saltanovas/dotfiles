@@ -5,7 +5,7 @@ set -euo pipefail
 PB="/usr/libexec/PlistBuddy"
 plist="$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
 
-is_positive_int() { (( $1 >= 0 )) 2>/dev/null; }
+is_positive_int() { (($1 >= 0)) 2>/dev/null; }
 is_bool() { [[ "$1" == "true" || "$1" == "false" ]]; }
 
 pb_add() { $PB -c "Add :$1 $2 $3" "$plist"; }
@@ -17,7 +17,7 @@ add_hotkey() {
     for arg in "$id" "$key1" "$key2" "$mods"; do
         if ! is_positive_int "$arg"; then
             echo "❌ Value must be a positive integer, got: '$arg'"
-            return 1;
+            return 1
         fi
     done
 
