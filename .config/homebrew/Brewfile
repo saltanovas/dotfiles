@@ -6,9 +6,7 @@ cask "font-jetbrains-mono-nerd-font"
 # ========================================
 # 📟 Terminal
 # ========================================
-# Terminal emulator
 cask "alacritty"
-# Terminal multiplexer
 brew "tmux"
 
 # ========================================
@@ -56,12 +54,8 @@ brew "wget"
 # ========================================
 # 📦 Languages & Runtimes
 # ========================================
-# AWS Cloud Development Kit - framework for defining AWS infra as code
-brew "aws-cdk"
 # Official Amazon AWS command-line interface
 brew "awscli"
-# GNU compiler collection
-brew "gcc"
 # Distributed revision control system
 brew "git"
 # Open source programming language to build simple/reliable/efficient software
@@ -82,11 +76,8 @@ brew "yarn"
 # ========================================
 # 🧰 GUI Tools
 # ========================================
-# Application uninstaller
 cask "appcleaner"
-# Tool to control external monitor brightness & volume
 cask "monitorcontrol"
-# Unpacks archive files
 cask "the-unarchiver"
 
 # ========================================
