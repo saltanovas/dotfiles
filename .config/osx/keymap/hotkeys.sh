@@ -1,41 +1,19 @@
 #!/bin/bash
 
-set -euo pipefail
-
 PB="/usr/libexec/PlistBuddy"
-plist="$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
-
-is_positive_int() { (($1 >= 0)) 2>/dev/null; }
-is_bool() { [[ "$1" == "true" || "$1" == "false" ]]; }
-
-pb_add() { $PB -c "Add :$1 $2 $3" "$plist"; }
-pb_del() { $PB -c "Delete :$1" "$plist"; }
 
 add_hotkey() {
-    local id="$1" key1="$2" key2="$3" mods="$4" is_enabled=${5:-false}
+    local id="$1" key1="$2" key2="$3" mods="$4" is_enabled=$(( ${5:-0} != 0 ))
+    hotkeys_plist="$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
+    pbadd() { $PB -c "Add :$1 $2 $3" "$hotkeys_plist"; }
 
-    for arg in "$id" "$key1" "$key2" "$mods"; do
-        if ! is_positive_int "$arg"; then
-            echo "❌ Value must be a positive integer, got: '$arg'"
-            return 1
-        fi
-    done
-
-    if ! is_bool "$is_enabled"; then
-        echo "❌ Value must be a boolean, got: '$is_enabled'"
-        return 1
-    fi
-
-    pb_del "AppleSymbolicHotKeys:$id" 2>/dev/null || true
-    pb_add "AppleSymbolicHotKeys:$id" dict ""
-
-    pb_add "AppleSymbolicHotKeys:$id:enabled" bool "$is_enabled"
-    pb_add "AppleSymbolicHotKeys:$id:value" dict ""
-    pb_add "AppleSymbolicHotKeys:$id:value:parameters" array ""
-    pb_add "AppleSymbolicHotKeys:$id:value:parameters:0" integer "$key1"
-    pb_add "AppleSymbolicHotKeys:$id:value:parameters:1" integer "$key2"
-    pb_add "AppleSymbolicHotKeys:$id:value:parameters:2" integer "$mods"
-    pb_add "AppleSymbolicHotKeys:$id:value:type" string "standard"
+    $PB -c "Delete :AppleSymbolicHotKeys:${id}" "$hotkeys_plist" 2>/dev/null || true
+    pbadd "AppleSymbolicHotKeys:${id}:enabled" integer "$is_enabled"
+    pbadd "AppleSymbolicHotKeys:${id}:value:parameters" array ""
+    pbadd "AppleSymbolicHotKeys:${id}:value:parameters:0" integer "$key1"
+    pbadd "AppleSymbolicHotKeys:${id}:value:parameters:1" integer "$key2"
+    pbadd "AppleSymbolicHotKeys:${id}:value:parameters:2" integer "$mods"
+    pbadd "AppleSymbolicHotKeys:${id}:value:type" string "standard"
 }
 
 # ========================================
@@ -87,7 +65,7 @@ add_hotkey 9 65535 118 8650752
 add_hotkey 10 65535 96 8650752
 add_hotkey 11 65535 97 8650752
 # Change "Move focus to next window" default shortcut (hyperKey + `)
-add_hotkey 27 96 50 1835008 true
+add_hotkey 27 96 50 1835008 1
 add_hotkey 57 65535 100 8650752
 add_hotkey 159 65535 36 262144
 
@@ -124,16 +102,27 @@ add_hotkey 164 65535 65535 0
 # ========================================
 add_hotkey 98 47 44 1179648
 # The same trick works for any other built-in macOS command: https://stackoverflow.com/a/79797334/13047140
-defaults write -g NSUserKeyEquivalents -dict-add "Emoji & Symbols" "\0"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Emoji & Symbols" "\0"
+# Safari | ⌘⇧R
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Reload Page From Origin" "@\$r"
 
 # ========================================
-# Services
+# Services ([p]aste[b]oard [s]ervices)
 # ========================================
-$PB \
-    -c 'Delete :NSServicesStatus:"com.apple.SpotlightService - SEARCH_WITH_SPOTLIGHT - doSearchWithSpotlight"' \
-    -c 'Delete :NSServicesStatus:"com.apple.Safari - Search With %WebSearchProvider@ - searchWithWebSearchProvider"' \
-    -c 'Delete :NSServicesStatus:"com.apple.BluetoothFileExchange - Send File To Bluetooth Device - sendFileUsingBluetoothOBEXService"' \
-    -c 'Delete :NSServicesStatus:"com.apple.Stickies - Make Sticky - makeStickyFromTextService"' \
-    -c 'Delete :NSServicesStatus:"com.apple.Terminal - Open man Page in Terminal - openManPage"' \
-    -c 'Delete :NSServicesStatus:"com.apple.Terminal - Search man Page Index in Terminal - searchManPages"' \
-    "$HOME/Library/Preferences/pbs.plist"
+# Removing all entries restores default values, so each must be disabled individually
+pbs_plist="$HOME/Library/Preferences/pbs.plist"
+services=(
+    "com.apple.SpotlightService - SEARCH_WITH_SPOTLIGHT - doSearchWithSpotlight"
+    "com.apple.Safari - Search With %WebSearchProvider@ - searchWithWebSearchProvider"
+    "com.apple.BluetoothFileExchange - Send File To Bluetooth Device - sendFileUsingBluetoothOBEXService"
+    "com.apple.Stickies - Make Sticky - makeStickyFromTextService"
+    "com.apple.Terminal - Open man Page in Terminal - openManPage"
+    "com.apple.Terminal - Search man Page Index in Terminal - searchManPages"
+)
+$PB -c "Delete :NSServicesStatus" "$pbs_plist" 2>/dev/null || true
+for service in "${services[@]}"; do
+    $PB -c "Add :NSServicesStatus:'$service':enabled_context_menu bool false" "$pbs_plist"
+    $PB -c "Add :NSServicesStatus:'$service':enabled_services_menu bool false" "$pbs_plist"
+    $PB -c "Add :NSServicesStatus:'$service':presentation_modes:ContextMenu bool false" "$pbs_plist"
+    $PB -c "Add :NSServicesStatus:'$service':presentation_modes:ServicesMenu bool false" "$pbs_plist"
+done
