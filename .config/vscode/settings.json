@@ -13,19 +13,24 @@
     "explorer.compactFolders": false,
     "breadcrumbs.enabled": false,
 
-    "editor.minimap.enabled": false,
+    "editor.scrollbar.horizontal": "auto",
+    "editor.scrollbar.vertical": "auto",
+    "editor.scrollbar.verticalScrollbarSize": 8,
+    "editor.scrollbar.horizontalScrollbarSize": 8,
     "editor.overviewRulerBorder": false, // Border on the scrollbar
-    "editor.scrollbar.horizontal": "hidden",
     "editor.smoothScrolling": true,
+    "editor.scrollBeyondLastLine": false,
     "editor.stickyScroll.enabled": true,
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": "on",
+    "editor.minimap.enabled": false,
 
     "editor.fontFamily": "JetBrainsMono Nerd Font",
-    "editor.fontSize": 14,
-    "editor.tabSize": 4,
-    "editor.lineHeight": 24,
+    "editor.fontSize": 13,
+    "editor.lineHeight": 23,
+    "window.zoomLevel": -0.2,
     "editor.lineDecorationsWidth": 0, // Width between line numbers and code
+    "editor.tabSize": 4,
     "editor.detectIndentation": false,
     "editor.insertSpaces": true, // Use spaces as indentation characters instead of tabs
     "editor.renderControlCharacters": true,
