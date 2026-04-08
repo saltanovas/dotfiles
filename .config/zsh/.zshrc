@@ -15,6 +15,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 # See: http://wiki.archlinux.org/index.php/Sudo#Passing_aliases
 alias sudo='sudo '
+alias now='date +%s'
 alias ll="ls -lAhG"
 alias dutiup="duti $DOTFILES_ROOT/.config/duti/duti.conf"
 
