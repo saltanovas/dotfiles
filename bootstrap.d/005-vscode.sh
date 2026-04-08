@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VSCODE_CONFIG_DIR="$DOTFILES_ROOT/.config/.vscode"
+VSCODE_CONFIG_DIR="$DOTFILES_ROOT/.config/vscode"
 VSCODE_EXTENSIONS_DIR="$HOME/.vscode/extensions"
 VSCODE_USER_DATA_DIR="$HOME/Library/Application Support/Code/User"
 
