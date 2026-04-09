@@ -10,9 +10,20 @@
             <string>property</string>
             <string>--set</string>
             <string>{"UserKeyMapping":[
+            <!-- CapsLock -> Right Command Key -->
             {
               "HIDKeyboardModifierMappingSrc": 0x700000039,
               "HIDKeyboardModifierMappingDst": 0x7000000E7
+            },
+            <!-- Dictation (🎤︎︎F5) -> Decrease Keyboard Backlight -->
+            {
+              "HIDKeyboardModifierMappingSrc": 0xC000000CF,
+              "HIDKeyboardModifierMappingDst": 0xFF00000009
+            },
+            <!-- DND (⏾F6) -> Increase Keyboard Backlight -->
+            {
+              "HIDKeyboardModifierMappingSrc": 0x10000009B,
+              "HIDKeyboardModifierMappingDst": 0xFF00000008
             }
         ]}</string>
         </array>
