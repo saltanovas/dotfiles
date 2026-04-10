@@ -52,6 +52,15 @@ Import Raycast settings:
 2. Run `Import Settings & Data`
 3. Import `~/dotfiles/.config/raycast/config.rayconfig`
 
+## Enforce default input device
+
+This helps preserve battery life of Bluetooth headphones, since using them as a microphone drains it much faster.
+
+1. Open Raycast
+2. Search for `Set Input Device`
+3. Choose built-in microphone and press `⇧⌘D`
+4. Search for `Enforce Input Device` and press Enter to enable it
+
 ## Default web browser
 
 Set **Default web browser** to `Google Chrome`:
