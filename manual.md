@@ -96,3 +96,9 @@ Verify and adjust the applications and services configured to launch automatical
 ```bash
 open "x-apple.systempreferences:com.apple.LoginItems-Settings.extension"
 ```
+
+## Review menu bar items
+
+```bash
+open "x-apple.systempreferences:com.apple.ControlCenter-Settings.extension"
+```
