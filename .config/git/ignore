@@ -1,0 +1,10 @@
+# Generate more with: gitignore.io
+
+### macOS ###
+.DS_Store
+__MACOSX/
+Icon
+._*
+.Spotlight-V100
+.Trashes
+.TemporaryItems
