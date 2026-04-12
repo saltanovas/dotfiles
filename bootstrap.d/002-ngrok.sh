@@ -6,12 +6,12 @@ set -euo pipefail
 
 NGROK_HOME="$HOME/.config/ngrok"
 NGROK_CONFIG="$NGROK_HOME/ngrok.yml"
-NGROK_CONFIG_TEMPLATE="$HOME/ngrok.yml.template"
+NGROK_CONFIG_TEMPLATE="$NGROK_HOME/ngrok.dist.yml"
 
 open() {
-    if command -v open >/dev/null 2>&1; then
+    if command -v open >/dev/null; then
         open "$@"
-    elif command -v xdg-open >/dev/null 2>&1; then
+    elif command -v xdg-open >/dev/null; then
         xdg-open "$@"
     else
         printf "Could not perform automatic redirect. Please open the following resource manually:\n%s\n" "$@"
@@ -31,19 +31,9 @@ set_authtoken() {
 }
 
 ohai "Setting up ngrok..."
-command -v ngrok >/dev/null 2>&1 || abort "ngrok is not found."
-
-mkdir -p "$NGROK_HOME"
-
-if [[ ! -f "$NGROK_CONFIG" ]]; then
-    [[ -f "$NGROK_CONFIG_TEMPLATE" ]] && cp -L "$NGROK_CONFIG_TEMPLATE" "$NGROK_CONFIG"
-    set_authtoken
-    exit 0
+command -v ngrok >/dev/null || abort "ngrok is not found."
+if [[ ! -f "$NGROK_CONFIG" ]] && [[ -f "$NGROK_CONFIG_TEMPLATE" ]]; then
+    cp -L "$NGROK_CONFIG_TEMPLATE" "$NGROK_CONFIG"
 fi
-
-printf "Config file %s already exists. Creating backup...\n" "$NGROK_CONFIG"
-backup=$(backup "$NGROK_CONFIG")
-cp "$backup" "$NGROK_CONFIG"
-printf "Backup created at %s\n" "$backup"
 
 set_authtoken
