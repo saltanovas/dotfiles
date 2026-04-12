@@ -1,11 +1,9 @@
 #!/bin/bash
 
-set -euo pipefail
-
 # Set dark mode
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 
-# Disable tint window background
+# Tint window background
 defaults write NSGlobalDomain AppleReduceDesktopTinting -bool false
 
 # Show scrollbars only when scrolling
