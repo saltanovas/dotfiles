@@ -32,6 +32,8 @@ brew "tree"
 # ========================================
 # Select default apps for documents and URL schemes on macOS
 brew "duti"
+# macOS CLI for managing custom icons for files and folders
+brew "fileicon"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # GitHub command-line tool
