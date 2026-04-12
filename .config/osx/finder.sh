@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail
-
 # Enable quit the Finder
 defaults write com.apple.finder QuitMenuItem -bool true
 
@@ -21,6 +19,7 @@ defaults write com.apple.finder FXRemoveOldTrashItems -bool true
 /usr/libexec/PlistBuddy \
     -c "Set :TrashViewSettings:IconViewSettings:arrangeBy grid" \
     -c "Set :TrashViewSettings:IconViewSettings:showIconPreview true" \
+    -c "Set :TrashViewSettings:IconViewSettings:GroupBy Date Added" \
     "$HOME/Library/Preferences/com.apple.finder.plist"
 
 
@@ -61,6 +60,10 @@ defaults write com.apple.Finder FXPreferredViewStyle -string icnv
     -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" \
     -c "Set :StandardViewSettings:IconViewSettings:showIconPreview true" \
     "$HOME/Library/Preferences/com.apple.finder.plist"
+# Delete layout settings from common folders so they inherit default settings
+rm -f "$HOME/.DS_Store"
+find "$HOME"/{Applications,Desktop,Downloads,.config} -name ".DS_Store" -type f -delete
+
 
 
 # ========================================
@@ -75,7 +78,9 @@ defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
 # ========== Sidebar ==========
 # Note: icon size on the sidebar is controlled globally inside appearance settings, see `NSTableViewDefaultSizeMode`
 defaults write com.apple.finder ShowSidebar -bool true
-defaults write com.apple.finder SidebarWidth -int 196
+defaults write com.apple.finder SidebarWidth -int 160
+# Tahoe 26+
+defaults write com.apple.finder SidebarWidth2 -int 160
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowRecentTags -bool false
 
