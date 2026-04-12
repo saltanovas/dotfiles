@@ -8,7 +8,7 @@ defaults write com.apple.finder QuitMenuItem -bool true
 # Enable instant spring loading for directories when hovering files over them
 # Note: this affects apps in Dock as well
 defaults write NSGlobalDomain com.apple.springing.enabled -bool true
-defaults write NSGlobalDomain com.apple.springing.delay -float 0
+defaults write NSGlobalDomain com.apple.springing.delay -float 0.3
 
 # ========================================
 # Bin
