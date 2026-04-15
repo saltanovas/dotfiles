@@ -103,8 +103,13 @@ add_hotkey 164 65535 65535 0
 add_hotkey 98 47 44 1179648
 # The same trick works for any other built-in macOS command: https://stackoverflow.com/a/79797334/13047140
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Emoji & Symbols" "\0"
-# Safari | ⌘⇧R
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Log Out Aivaras Šaltanovas..." "\0"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Log Out Aivaras Šaltanovas" "\0"
+
+# ⌘⇧R
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Reload Page From Origin" "@\$r"
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Paste and Match Style" "@\$v"
+defaults write com.apple.ActivityMonitor NSUserKeyEquivalents -dict-add "Filter Processes" "@f"
 
 # ========================================
 # Services ([p]aste[b]oard [s]ervices)
