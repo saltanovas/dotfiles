@@ -1,10 +1,10 @@
-## Permissions
+## Grant permissions
 
 1. Grant **accessibility permissions** for `Alacritty`, `Raycast`, `MonitorControl`:
     ```bash
     open "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"
     ```
-2. Grant **full disk access** for `Alacritty` & `Raycast`:
+2. Grant **full disk access** for `Alacritty`, `Terminal` & `Raycast`:
     ```bash
     open "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles"
     ```
@@ -13,23 +13,27 @@
     open "x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture"
     ```
 
-## Internet Account
-
-Add my personal Google account:
+## Add personal internet account
 
 ```bash
 open "x-apple.systempreferences:com.apple.Internet-Accounts-Settings.extension"
 ```
 
-## Battery
+## Set default web browser
+
+```bash
+open "x-apple.systempreferences:com.apple.Desktop-Settings.extension"
+```
+
+## Configure battery settings
 
 1. `open "x-apple.systempreferences:com.apple.preference.battery"`
 2. At the bottom click `Options` and enable `Slightly dim the display on battery`
-3. `Battery Health` -> Enable `Optimize Battery Charging`
+3. `Charging`:
+    - Enable `Optimized Battery Charging`
+    - Set `Charge Limit` to `80%`
 
-## Keyboard
-
-It seems that keyboard brightness settings must now be adjusted manually:
+## Set keyboard brightness
 
 1. `open "x-apple.systempreferences:com.apple.preference.keyboard"`
 2. Enable `Adjust keyboard brightness in low light`
@@ -44,9 +48,29 @@ defaults write com.apple.BezelServices kDim -bool true
 defaults write com.apple.BezelServices kDimTime -int 300
 ```
 
-## Raycast
+## Review login items
 
-Import Raycast settings:
+Verify and adjust the applications and services configured to launch automatically at login:
+
+```bash
+open "x-apple.systempreferences:com.apple.LoginItems-Settings.extension"
+```
+
+## Review menu bar items
+
+```bash
+open "x-apple.systempreferences:com.apple.ControlCenter-Settings.extension"
+```
+
+## Configure Notification Center widgets
+
+<img width="205" height="296" alt="test" src="https://github.com/user-attachments/assets/c25de636-ab93-4cd6-a280-4c46ac690025" />
+
+## Configure Finder sidebar
+
+<img width="151" height="299" alt="Screenshot 2026-04-12 at 22 31 36" src="https://github.com/user-attachments/assets/8f0b3df9-ef3f-4244-b913-cc61456ed523" />
+
+## Import Raycast settings
 
 1. Open Raycast
 2. Run `Import Settings & Data`
@@ -61,15 +85,7 @@ This helps preserve battery life of Bluetooth headphones, since using them as a 
 3. Choose built-in microphone and press `⇧⌘D`
 4. Search for `Enforce Input Device` and press Enter to enable it
 
-## Default web browser
-
-Set **Default web browser** to `Google Chrome`:
-
-```bash
-open "x-apple.systempreferences:com.apple.Desktop-Settings.extension"
-```
-
-## Google Chrome
+## Set custom Google Chrome theme
 
 There are no fully automated ways besides [Enterprise Policy](https://support.google.com/chrome/a/answer/187202?hl=en),
 which applies rarely. This was a security decision in 2014 by Chrome team, because malware that did that was
@@ -79,7 +95,7 @@ rampant: https://blog.chromium.org/2015/05/continuing-to-protect-chrome-users-fr
 2. Enable `Developer mode` in the top right corner
 3. Click `Load unpacked` and select a preferred theme under `~/dotfiles/.config/chrome/themes`
 
-## Spotify
+## Configure Spotify
 
 1. Enable local files:
     1. Scroll to `Your Library`
@@ -88,17 +104,3 @@ rampant: https://blog.chromium.org/2015/05/continuing-to-protect-chrome-users-fr
     1. Scroll to `Audio Quality`
     2. Click `Streaming quality`
     3. Select `Very High` from the dropdown list
-
-## Verify login items
-
-Verify and adjust the applications and services configured to launch automatically at login:
-
-```bash
-open "x-apple.systempreferences:com.apple.LoginItems-Settings.extension"
-```
-
-## Review menu bar items
-
-```bash
-open "x-apple.systempreferences:com.apple.ControlCenter-Settings.extension"
-```
