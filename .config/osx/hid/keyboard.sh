@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail
-
 # Key repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 1
 # Delay until key repeat

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail
-
 # Prefer tabs only in full screen
 # 1. always | 2. manual (Never) | 3. fullscreen
 defaults write NSGlobalDomain AppleWindowTabbingMode -string fullscreen

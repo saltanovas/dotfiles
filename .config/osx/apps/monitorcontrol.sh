@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail
-
 defaults write app.monitorcontrol.MonitorControl menuItemStyle -int 1
 defaults write app.monitorcontrol.MonitorControl showAdvancedSettings -bool true
 

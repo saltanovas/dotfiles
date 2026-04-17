@@ -1,16 +1,11 @@
 #!/bin/bash
 
-set -euo pipefail
-
 defaults write com.apple.dock tilesize -int 48
 defaults write com.apple.dock magnification -bool false
 defaults write com.apple.dock orientation -string "bottom"
 
-# Never show Dock
 defaults write com.apple.dock autohide -bool true
-# Disable autohide delay
 defaults write com.apple.dock autohide-delay -float 0
-# Set the autohide/show animation duration
 defaults write com.apple.dock autohide-time-modifier -float 0.5
 
 # Animate opening applications (app icon bounces in the Dock)

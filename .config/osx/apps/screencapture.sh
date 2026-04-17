@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail
-
 # ========== Screencapture ==========
 mkdir -p "$HOME/Desktop/ss" && defaults write com.apple.screencapture location -string "$HOME/Desktop/ss"
 #defaults write com.apple.screencapture name -string "Screenshot"

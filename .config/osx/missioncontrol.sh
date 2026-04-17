@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail
-
 # When switching to an application, switch to a Space with open windows for the application
 defaults write NSGlobalDomain AppleSpacesSwitchOnActivate -bool true
 # Don’t rearrange Spaces based on most recent use

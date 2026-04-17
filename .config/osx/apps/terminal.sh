@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail
-
 # Disable line marks
 defaults write com.apple.Terminal ShowLineMarks -bool false
 
