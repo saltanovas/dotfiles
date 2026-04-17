@@ -1,15 +1,14 @@
 #!/bin/bash
 
-set -euo pipefail
-
 # Actions:
 #  1: no-op
 #  2: Mission Control
-#  3: Show application windows
+#  3: Application Windows
 #  4: Desktop
 #  5: Start screen saver
 #  6: Disable screen saver
 # 10: Put display to sleep
+# 11: Apps (Launchpad)
 # 12: Notification Center
 # 13: Lock Screen
 # 14: Quick Note
