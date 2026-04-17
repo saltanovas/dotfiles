@@ -1,22 +1,20 @@
 #!/bin/bash
 
-set -euo pipefail
-
 # ========================================
 # Login window
 # ========================================
-# Show large clock
-defaults write /Library/Preferences/com.apple.loginwindow UsesLargeDateTime -bool true
-# Show 24-hour time
-sudo defaults write /Library/Preferences/.GlobalPreferences AppleICUForce24HourTime -bool true
-# Show username and photo
-sudo defaults write /Library/Preferences/com.apple.loginwindow HideUserAvatarAndName -bool false
+# Clock
+defaults write com.apple.loginwindow UsesLargeDateTime -bool true
+defaults write com.apple.loginwindow ClockFontIdentifier -string soft
+defaults write com.apple.loginwindow ClockFontWeight -int 400
+defaults write NSGlobalDomain AppleICUForce24HourTime -bool true
+
+defaults write com.apple.loginwindow HideUserAvatarAndName -bool false
+defaults write com.apple.loginwindow LoginwindowText ""
 # Disable password hints
-sudo defaults write /Library/Preferences/com.apple.loginwindow RetriesUntilHint -int 0
-# Disable message
-sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText ""
+defaults write com.apple.loginwindow RetriesUntilHint -int 0
 # Show the Sleep, Restart, and Shut Down buttons
-sudo defaults write /Library/Preferences/com.apple.loginwindow PowerOffDisabled -bool false
+defaults write com.apple.loginwindow PowerOffDisabled -bool false
 
 # ========================================
 # Screen saver
