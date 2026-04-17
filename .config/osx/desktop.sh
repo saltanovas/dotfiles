@@ -1,10 +1,7 @@
 #!/bin/bash
 
-set -euo pipefail
-
 # Enable click wallpaper to reveal desktop
 defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool true
-
 # Hide desktop items
 defaults write com.apple.WindowManager StandardHideDesktopIcons -bool true
 # Hide desktop widgets
@@ -23,3 +20,10 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 60" "$HOME/Library/Preferences/com.apple.finder.plist"
 # Show icon previews
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showIconPreview true" "$HOME/Library/Preferences/com.apple.finder.plist"
+
+# Remove all widgets
+# cfprefsd-compliant solution, where '-' is stdout.
+# The '-o -' indicates plutil to pipe output to stdout and the following '-' indicates reading from stdin
+defaults export com.apple.notificationcenterui - | \
+plutil -replace widgets.instances -json '[]' -o - - | \
+defaults import com.apple.notificationcenterui -
