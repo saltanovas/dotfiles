@@ -7,7 +7,6 @@ defaults write NSGlobalDomain com.apple.trackpad.scrolling -float 0.1838
 # Enable inertia when scrolling
 defaults write com.apple.AppleMultitouchTrackpad TrackpadMomentumScroll -bool true
 
-
 # Keep trackpad enabled when mouse is connected
 defaults write com.apple.AppleMultitouchTrackpad USBMouseStopsTrackpad -bool false
 
@@ -29,9 +28,9 @@ defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
 # ========== Force click ==========
 defaults write com.apple.AppleMultitouchTrackpad ForceSuppressed -bool false
 # Haptic feedback
-defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool true
+defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool false
 # Look up & data detectors
-defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool true
+defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool false
 
 # ========== Tap ==========
 # Double tap two fingers | Smart zoom
