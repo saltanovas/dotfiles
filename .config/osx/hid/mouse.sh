@@ -1,34 +1,28 @@
 #!/bin/bash
 
-set -euo pipefail
-
 # Sensitivity
 defaults write NSGlobalDomain com.apple.mouse.scaling -float 1.0
-# Enable mouse acceleration
+# Pointer acceleration | Moves more precisely for slower pointer speeds
 defaults write NSGlobalDomain com.apple.mouse.linear -bool true
 
-# ========== Scroll ==========
-# Speed
+# Scroll speed
 defaults write NSGlobalDomain com.apple.scrollwheel.scaling -float 0.3125
-# Enable inertia
-defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseMomentumScroll -bool true
+# Inertia when scrolling
+defaults write com.apple.AppleMultitouchMouse MouseMomentumScroll -bool true
 
-# ========== Secondary click ==========
-# OneButton = off | TwoButton = right click | TwoButtonSwapped = left click
-defaults write NSGlobalDomain MouseButtonMode -string TwoButton
+# Secondary click
+defaults write com.apple.AppleMultitouchMouse MouseButtonMode -string TwoButton
 
-# ========== Double tap ==========
-# One finger
+# Double tap | One finger
 # 0 = Off | 1 = Smart zoom
-defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseOneFingerDoubleTapGesture -int 1
-# Two fingers
+defaults write com.apple.AppleMultitouchMouse MouseOneFingerDoubleTapGesture -int 1
+# Double tap | Two fingers
 # 0 = Off | 3 = Mission Control
-defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseTwoFingerDoubleTapGesture -int 3
+defaults write com.apple.AppleMultitouchMouse MouseTwoFingerDoubleTapGesture -int 3
 
-# ========== Vertical Swipe ==========
-# One finger
+# Vertical Swipe | One finger
 # 0 = Off | 1 = Swipe between pages
 defaults write NSGlobalDomain AppleEnableMouseSwipeNavigateWithScrolls -int 1
-# Two fingers
+# Vertical Swipe | Two fingers
 # 0 = Off | 2 = Between spaces
-defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseTwoFingerHorizSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchMouse MouseTwoFingerHorizSwipeGesture -int 2
