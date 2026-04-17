@@ -22,7 +22,6 @@ defaults write com.apple.finder FXRemoveOldTrashItems -bool true
     -c "Set :TrashViewSettings:IconViewSettings:GroupBy Date Added" \
     "$HOME/Library/Preferences/com.apple.finder.plist"
 
-
 # ========================================
 # Browsing
 # ========================================
@@ -64,8 +63,6 @@ defaults write com.apple.Finder FXPreferredViewStyle -string icnv
 rm -f "$HOME/.DS_Store"
 find "$HOME"/{Applications,Desktop,Downloads,.config} -name ".DS_Store" -type f -delete
 
-
-
 # ========================================
 # Window appearance
 # ========================================
@@ -90,4 +87,4 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
     MetaData -bool true \
     OpenWith -bool true \
     Preview -bool false \
-    Privileges -bool false \
+    Privileges -bool false

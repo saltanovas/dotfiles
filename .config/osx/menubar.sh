@@ -3,24 +3,22 @@
 # Hide menu bar in full screen
 defaults write NSGlobalDomain AppleMenuBarVisibleInFullscreen -bool false
 
-# Hide Spotlight
+# ========== Menu bar items ==========
+# Hide
 defaults -currentHost write com.apple.Spotlight MenuItemHidden -bool true
-# Hide Siri
 defaults -currentHost write com.apple.Siri StatusMenuVisible -bool false
-# Hide Bluetooth
-defaults -currentHost write com.apple.controlcenter Bluetooth -int 24
-# Show Input Menu
-defaults write com.apple.TextInputMenu visible -bool true
-
-# Show when active
-defaults -currentHost write com.apple.controlcenter FocusModes -int 2
-defaults -currentHost write com.apple.controlcenter ScreenMirroring -int 2
-
 # Disable
 defaults -currentHost write com.apple.controlcenter Sound -int 8
 defaults -currentHost write com.apple.controlcenter NowPlaying -int 8
+defaults -currentHost write com.apple.controlcenter Display -int 8
+# Show in Control Center only
+defaults remove com.apple.controlcenter "NSStatusItem Preferred Position Bluetooth" 2>/dev/null
+defaults write com.apple.controlcenter "NSStatusItem VisibleCC Bluetooth" -bool false
+defaults -currentHost write com.apple.controlcenter Bluetooth -int 24
+# Show
+defaults write com.apple.TextInputMenu visible -bool true
 
-# Clock
+# ========== Clock ==========
 defaults write com.apple.menuextra.clock IsAnalog -bool false
 defaults write com.apple.menuextra.clock ShowAMPM -bool false
 # 0 = When Space Allows | 1 = Always | 2 = Never

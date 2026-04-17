@@ -8,7 +8,7 @@ if command -v fileicon >/dev/null; then
 fi
 
 typeset -A app_icons=(
-  "/Applications/Alacritty.app" "$ICONS_DIR/alacritty/alacritty-scanlines.png"
+    "/Applications/Alacritty.app" "$ICONS_DIR/alacritty/alacritty-scanlines.png"
 )
 
 # '!' returns keys, without it would return values

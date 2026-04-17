@@ -5,7 +5,7 @@ DOTFILES_PATH="saltanovas/dotfiles.git"
 DOTFILES_ROOT="$HOME/.dotfiles"
 
 # String formatters
-if [ -t 1 ]; then _tty_escape() { printf '\033[%sm' "$1"; } else _tty_escape() { :; }; fi
+if [ -t 1 ]; then _tty_escape() { printf '\033[%sm' "$1"; }; else _tty_escape() { :; }; fi
 tty_reset="$(_tty_escape '0')"
 tty_bold="$(_tty_escape '1')"
 tty_blue="$(_tty_escape '1;34')"
@@ -24,8 +24,7 @@ if [ "$COLS" -le 0 ]; then COLS="${COLUMNS:-80}"; fi
 
 # shellcheck disable=SC2120
 hr() {
-    for WORD in "${@:-#}"
-    do
+    for WORD in "${@:-#}"; do
         printf '%*s' "$COLS" ' ' | sed "s/ /$WORD/g" | grep -o "^.\{$COLS\}"
     done
 }
@@ -47,11 +46,11 @@ fi
 if output=$(git -C "$DOTFILES_ROOT" config --get remote.origin.url 2>&1); then
     if [[ "$output" != *"$DOTFILES_HOSTNAME"[:/]"$DOTFILES_PATH" ]]; then
         abort "Dotfiles directory points to an unexpected remote repository." \
-        "Expected: ${DOTFILES_HOSTNAME}[:/]${DOTFILES_PATH}" \
-        "Actual: $output"
+            "Expected: ${DOTFILES_HOSTNAME}[:/]${DOTFILES_PATH}" \
+            "Actual: $output"
     fi
 else
-    abort "Failed to get a remote URL of dotfiles repository: $output";
+    abort "Failed to get a remote URL of dotfiles repository: $output"
 fi
 
 ohai "Updating..."

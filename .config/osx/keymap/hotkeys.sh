@@ -3,7 +3,7 @@
 PB="/usr/libexec/PlistBuddy"
 
 add_hotkey() {
-    local id="$1" key1="$2" key2="$3" mods="$4" is_enabled=$(( ${5:-0} != 0 ))
+    local id="$1" key1="$2" key2="$3" mods="$4" is_enabled=$((${5:-0} != 0))
     hotkeys_plist="$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
     pbadd() { $PB -c "Add :$1 $2 $3" "$hotkeys_plist"; }
 

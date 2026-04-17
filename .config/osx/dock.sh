@@ -33,16 +33,16 @@ done
 # Add Downloads folder to the Dock
 defaults write com.apple.dock persistent-apps -array ""
 defaults write com.apple.dock persistent-others -array-add \
-'<dict>
-    <key>tile-data</key>
-    <dict>
-        <key>file-data</key>
-        <dict><key>_CFURLString</key><string>file://'"$HOME"'/Downloads/</string><key>_CFURLStringType</key><integer>15</integer></dict>
-        <key>arrangement</key><integer>2</integer>
-        <key>displayas</key><integer>1</integer>
-        <key>file-label</key><string>Downloads</string>
-        <key>file-type</key><integer>2</integer>
-        <key>showas</key><integer>1</integer>
-    </dict>
-    <key>tile-type</key><string>directory-tile</string>
-</dict>'
+    '<dict>
+        <key>tile-data</key>
+        <dict>
+            <key>file-data</key>
+            <dict><key>_CFURLString</key><string>file://'"$HOME"'/Downloads/</string><key>_CFURLStringType</key><integer>15</integer></dict>
+            <key>arrangement</key><integer>2</integer>
+            <key>displayas</key><integer>1</integer>
+            <key>file-label</key><string>Downloads</string>
+            <key>file-type</key><integer>2</integer>
+            <key>showas</key><integer>1</integer>
+        </dict>
+        <key>tile-type</key><string>directory-tile</string>
+    </dict>'

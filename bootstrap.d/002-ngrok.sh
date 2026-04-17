@@ -26,7 +26,7 @@ set_authtoken() {
     local authtoken
     echo "Authtoken: " && read -rs authtoken && echo
     # ngrok ensures the file exists, creates if not
-    ngrok config add-authtoken "$authtoken" > /dev/null
+    ngrok config add-authtoken "$authtoken" >/dev/null
     echo "Authtoken has been saved successfully at $NGROK_CONFIG"
 }
 

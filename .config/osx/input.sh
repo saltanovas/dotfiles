@@ -35,15 +35,15 @@ defaults write com.apple.HIToolbox AppleGlobalTextInputProperties -dict TextInpu
 defaults delete com.apple.HIToolbox AppleEnabledInputSources
 # Add ABC input source
 defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add \
-"<dict>
-    <key>InputSourceKind</key><string>Keyboard Layout</string>
-    <key>KeyboardLayout ID</key><integer>252</integer>
-    <key>KeyboardLayout Name</key><string>ABC</string>
-</dict>"
+    "<dict>
+        <key>InputSourceKind</key><string>Keyboard Layout</string>
+        <key>KeyboardLayout ID</key><integer>252</integer>
+        <key>KeyboardLayout Name</key><string>ABC</string>
+    </dict>"
 # Add Lithuanian input source
 defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add \
-"<dict>
-    <key>InputSourceKind</key><string>Keyboard Layout</string>
-    <key>KeyboardLayout ID</key><integer>30761</integer>
-    <key>KeyboardLayout Name</key><string>Lithuanian</string>
-</dict>"
+    "<dict>
+        <key>InputSourceKind</key><string>Keyboard Layout</string>
+        <key>KeyboardLayout ID</key><integer>30761</integer>
+        <key>KeyboardLayout Name</key><string>Lithuanian</string>
+    </dict>"
