@@ -3,9 +3,7 @@
 # Load custom key remaps
 plist="com.local.KeyRemapping.plist"
 if [[ -f "$plist" ]]; then
-    ln -sf "$plist" "$HOME/Library/LaunchAgents/$plist"
-else
-    echo "Key remap config $plist is not found: ensure the file exists or explicitly remove this configuration step."
+    ln -sfn "$plist" "$HOME/Library/LaunchAgents/$plist"
 fi
 
 # Set the function (Fn) key behavior
