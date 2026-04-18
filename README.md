@@ -6,6 +6,8 @@ Installation is idempotent: rerunning is safe, existing files are handled, and b
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/saltanovas/dotfiles/main/install.sh)"
 ```
 
+Some settings are not fully scriptable and must be configured manually. See the [manual](MANUAL.md).
+
 # Thanks
 
 The projects below inspired and helped to shape my dotfiles setup:
