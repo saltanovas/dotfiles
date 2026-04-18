@@ -25,13 +25,13 @@ open "x-apple.systempreferences:com.apple.Internet-Accounts-Settings.extension"
 open "x-apple.systempreferences:com.apple.Desktop-Settings.extension"
 ```
 
-## Configure battery settings
+## Install PWAs
 
-1. `open "x-apple.systempreferences:com.apple.preference.battery"`
-2. At the bottom click `Options` and enable `Slightly dim the display on battery`
-3. `Charging`:
-    - Enable `Optimized Battery Charging`
-    - Set `Charge Limit` to `80%`
+In work environments some apps are blocked, but PWAs are allowed. 
+Use Safari PWAs, since I find them more resource efficient.
+
+1. [Spotify](https://open.spotify.com/)
+2. [M365 Copilot](https://m365.cloud.microsoft/chat/)
 
 ## Set keyboard brightness
 
@@ -104,3 +104,9 @@ rampant: https://blog.chromium.org/2015/05/continuing-to-protect-chrome-users-fr
     1. Scroll to `Audio Quality`
     2. Click `Streaming quality`
     3. Select `Very High` from the dropdown list
+
+## Customize VSCode layout
+
+Layout is not configurable via settings, so must be configured manually:
+
+`⌘⇧P -> Customize Layout -> Quick Input Position -> Center`
