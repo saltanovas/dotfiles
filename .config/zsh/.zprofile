@@ -2,7 +2,8 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin"
 export PATH="$PATH:$HOME/.orbstack/bin"
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export HISTFILE="$XDG_DATA_HOME/zsh/history"
+export ZCOMPDUMP="$XDG_CACHE_HOME/zsh/.zcompdump"
 
 # -R      preserve ANSI colors (bat, git, grep, etc.)
 # -F      auto-exit if output fits on one screen
@@ -30,5 +31,5 @@ export PATH="$PATH:$PIPX_BIN_DIR"
 export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
 export DOTFILES_ROOT="$HOME/dotfiles"
-# See https://tldr.sh/tlrc/#configuration
+# See: https://tldr.sh/tlrc/#configuration
 export TLRC_CONFIG="$XDG_CONFIG_HOME/tlrc/config.toml"
