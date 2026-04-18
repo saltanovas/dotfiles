@@ -31,22 +31,3 @@ ack() {
         *) return 1 ;;
     esac
 }
-
-backup() {
-    local file="$1"
-    if [ -f "$file" ]; then
-        echo "File does not exists: '$file'"
-        return 1
-    fi
-
-    local backup="$file.bak"
-    local i=1
-
-    while [[ -e "$backup" ]]; do
-        backup="$backup.$i"
-        ((i++))
-    done
-
-    mv "$1" "$backup"
-    echo "$backup"
-}
