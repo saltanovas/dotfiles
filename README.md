@@ -1,5 +1,7 @@
 # Installation
 
+Installation is idempotent: rerunning is safe, existing files are handled, and backups are created when required.
+
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/saltanovas/dotfiles/main/install.sh)"
 ```
