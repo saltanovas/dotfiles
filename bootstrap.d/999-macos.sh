@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail
-
 . "$DOTFILES_ROOT/lib/utils.sh"
 
 [ "$(uname)" = "Darwin" ] || exit 0
