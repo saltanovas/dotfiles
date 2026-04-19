@@ -15,6 +15,10 @@ export MANPAGER='sh -c "col -bx | bat -l man --theme \"ansi\""'
 export HOMEBREW_AUTO_UPDATE_SECS=2592000
 export HOMEBREW_UPGRADE_GREEDY=1
 export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
+if [[ "$(command -v brew 2>/dev/null)" == "$HOME"* ]]; then
+    export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
+fi
+
 
 export JAVA_HOME="/opt/homebrew/Cellar/openjdk/25/libexec/openjdk.jdk/Contents/Home"
 # export JAVA_HOME=$(/usr/libexec/java_home -v 25)
