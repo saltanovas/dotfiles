@@ -59,6 +59,7 @@
     "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
     "terminal.integrated.fontSize": 12,
 
+    "workbench.productIconTheme": "icons-carbon",
     "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark",
     "workbench.colorTheme": "Aivaras Darcula IntelliJ",
     "workbench.colorCustomizations": {},
