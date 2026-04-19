@@ -1,48 +1,30 @@
 #!/bin/bash
 
-set -euo pipefail
-
 . "$DOTFILES_ROOT/lib/utils.sh"
 
-BREWFILE="$(realpath "../.config/homebrew/Brewfile")"
-HOMEBREW_PREFIX=$(
-    case "$(uname)" in
-        Darwin)
-            case "$(uname -m)" in
-                arm64) prefix="/opt/homebrew" ;;
-                *) prefix="/usr/local" ;;
-            esac
-        ;;
-        Linux) prefix="/home/linuxbrew/.linuxbrew" ;;
-        *) abort "Homebrew is only supported on macOS and Linux." ;;
-    esac
+isadmin() {
+    for group in $(id -Gn); do
+        case "$group" in
+            admin | sudo | wheel) return 0 ;;
+        esac
+    done
+    return 1
+}
 
-    echo "$prefix"
-)
-
-brew() { HOMEBREW_NO_AUTO_UPDATE=1 "$HOMEBREW_PREFIX/bin/brew" "$@"; }
-
-if [[ ! -x "$HOMEBREW_PREFIX/bin/brew" ]]; then
-    ohai "Setting up Homebrew..."
-    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-    # See: https://docs.brew.sh/Manpage#bundle-subcommand
-    ohai "Installing Homebrew formulae listed in the $BREWFILE..."
-    brew bundle --file="$BREWFILE"
-
-    ohai "Homebrew setup completed."
-
+if command -v brew >/dev/null 2>&1; then
+    brewup -q
     exit 0
 fi
 
-brew update
+ohai "Installing Homebrew..."
+if isadmin; then
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || exit $?
+else
+    mkdir -p "$HOME/opt/homebrew"
+    git clone --depth=1 https://github.com/Homebrew/brew "$HOME/opt/homebrew" >/dev/null || exit $?
+fi
 
-# See: https://docs.brew.sh/Manpage#upgrade-options-installed_formulainstalled_cask-
-ohai "Upgrading installed Homebrew formulae..."
-brew upgrade
-ohai "Upgrade completed."
+ohai "Installing Homebrew formulae listed in the $HOMEBREW_BUNDLE_FILE"
+brew bundle
 
-# See: https://docs.brew.sh/Manpage#cleanup-options-formulacask-
-ohai "Removing old versions of installed Homebrew formulae..."
-brew cleanup
-ohai "Cleanup completed."
+ohai "Homebrew installation completed."
