@@ -72,6 +72,8 @@ open "x-apple.systempreferences:com.apple.ControlCenter-Settings.extension"
 
 ## Import Raycast settings
 
+Make sure all PWAs are installed before importing Raycast settings, since they have hotkeys assigned.
+
 1. Open Raycast
 2. Run `Import Settings & Data`
 3. Import `~/dotfiles/.config/raycast/config.rayconfig`
