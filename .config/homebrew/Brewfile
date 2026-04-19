@@ -142,5 +142,9 @@ vscode "ritwickdey.liveserver"
 vscode "github.copilot"
 # GitHub Copilot chat
 vscode "github.copilot-chat"
-# Icon themes
+# Color theme
+vscode "saltanovas.theme-darcula-intellij"
+# Icon theme
 vscode "chadalen.vscode-jetbrains-icon-theme"
+# Product theme
+vscode "antfu.icons-carbon"
