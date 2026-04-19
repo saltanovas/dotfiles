@@ -2,9 +2,6 @@
     "update.mode": "manual",
     "window.titleBarStyle": "custom",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.editorAssociations": {
-        "*.plist": "binaryPlistEditor.edit"
-    },
     "workbench.activityBar.location": "top",
     "workbench.sideBar.location": "left",
     "workbench.tree.indent": 19,
@@ -52,6 +49,12 @@
     "[xml]": { "editor.defaultFormatter": "redhat.vscode-xml" },
     "[toml]": { "editor.defaultFormatter": "tamasfe.even-better-toml" },
     "[shellscript]": { "editor.defaultFormatter": "lumirelle.shell-format-rev" },
+    "workbench.editorAssociations": {
+        "*.plist": "binaryPlistEditor.edit"
+    },
+    "files.associations": {
+        "Brewfile*": "shellscript"
+    },
 
     "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
     "terminal.integrated.fontSize": 12,
