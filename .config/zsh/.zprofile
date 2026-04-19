@@ -1,4 +1,4 @@
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/opt/homebrew/bin:$HOME/opt/homebrew/sbin"
 export PATH="$PATH:$HOME/.orbstack/bin"
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
