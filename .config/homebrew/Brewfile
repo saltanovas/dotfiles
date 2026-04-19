@@ -80,7 +80,6 @@ brew "yarn"
 # ========================================
 # 🧰 GUI Tools
 # ========================================
-cask "appcleaner"
 cask "monitorcontrol"
 cask "the-unarchiver"
 
