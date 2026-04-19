@@ -59,20 +59,22 @@ brewup() {
     brew update
 
     # See: https://docs.brew.sh/Manpage#upgrade-options-installed_formulainstalled_cask-
-    ohai "Upgrading installed Homebrew formulae..."
+    echo "Upgrading installed Homebrew formulae..."
     brew upgrade
-    ohai "Upgrade completed."
+    echo "Upgrade completed."
 
     # See: https://docs.brew.sh/Manpage#cleanup-options-formulacask-
-    ohai "Removing old versions of installed Homebrew formulae..."
+    echo "Removing old versions of installed Homebrew formulae..."
     brew cleanup
-    ohai "Cleanup completed."
+    echo "Cleanup completed."
 
-    ohai "Done. You may now perform optional actions if needed:"
-    echo "- List Brewfile formulae not present on the system: $(brew bundle check)"
-    echo "- Install Brewfile formulae not present on the system: $(brew bundle)"
-    echo "- List installed formulae that are not present in the Brewfile: $(brew bundle cleanup)"
-    echo "- Uninstall formulae that are not present in the Brewfile: $(brew bundle cleanup --force)"
+    [[ "$1" == "-q" ]] && return 0
+
+    echo "Done. You may now perform optional actions if needed:"
+    echo "- List Brewfile formulae not present on the system: \$(brew bundle check)"
+    echo "- Install Brewfile formulae not present on the system: \$(brew bundle)"
+    echo "- List installed formulae that are not present in the Brewfile: \$(brew bundle cleanup)"
+    echo "- Uninstall formulae that are not present in the Brewfile: \$(brew bundle cleanup --force)"
 }
 
 ytd() {
