@@ -24,16 +24,10 @@ defaults write com.apple.dock show-recents -bool false
 # Disable translucent Dock icons of hidden applications
 defaults write com.apple.dock showhidden -bool false
 
-# Add desired apps to the Dock
-defaults write com.apple.dock persistent-apps -array ""
-for dockItem in /Applications/{"Google Chrome","Notion","ChatGPT","Visual Studio Code","IntelliJ IDEA Ultimate","GoLand","DataGrip","Alacritty","Spotify"}.app; do
-    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>'"$dockItem"'</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-done
-
 # Add Downloads folder to the Dock
 defaults write com.apple.dock persistent-apps -array ""
 defaults write com.apple.dock persistent-others -array-add \
-    '<dict>
+	'<dict>
         <key>tile-data</key>
         <dict>
             <key>file-data</key>
@@ -46,3 +40,32 @@ defaults write com.apple.dock persistent-others -array-add \
         </dict>
         <key>tile-type</key><string>directory-tile</string>
     </dict>'
+
+# Add desired apps to the Dock
+if [[ -d "/Applications/Self Service+.app" ]]; then
+	dock=(
+		"/System/Cryptexes/App/System/Applications/Safari.app"
+		"$HOME/Applications/Copilot.app"
+		"$HOME/Applications/Obsidian.app"
+		"$HOME/Applications/Visual Studio Code.app"
+		"$HOME/Applications/kitty.app"
+		"$HOME/Applications/Spotify.app"
+	)
+else
+	dock=(
+		"$HOME/Applications/Google Chrome.app"
+		"$HOME/Applications/ChatGPT.app"
+		"$HOME/Applications/Notion.app"
+		"$HOME/Applications/Visual Studio Code.app"
+		"$HOME/Applications/IntelliJ IDEA Ultimate.app"
+		"$HOME/Applications/GoLand.app"
+		"$HOME/Applications/DataGrip.app"
+		"$HOME/Applications/kitty.app"
+		"$HOME/Applications/Spotify.app"
+	)
+fi
+
+defaults write com.apple.dock persistent-apps -array ""
+for dockItem in "${dock[@]}"; do
+	defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>'"$dockItem"'</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+done
