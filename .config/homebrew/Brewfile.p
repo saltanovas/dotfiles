@@ -28,6 +28,24 @@ brew "tlrc"
 brew "tree"
 
 # ========================================
+# 📦 Languages & Runtimes
+# ========================================
+brew "awscli"
+brew "git"
+brew "go"
+brew "libpq"
+brew "mvn"
+brew "node"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
+# Python environment management
+brew "pyenv"
+cask "temurin@25"
+cask "temurin@21"
+cask "temurin@17"
+brew "yarn"
+
+# ========================================
 # 🕹 CLI Tools
 # ========================================
 # Select default apps for documents and URL schemes on macOS
@@ -54,28 +72,6 @@ brew "sevenzip"
 brew "teamookla/speedtest/speedtest"
 # Internet file retriever
 brew "wget"
-
-# ========================================
-# 📦 Languages & Runtimes
-# ========================================
-# Official Amazon AWS command-line interface
-brew "awscli"
-# Distributed revision control system
-brew "git"
-# Open source programming language to build simple/reliable/efficient software
-brew "go"
-# Platform built on V8 to build network applications
-brew "node"
-# Execute binaries from Python packages in isolated environments
-brew "pipx"
-# Python environment management
-brew "pyenv"
-# JDKs
-cask "temurin@25"
-cask "temurin@21"
-cask "temurin@17"
-# JavaScript package manager
-brew "yarn"
 
 # ========================================
 # 🧰 GUI Tools

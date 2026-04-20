@@ -56,7 +56,7 @@ symlink "$DOTFILES_ROOT/.config/jetbrains/.settings.json" "$HOME/Library/Applica
 
 for config in .config/*; do
     case "$(basename "$config")" in
-        "raycast") for file in "$DOTFILES_ROOT/$config"/*; do symlink "$file" "$HOME/$config"; done ;;
+        "raycast" | "homebrew") for file in "$DOTFILES_ROOT/$config"/*; do symlink "$file" "$HOME/$config"; done ;;
         *) symlink "$DOTFILES_ROOT/$config" "$HOME/$config" ;;
     esac
 done
