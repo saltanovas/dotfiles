@@ -15,6 +15,7 @@ brew "podman-compose"
 cask "datagrip"
 cask "dbeaver-community"
 
+# ========================================
 # Required for work
 # ========================================
 cask "camunda-modeler"
