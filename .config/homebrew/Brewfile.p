@@ -14,6 +14,8 @@ brew "tmux"
 # ========================================
 # Alternative to cat(1)
 brew "bat"
+# Pager for diff(1) & git(1)
+brew "delta"
 # Alternative to find(1)
 brew "fd"
 # Fuzzy finder
