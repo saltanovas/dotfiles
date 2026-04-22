@@ -4,3 +4,6 @@
 
 [includeIf "hasconfig:remote.*.url:git@github.com:telia-*/**"]
     path = ~/.config/git/telia.conf
+
+[core]
+    pager = delta
