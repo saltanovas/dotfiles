@@ -63,4 +63,8 @@ for script in "$DOTFILES_ROOT"/bootstrap.d/*.sh; do
 done
 
 ohai "Dotfiles setup completed successfully! A reboot is a must for all changes to take effect."
-if ask "Reboot now?"; then sudo reboot; else ohai "Reboot skipped."; fi
+if ask "Reboot now?"; then
+    osascript -e 'tell application "System Events" to restart'
+else
+    ohai "Reboot skipped."
+fi
