@@ -27,7 +27,7 @@ open "x-apple.systempreferences:com.apple.Desktop-Settings.extension"
 
 ## Install PWAs
 
-In work environments some apps are blocked, but PWAs are allowed. 
+In work environments some apps are blocked, but PWAs are allowed.
 Use Safari PWAs, since I find them more resource efficient.
 
 1. [Spotify](https://open.spotify.com/)
@@ -102,6 +102,7 @@ rampant: https://blog.chromium.org/2015/05/continuing-to-protect-chrome-users-fr
 1. Enable local files:
     1. Scroll to `Your Library`
     2. Enable `Show Local Files`
+    3. Set `$HOME/Music` as a source
 2. Change default audio quality:
     1. Scroll to `Audio Quality`
     2. Click `Streaming quality`
