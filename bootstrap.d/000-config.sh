@@ -43,11 +43,7 @@ backup() {
     mv "$target" "$backup"
 }
 
-ohai "Creating symlinks..."
-
-mkdir "$HOME/p" && symlink "$HOME/p" "$HOME/Desktop"
-mkdir "$HOME/w" && symlink "$HOME/w" "$HOME/Desktop"
-mkdir "$HOME/ss" && symlink "$HOME/ss" "$HOME/Desktop"
+ohai "Symlinking configuration files..."
 
 symlink "$DOTFILES_ROOT/.config/zsh/.zshenv" "$HOME" || exit 1
 # Prettier walks upward all the way to filesystem root; no XDG file path support
