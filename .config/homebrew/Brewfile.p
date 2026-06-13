@@ -113,6 +113,10 @@ vscode "ms-vscode.cpptools"
 vscode "golang.go"
 # Java language support
 vscode "redhat.java"
+# JavaScript language support inside XML CDATA blocks
+vscode "Jayanthp24.cdata-js-formatter"
+# Maven support
+vscode "vscjava.vscode-maven" 
 # Unofficial PHP language support
 vscode "DEVSENSE.phptools-vscode"
 vscode "bmewburn.vscode-intelephense-client"
@@ -134,6 +138,8 @@ vscode "esbenp.prettier-vscode"
 vscode "lumirelle.shell-format-rev"
 # Binary Plist viewer and editor
 vscode "dnicolson.binary-plist"
+# JAR viewer
+vscode "wmanth.jar-viewer"
 # Live server for static & dynamic pages
 vscode "ritwickdey.liveserver"
 # GitHub Copilot inline coding suggestions
