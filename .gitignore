@@ -1,2 +1,12 @@
+### Local env variables ###
 .env
+
+### IDE settings ###
+.idea
+.vscode
+
+### macOS files ###
 .DS_Store
+._*
+.Spotlight-V100
+.Trashes

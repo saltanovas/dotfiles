@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>com.local.KeyRemapping</string>
+        <key>ProgramArguments</key>
+        <array>
+            <string>/usr/bin/hidutil</string>
+            <string>property</string>
+            <string>--set</string>
+            <string>{"UserKeyMapping":[
+            {
+              "HIDKeyboardModifierMappingSrc": 0x700000039,
+              "HIDKeyboardModifierMappingDst": 0x7000000E7,
+              "Description": "CapsLock -> Right Command Key"
+            },
+            {
+              "HIDKeyboardModifierMappingSrc": 0xC000000CF,
+              "HIDKeyboardModifierMappingDst": 0xFF00000009,
+              "Description": "Dictation (🎤︎︎F5) -> Decrease Keyboard Backlight"
+            },
+            {
+              "HIDKeyboardModifierMappingSrc": 0x10000009B,
+              "HIDKeyboardModifierMappingDst": 0xFF00000008,
+              "Description": "DND (⏾F6) -> Increase Keyboard Backlight"
+            }
+        ]}</string>
+        </array>
+        <key>RunAtLoad</key>
+        <true/>
+    </dict>
+</plist>
