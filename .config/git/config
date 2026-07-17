@@ -7,3 +7,6 @@
 
 [core]
     pager = delta
+
+[push]
+    autoSetupRemote = true
