@@ -1,0 +1,20 @@
+[tools]
+java = ["temurin-25", "temurin-21", "temurin-17"]
+
+go = "latest"
+golangci-lint = "latest"
+
+uv = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = [
+    "java",
+    "python",
+    "rust",
+    "ruby",
+    "node",
+    "npm",
+    "pnpm",
+    "yarn",
+]
+node.corepack = true

@@ -22,6 +22,8 @@ brew "fd"
 brew "fzf"
 # Tool for glamorous shell scripts
 brew "gum"
+# Password generator
+brew "pwgen"
 # Alternative to grep(1)
 brew "ripgrep"
 # Simplified, community-driven man pages
@@ -34,18 +36,9 @@ brew "tree"
 # ========================================
 brew "awscli"
 brew "git"
-brew "go"
+brew "gh"
 brew "libpq"
-brew "mvn"
-brew "node"
-# Execute binaries from Python packages in isolated environments
-brew "pipx"
-# Python environment management
-brew "pyenv"
-cask "temurin@25"
-cask "temurin@21"
-cask "temurin@17"
-brew "yarn"
+brew "mise"
 
 # ========================================
 # 🕹 CLI Tools
@@ -56,24 +49,16 @@ brew "duti"
 brew "fileicon"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
-# GitHub command-line tool
-brew "gh"
 # A youtube-dl fork to download audio/video from YouTube and other sites
 brew "yt-dlp"
 # Quickly generate a disposable email using mail.tm API
 brew "mailsy"
 # Reverse proxy from a public endpoint to localhost
 cask "ngrok"
-# Password generator
-brew "pwgen"
-# RAR Archiver
-cask "rar"
 # 7-Zip archiver
 brew "sevenzip"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
-# Internet file retriever
-brew "wget"
 
 # ========================================
 # 🧰 GUI Tools

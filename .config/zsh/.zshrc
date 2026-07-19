@@ -5,7 +5,7 @@ PROMPT="%n %1~ %# "
 # ==========================
 fpath=("/opt/homebrew/share/zsh/site-functions" $fpath)
 fpath=("/Applications/OrbStack.app/Contents/Resources/completions/zsh" $fpath)
-#  Even without modifying $fpath, zsh does NOT autoload compinit by default
+# Even without modifying $fpath, zsh does NOT autoload compinit by default
 autoload -U compinit && compinit -i
 
 # ==========================
@@ -53,6 +53,26 @@ killport() {
     done
 
     return $rc
+}
+
+nvm() {
+    echo "Use 'mise' instead of 'nvm'."
+    echo
+    echo "Examples:"
+    echo "  mise install"
+    echo "  mise use node@24"
+    echo "  mise current node"
+    return 1
+}
+
+pyenv() {
+    echo "Use 'mise' instead of 'pyenv'."
+    echo
+    echo "Examples:"
+    echo "  mise install"
+    echo "  mise use python@3.14"
+    echo "  mise current python"
+    return 1
 }
 
 brewup() {
