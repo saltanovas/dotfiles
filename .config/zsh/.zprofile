@@ -1,6 +1,6 @@
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/opt/homebrew/bin:$HOME/opt/homebrew/sbin"
 export PATH="$PATH:$HOME/.orbstack/bin"
-export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.local/bin"
 
 export HISTFILE="$XDG_DATA_HOME/zsh/history"
 export ZCOMPDUMP="$XDG_CACHE_HOME/zsh/.zcompdump"
