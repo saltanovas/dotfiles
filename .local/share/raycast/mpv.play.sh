@@ -7,7 +7,7 @@
 # @raycast.packageName mpv
 
 # Optional parameters:
-# @raycast.icon icns/mpv.png
+# @raycast.icon https://upload.wikimedia.org/wikipedia/commons/7/73/Mpv_logo_%28official%29.png
 # @raycast.argument1 { "type": "text", "placeholder": "URI" }
 
 # Documentation:

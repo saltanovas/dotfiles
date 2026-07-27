@@ -7,7 +7,7 @@
 # @raycast.packageName Visual Studio Code
 
 # Optional parameters:
-# @raycast.icon icns/vscode.png
+# @raycast.icon https://images.icon-icons.com/2107/PNG/512/file_type_vscode_icon_130084.png
 
 # Documentation:
 # @raycast.description Opens selected Finder items in VS Code
