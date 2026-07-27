@@ -18,6 +18,8 @@ for fname in "${!folders[@]}"; do
     ln -sfn "$HOME/$fname" "$HOME/Desktop"
 done
 
+ln -sfn "$DOTFILES_ROOT/icns" "$HOME/Pictures/icns"
+
 if brctl status >/dev/null 2>&1; then
     icloud="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
     ln -sfn "$icloud/Music" "$HOME/Music/iCloud"
