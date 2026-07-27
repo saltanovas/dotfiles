@@ -25,6 +25,14 @@ open "x-apple.systempreferences:com.apple.Internet-Accounts-Settings.extension"
 open "x-apple.systempreferences:com.apple.Desktop-Settings.extension"
 ```
 
+## Install work related apps
+
+These apps are distributed as installer packages that write to system-protected locations and therefore require sudo.
+Since work setup runs without sudo privileges, install them through the official company’s managed software portal:
+
+1. Microsoft Teams
+2. Microsoft Outlook
+
 ## Install PWAs
 
 In work environments some apps are blocked, but PWAs are allowed.
