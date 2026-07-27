@@ -26,7 +26,7 @@
     "editor.fontSize": 13,
     "editor.lineHeight": 23,
     "window.zoomLevel": -0.2,
-    "editor.lineDecorationsWidth": 0, // Width between line numbers and code
+    "editor.lineDecorationsWidth": 0, // Width between line numbers and code. Unofficial, yet works
     "editor.tabSize": 4,
     "editor.detectIndentation": false,
     "editor.insertSpaces": true, // Use spaces as indentation characters instead of tabs
@@ -46,23 +46,30 @@
     "[go]": { "editor.defaultFormatter": "golang.go" },
     "[java]": { "editor.defaultFormatter": "redhat.java" },
     "[php]": { "editor.defaultFormatter": "bmewburn.vscode-intelephense-client" },
-    "[xml]": { "editor.defaultFormatter": "redhat.vscode-xml" },
-    "[toml]": { "editor.defaultFormatter": "tamasfe.even-better-toml" },
+    "[properties]": { "editor.defaultFormatter": "lumirelle.shell-format-rev" },
     "[shellscript]": { "editor.defaultFormatter": "lumirelle.shell-format-rev" },
+    "[toml]": { "editor.defaultFormatter": "tamasfe.even-better-toml" },
+    "[xml]": { "editor.defaultFormatter": "redhat.vscode-xml" },
     "workbench.editorAssociations": {
         "*.plist": "binaryPlistEditor.edit"
     },
     "files.associations": {
-        "Brewfile*": "shellscript"
+        "Brewfile*": "shellscript",
+        "*.conf": "properties"
     },
 
     "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
     "terminal.integrated.fontSize": 12,
 
-    "workbench.productIconTheme": "icons-carbon",
     "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark",
+    "workbench.productIconTheme": "icons-carbon",
     "workbench.colorTheme": "Aivaras Darcula IntelliJ",
     "workbench.colorCustomizations": {},
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": true
+    },
     "editor.tokenColorCustomizations": {
         "textMateRules": []
     }
