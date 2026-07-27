@@ -21,6 +21,7 @@ cask "dbeaver-community"
 cask "camunda-modeler"
 # Install from the portal
 # cask "microsoft-teams"
+# cask "microsoft-outlook"
 # cask "logi-options+"
 
 # ========================================
@@ -31,9 +32,3 @@ cask "intellij-idea"
 cask "goland"
 cask "google-drive"
 cask "spotify"
-cask "zoom"
-
-# ========================================
-# Not approved
-# ========================================
-cask "the-unarchiver"

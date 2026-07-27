@@ -12,59 +12,36 @@ brew "tmux"
 # ========================================
 # 🛠️ Shell Utilities
 # ========================================
-# Alternative to cat(1)
+# Core
 brew "bat"
-# Pager for diff(1) & git(1)
 brew "delta"
-# Alternative to find(1)
 brew "fd"
-# Fuzzy finder
 brew "fzf"
-# Tool for glamorous shell scripts
+brew "git"
 brew "gum"
-# Password generator
 brew "pwgen"
-# Alternative to grep(1)
 brew "ripgrep"
-# Simplified, community-driven man pages
 brew "tlrc"
-# Display directories as trees
 brew "tree"
 
-# ========================================
-# 📦 Languages & Runtimes
-# ========================================
+# Development
 brew "awscli"
-brew "git"
 brew "gh"
 brew "libpq"
 brew "mise"
+brew "ngrok"
 
-# ========================================
-# 🕹 CLI Tools
-# ========================================
-# Select default apps for documents and URL schemes on macOS
+# macOS integration
 brew "duti"
-# macOS CLI for managing custom icons for files and folders
 brew "fileicon"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
-# A youtube-dl fork to download audio/video from YouTube and other sites
-brew "yt-dlp"
-# Quickly generate a disposable email using mail.tm API
-brew "mailsy"
-# Reverse proxy from a public endpoint to localhost
-cask "ngrok"
-# 7-Zip archiver
-brew "sevenzip"
-# Ookla Speedtest
-brew "teamookla/speedtest/speedtest"
 
-# ========================================
-# 🧰 GUI Tools
-# ========================================
-cask "monitorcontrol"
-cask "the-unarchiver"
+# Media
+brew "mpv"
+brew "yt-dlp"
+
+# Clumpsy utilities, consider replacement
+brew "mailsy"
+brew "teamookla/speedtest/speedtest"
 
 # ========================================
 # 🖥️ Apps
@@ -72,11 +49,10 @@ cask "the-unarchiver"
 cask "chatgpt"
 cask "google-chrome"
 cask "google-drive"
+cask "monitorcontrol"
 cask "notion"
 cask "raycast"
 cask "spotify"
-cask "vlc"
-cask "zoom"
 
 # ========================================
 # 🧑‍💻 Dev Apps
@@ -115,6 +91,8 @@ vscode "redhat.vscode-xml"
 vscode "redhat.vscode-yaml"
 # TOML language support
 vscode "tamasfe.even-better-toml"
+# AppleScript language support
+vscode "idleberg.applescript"
 # Docker support
 vscode "docker.docker"
 # Prettier code formatter
