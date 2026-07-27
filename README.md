@@ -14,3 +14,4 @@ The projects below inspired and helped to shape my dotfiles setup:
 
 - [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)
 - [yannbertrand/macos-defaults](https://github.com/yannbertrand/macos-defaults)
+- [victory-sokolov/dotfiles](https://github.com/victory-sokolov/dotfiles)
