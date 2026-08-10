@@ -1,13 +1,14 @@
 {
-    "update.mode": "manual",
-    "window.titleBarStyle": "custom",
+    "update.mode": "start",
+    "security.workspace.trust.enabled": false,
+
     "workbench.startupEditor": "newUntitledFile",
     "workbench.activityBar.location": "top",
     "workbench.sideBar.location": "left",
     "workbench.tree.indent": 19,
     "workbench.tree.renderIndentGuides": "always",
     "explorer.autoReveal": false, // Navigates to the file in the explorer when opened
-    "explorer.compactFolders": false,
+    "explorer.compactFolders": true,
     "breadcrumbs.enabled": false,
 
     "editor.scrollbar.horizontal": "auto",
