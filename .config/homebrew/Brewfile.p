@@ -34,6 +34,7 @@ brew "ngrok"
 # macOS integration
 brew "duti"
 brew "fileicon"
+brew "mole"
 
 # Media
 brew "mpv"
