@@ -19,3 +19,14 @@ fi
 export DOTFILES_ROOT="$HOME/dotfiles"
 # See: https://tldr.sh/tlrc/#configuration
 export TLRC_CONFIG="$XDG_CONFIG_HOME/tlrc/config.toml"
+
+export NODE_REPL_HISTORY="$XDG_STATE_HOME/node/history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export PSQL_HISTORY="$XDG_STATE_HOME/psql/history"
+
+export KARAF_DATA="$XDG_STATE_HOME/karaf"
+export KARAF_LOG="$XDG_STATE_HOME/karaf/log"
+export KARAF_OPTS="-Dkaraf.history=$XDG_STATE_HOME/karaf/history"
+
+# Disables Apple Terminal session restoration
+export SHELL_SESSIONS_DISABLE=1
