@@ -3,9 +3,6 @@ export PATH="$PATH:$HOME/.orbstack/bin"
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.local/bin"
 export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
-export HISTFILE="$XDG_STATE_HOME/zsh/history"
-export ZCOMPDUMP="$XDG_CACHE_HOME/zsh/.zcompdump"
-
 # -R preserve ANSI colors | -F auto-exit if output fits on screen | -K quit on ctrl+c
 export LESS="-RFK --mouse"
 export LESSHISTFILE="$XDG_STATE_HOME/less/history"

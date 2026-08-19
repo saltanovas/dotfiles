@@ -1,4 +1,6 @@
 PROMPT="%n %1~ %# "
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+ZCOMPDUMP="$XDG_CACHE_HOME/zsh/.zcompdump"
 
 # ==========================
 # ===       Fpaths       ===
