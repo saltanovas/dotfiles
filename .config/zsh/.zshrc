@@ -15,21 +15,33 @@ autoload -U compinit && compinit -i
 # ==========================
 alias ..="cd .."
 alias ...="cd ../.."
+alias dot='cd "$DOTFILES_ROOT"'
+
 # See: http://wiki.archlinux.org/index.php/Sudo#Passing_aliases
 alias sudo='sudo '
-alias now='date +%s'
 alias ll="ls -lAhG"
+alias duh='du -hs' # [h]uman-readable, [s]ummarize
+
+alias now='date +%s'
+alias cleanup='fd -HI --type f --glob ".DS_Store" -x rm'
+alias pw="pwgen 24 -1 | pbcopy"
+alias uuid="uuidgen | tr '[:upper:]' '[:lower:]' | pbcopy"
+
 alias dutiup="duti $DOTFILES_ROOT/.config/duti/duti.conf"
+alias tunnel="ssh -R 443:localhost:80 v2@connect.ngrok-agent.com http"
+alias yt="yt-dlp -x -o '%(title)s.%(ext)s'"
 
 # ==========================
 # ===     Functions      ===
 # ==========================
-mkcd() { mkdir -p "$1" && cd "$1" }
-ht() { fc -l -"${1:-20}" }
+mkcd() { mkdir -p "$1" && cd "$1"; }
+ht() { fc -l -"${1:-20}"; }
+hta() { fc -l -"$HISTSIZE"; }
 
+# TODO: fdp maybe?
 findport() {
     local IFS=,
-    sudo lsof -nP -i:"$*"
+    lsof -nP -i:"$*"
 }
 
 killport() {
@@ -99,49 +111,3 @@ brewup() {
     echo "- Uninstall formulae that are not present in the Brewfile: \$(brew bundle cleanup --force)"
 }
 
-ytd() {
-    echo "🎧 Downloading the best available audio..."
-    if yt-dlp -f bestaudio --extract-audio --audio-format m4a --no-playlist "$@"; then
-        echo "✅ Download complete!"
-        return 0
-    fi
-
-    echo "⚠️ High-quality stream is not available, falling back to MP4 and extracting audio..."
-    if yt-dlp -f best --extract-audio --audio-format m4a --no-playlist "$@"; then
-        echo "✅ Download complete!"
-        return 0
-    fi
-
-    echo "❌ Download failed."
-    return 1
-}
-
-unarchive() {
-    if [ $# -eq 0 ]; then
-        echo "Usage: unarchive <file>..."
-        return 1
-    fi
-
-    for file in "$@"; do
-        if [ ! -f "$file" ]; then
-            echo "$file is not a valid file"
-            continue
-        fi
-
-        echo "Unarchiving $file ..."
-        case "$file" in
-            *.tar.bz2)   tar xjf "$file" ;;
-            *.tar.gz)    tar xzf "$file" ;;
-            *.bz2)       bunzip2 "$file" ;;
-            *.rar)       unrar x "$file" ;;
-            *.gz)        gunzip "$file" ;;
-            *.tar)       tar xf "$file" ;;
-            *.tbz2)      tar xjf "$file" ;;
-            *.tgz)       tar xzf "$file" ;;
-            *.zip)       unzip "$file" ;;
-            *.Z)         uncompress "$file" ;;
-            *.7z)        7z x "$file" ;;
-            *)           echo "'$file' file type is not supported" ;;
-        esac
-    done
-}
