@@ -2,11 +2,14 @@
     name = saltanovas
     email = zumbass@gmail.com
 
-[includeIf "hasconfig:remote.*.url:git@github.com:telia-*/**"]
-    path = ~/.config/git/telia.conf
-
 [core]
     pager = delta
 
 [push]
     autoSetupRemote = true
+
+[include]
+    path = ~/.config/delta/config
+
+[includeIf "hasconfig:remote.*.url:git@github.com:telia-*/**"]
+    path = ~/.config/git/work.telia.conf

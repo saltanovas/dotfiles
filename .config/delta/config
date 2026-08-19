@@ -1,0 +1,6 @@
+[include]
+    path = ~/.config/delta/themes.conf
+
+[delta]
+    features = woolly-mammoth
+    line-numbers = true
