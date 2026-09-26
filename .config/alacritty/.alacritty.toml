@@ -44,7 +44,6 @@ color = "#101010"
 [terminal]
 shell.program = "/opt/homebrew/bin/tmux"
 shell.args = [
-    "-f", "$HOME/.config/tmux/.tmux.conf",
     "new-session",
     "-As", "p", # [a]ttach to the [s]ession 'p' if it exists or create it
     "-n", "main" # name the initial window 'main' if session is created
