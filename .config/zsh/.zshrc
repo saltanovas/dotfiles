@@ -76,8 +76,6 @@ source "$ZDOTDIR/zle-keybindings.zsh"
 # Functions
 # ------------------------------------------------------------------------------
 mkcd() { mkdir -p "$1" && cd "$1"; }
-ht() { fc -l -"${1:-20}"; }
-hta() { fc -l -"$HISTSIZE"; }
 
 # TODO: fdp maybe?
 findport() {
