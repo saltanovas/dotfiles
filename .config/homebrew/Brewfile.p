@@ -23,13 +23,14 @@ brew "pwgen"
 brew "ripgrep"
 brew "tlrc"
 brew "tree"
+brew "zsh-autosuggestions"
 
 # Development
 brew "awscli"
 brew "gh"
 brew "libpq"
 brew "mise"
-brew "ngrok"
+cask "ngrok"
 
 # macOS integration
 brew "duti"
