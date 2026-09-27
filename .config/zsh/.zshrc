@@ -15,38 +15,7 @@ setopt HIST_IGNORE_ALL_DUPS   # Delete old recorded entry if new entry is a dupl
 setopt HIST_VERIFY            # Don't execute immediately upon history expansion.
 
 # ------------------------------------------------------------------------------
-# Completion
-# ------------------------------------------------------------------------------
-ZCOMPDUMP="${XDG_CACHE_HOME:-$HOME/.local/state}/zsh/.zcompdump"
-fpath=(
-  /opt/homebrew/share/zsh/site-functions
-  /Applications/OrbStack.app/Contents/Resources/completions/zsh
-  $fpath
-)
-
-# Display and navigate completion candidates
-zmodload zsh/complist
-# Determine completion candidates
-autoload -Uz compinit
-compinit -i
-
-# Enter interactive selection when completion candidates are available
-zstyle ':completion:*' menu select=1
-
-# ------------------------------------------------------------------------------
-# Inline autosuggestions
-# ------------------------------------------------------------------------------
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-bindkey -e
-# Make the Escape binding respond quickly while still allowing Alt/Option keys
-KEYTIMEOUT=3
-source "$ZDOTDIR/zle-keybindings.zsh"
-
-# ------------------------------------------------------------------------------
-# Inline autosuggestions
+# Aliases
 # ------------------------------------------------------------------------------
 alias ..="cd .."
 alias ...="cd ../.."
@@ -65,6 +34,43 @@ alias uuid="uuidgen | tr '[:upper:]' '[:lower:]' | pbcopy"
 alias dutiup="duti $DOTFILES_ROOT/.config/duti/duti.conf"
 alias tunnel="ssh -R 443:localhost:80 v2@connect.ngrok-agent.com http"
 alias yt="yt-dlp -x -o '%(title)s.%(ext)s'"
+
+# ------------------------------------------------------------------------------
+# Completion
+# ------------------------------------------------------------------------------
+ZCOMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/.zcompdump"
+# Init zsh completion
+fpath=(
+    /opt/homebrew/share/zsh/site-functions
+    /Applications/OrbStack.app/Contents/Resources/completions/zsh
+    $fpath
+)
+zmodload zsh/complist
+autoload -Uz compinit
+compinit -i -d "$ZCOMPDUMP"
+
+# Configure completion matching
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu no
+# Include hidden entries only when generating completion candidates
+_comp_options+=(globdots)
+
+# Add fzf-based completion and previews
+source /opt/homebrew/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh
+zstyle ':fzf-tab:complete:cd:*' fzf-preview "${aliases[ll]} -- \$realpath"
+zstyle ':fzf-tab:*' continuous-trigger enter
+eval "$(fzf --zsh)"
+
+# Add inline suggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Apply personal line-editor bindings
+bindkey -e
+# Make the Escape binding respond quickly while still allowing Alt/Option keys
+KEYTIMEOUT=3
+source "$ZDOTDIR/zle-keybindings.zsh"
 
 # ------------------------------------------------------------------------------
 # Functions
@@ -146,5 +152,4 @@ brewup() {
     echo "- Uninstall formulae that are not present in the Brewfile: \$(brew bundle cleanup --force)"
 }
 
-eval "$(mise activate zsh)"
 eval "$(mise activate zsh)"

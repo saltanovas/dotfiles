@@ -19,7 +19,7 @@ zle -N select-to-end _select_to_end
 # Copy the active selection to the macOS clipboard
 # The selection remains active after copying
 _copy_selection() {
-    (( REGION_ACTIVE )) || return
+    (( REGION_ACTIVE )) || return 0
 
     local start=$MARK
     local end=$CURSOR
@@ -31,7 +31,7 @@ _copy_selection() {
         end=$tmp
     fi
 
-    (( start == end )) && return
+    (( start == end )) && return 0
 
     printf '%s' "${BUFFER[$(( start + 1 )),$end]}" | pbcopy
     zle -R
@@ -126,27 +126,6 @@ _selection_backspace() {
 zle -N selection-backspace _selection_backspace
 
 
-# Tab: accept inline suggestion, otherwise run normal completion
-_tab_or_complete() {
-    if [[ -n $POSTDISPLAY ]]; then
-        zle autosuggest-accept
-    else
-        zle menu-select
-    fi
-}
-zle -N _tab_or_complete
-
-# Shift-Tab: clear inline suggestion, otherwise start reverse completion
-_shift_tab_or_reverse_complete() {
-  if [[ -n $POSTDISPLAY ]]; then
-    zle autosuggest-clear
-  else
-    zle reverse-menu-complete
-  fi
-}
-zle -N _shift_tab_or_reverse_complete
-
-
 # Delete/Fn+Backspace: delete the selection, otherwise delete the next character
 _selection_delete() {
     if (( REGION_ACTIVE )); then
@@ -157,7 +136,6 @@ _selection_delete() {
     fi
 }
 zle -N selection-delete _selection_delete
-
 
 # Command+Up: move to the beginning of the entire multiline buffer
 _move_to_buffer_beginning() {
@@ -262,10 +240,6 @@ bindkey -M emacs $'\e[100~' cut-selection
 # Backspace
 bindkey -M emacs '^?' selection-backspace
 
-# Tab
-bindkey '^I' _tab_or_complete
-bindkey '^[[Z' _shift_tab_or_reverse_complete
-
 # Delete / Fn+Backspace
 bindkey -M emacs $'\e[3~' selection-delete
 
@@ -281,20 +255,11 @@ bindkey -M emacs $'\e[C' selection-right
 bindkey -M emacs $'\eOD' selection-left
 bindkey -M emacs $'\eOC' selection-right
 
-# Completion and autosuggestion controls
-#
-# Tab: accept an inline suggestion or open completion
-# Shift+Tab: move backward through completion candidates
 # Esc: dismiss an inline suggestion or cancel menu selection
-bindkey -M emacs '^I' _tab_or_complete
-bindkey -M emacs '^[[Z' reverse-menu-complete
-bindkey -M menuselect '^[[Z' reverse-menu-complete
 bindkey -M emacs '\e' autosuggest-clear
 bindkey -M menuselect '\e' send-break
 
-# History navigation
-# 
-# Search matching history when text is present; otherwise navigate all history.
+# History: search matching text when present; otherwise navigate all history
 autoload -Uz up-line-or-beginning-search && zle -N up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search && zle -N down-line-or-beginning-search
 bindkey -M emacs $'\e[A'  up-line-or-beginning-search
