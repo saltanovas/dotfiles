@@ -112,3 +112,5 @@ brewup() {
     echo "- Uninstall formulae that are not present in the Brewfile: \$(brew bundle cleanup --force)"
 }
 
+eval "$(mise activate zsh)"
+eval "$(mise activate zsh)"
