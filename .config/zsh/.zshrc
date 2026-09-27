@@ -3,17 +3,39 @@ RPROMPT=$'%(?.. %? %F{red}%Bx%b%F{reset})%(1j. %j %F{yellow}%Bbg %b%F{reset}.)'
 HISTFILE="$XDG_STATE_HOME/zsh/history"
 ZCOMPDUMP="$XDG_CACHE_HOME/zsh/.zcompdump"
 
-# ==========================
-# ===       Fpaths       ===
-# ==========================
-fpath=("/opt/homebrew/share/zsh/site-functions" $fpath)
-fpath=("/Applications/OrbStack.app/Contents/Resources/completions/zsh" $fpath)
-# Even without modifying $fpath, zsh does NOT autoload compinit by default
-autoload -U compinit && compinit -i
+setopt HIST_IGNORE_SPACE
 
-# ==========================
-# ===      Aliases       ===
-# ==========================
+# ------------------------------------------------------------------------------
+# Completion
+# ------------------------------------------------------------------------------
+fpath=(
+  /opt/homebrew/share/zsh/site-functions
+  /Applications/OrbStack.app/Contents/Resources/completions/zsh
+  $fpath
+)
+
+# Display and navigate completion candidates
+zmodload zsh/complist
+# Determine completion candidates
+autoload -Uz compinit
+compinit -i
+
+# Enter interactive selection when completion candidates are available.
+zstyle ':completion:*' menu select=1
+
+# ------------------------------------------------------------------------------
+# Inline autosuggestions
+# ------------------------------------------------------------------------------
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+bindkey -e
+source "$ZDOTDIR/zle-keybindings.zsh"
+
+# ------------------------------------------------------------------------------
+# Inline autosuggestions
+# ------------------------------------------------------------------------------
 alias ..="cd .."
 alias ...="cd ../.."
 alias dot='cd "$DOTFILES_ROOT"'
@@ -32,9 +54,9 @@ alias dutiup="duti $DOTFILES_ROOT/.config/duti/duti.conf"
 alias tunnel="ssh -R 443:localhost:80 v2@connect.ngrok-agent.com http"
 alias yt="yt-dlp -x -o '%(title)s.%(ext)s'"
 
-# ==========================
-# ===     Functions      ===
-# ==========================
+# ------------------------------------------------------------------------------
+# Functions
+# ------------------------------------------------------------------------------
 mkcd() { mkdir -p "$1" && cd "$1"; }
 ht() { fc -l -"${1:-20}"; }
 hta() { fc -l -"$HISTSIZE"; }
