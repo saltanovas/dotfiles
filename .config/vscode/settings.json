@@ -55,6 +55,9 @@
         "*.plist": "binaryPlistEditor.edit"
     },
     "files.associations": {
+        ".zprofile": "shellscript",
+        ".zshenv": "shellscript",
+        ".zshrc": "shellscript",
         "Brewfile*": "shellscript",
         "*.conf": "properties"
     },
