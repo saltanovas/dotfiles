@@ -4,14 +4,15 @@ RPROMPT=$'%(?.. %? %F{red}%Bx%b%F{reset})%(1j. %j %F{yellow}%Bbg %b%F{reset}.)'
 # ------------------------------------------------------------------------------
 # History
 # ------------------------------------------------------------------------------
+# More: https://unix.stackexchange.com/a/273863
 HISTFILE="$XDG_STATE_HOME/zsh/history"
-HISTSIZE=1000000
-SAVEHIST=100000
-setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
-setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
-setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+HISTSIZE=1000000              # Number of commands kept in memory during the current shell session
+SAVEHIST=100000               # Number of commands written to the history file
+setopt INC_APPEND_HISTORY     # Write to the history file immediately, not when the shell exits.
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS       # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS   # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_VERIFY            # Don't execute immediately upon history expansion.
 
 # ------------------------------------------------------------------------------
 # Completion
