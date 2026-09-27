@@ -291,3 +291,13 @@ bindkey -M emacs '^[[Z' reverse-menu-complete
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 bindkey -M emacs '\e' autosuggest-clear
 bindkey -M menuselect '\e' send-break
+
+# History navigation
+# 
+# Search matching history when text is present; otherwise navigate all history.
+autoload -Uz up-line-or-beginning-search && zle -N up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search && zle -N down-line-or-beginning-search
+bindkey -M emacs $'\e[A'  up-line-or-beginning-search
+bindkey -M emacs $'\e[B'  down-line-or-beginning-search
+bindkey -M emacs $'\eOA'  up-line-or-beginning-search
+bindkey -M emacs $'\eOB'  down-line-or-beginning-search
