@@ -299,6 +299,7 @@
                 "storage.modifier.ts",
                 "storage.modifier.tsx",
                 "storage.modifier.virtual.cpp",
+                "storage.type.alias.shell",
                 "storage.type.boolean.go",
                 "storage.type.built-in.primitive.c",
                 "storage.type.built-in.primitive.cpp",
