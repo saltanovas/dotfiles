@@ -1,13 +1,22 @@
 PROMPT=$'%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%n@%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]\n└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
 RPROMPT=$'%(?.. %? %F{red}%Bx%b%F{reset})%(1j. %j %F{yellow}%Bbg %b%F{reset}.)'
-HISTFILE="$XDG_STATE_HOME/zsh/history"
-ZCOMPDUMP="$XDG_CACHE_HOME/zsh/.zcompdump"
 
-setopt HIST_IGNORE_SPACE
+# ------------------------------------------------------------------------------
+# History
+# ------------------------------------------------------------------------------
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+HISTSIZE=1000000
+SAVEHIST=100000
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 
 # ------------------------------------------------------------------------------
 # Completion
 # ------------------------------------------------------------------------------
+ZCOMPDUMP="${XDG_CACHE_HOME:-$HOME/.local/state}/zsh/.zcompdump"
 fpath=(
   /opt/homebrew/share/zsh/site-functions
   /Applications/OrbStack.app/Contents/Resources/completions/zsh
