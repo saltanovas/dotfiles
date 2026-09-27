@@ -20,7 +20,7 @@ zmodload zsh/complist
 autoload -Uz compinit
 compinit -i
 
-# Enter interactive selection when completion candidates are available.
+# Enter interactive selection when completion candidates are available
 zstyle ':completion:*' menu select=1
 
 # ------------------------------------------------------------------------------
@@ -31,6 +31,8 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 bindkey -e
+# Make the Escape binding respond quickly while still allowing Alt/Option keys
+KEYTIMEOUT=3
 source "$ZDOTDIR/zle-keybindings.zsh"
 
 # ------------------------------------------------------------------------------

@@ -285,10 +285,9 @@ bindkey -M emacs $'\eOC' selection-right
 #
 # Tab: accept an inline suggestion or open completion
 # Shift+Tab: move backward through completion candidates
-# Ctrl+G: dismiss an inline suggestion or cancel menu selection
+# Esc: dismiss an inline suggestion or cancel menu selection
 bindkey -M emacs '^I' _tab_or_complete
 bindkey -M emacs '^[[Z' reverse-menu-complete
 bindkey -M menuselect '^[[Z' reverse-menu-complete
-
-bindkey -M emacs '^G' autosuggest-clear
-bindkey -M menuselect '^G' send-break
+bindkey -M emacs '\e' autosuggest-clear
+bindkey -M menuselect '\e' send-break
