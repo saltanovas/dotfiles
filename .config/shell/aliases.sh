@@ -12,6 +12,6 @@ alias cleanup='fd -HI --type f --glob ".DS_Store" -x rm --'
 alias pw="pwgen 24 -1 | pbcopy"
 alias uuid="uuidgen | tr '[:upper:]' '[:lower:]' | pbcopy"
 
-alias dutiup='duti "$DOTFILES_ROOT/.config/duti/duti.conf"'
+alias dutiup='duti "$XDG_CONFIG_HOME/duti/duti.conf"'
 alias tunnel="ssh -R 443:localhost:80 v2@connect.ngrok-agent.com http"
 alias yt="yt-dlp -x -o '%(title)s.%(ext)s'"

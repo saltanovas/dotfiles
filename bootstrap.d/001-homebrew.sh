@@ -12,15 +12,15 @@ isadmin() {
 }
 
 mkbrewfile() {
-	  local configpath="$HOME/.config/homebrew"
-	  cat "$configpath/Brewfile.p" "$configpath/Brewfile.w" | \
+    local configpath="$XDG_CONFIG_HOME/homebrew"
+    cat "$configpath/Brewfile.p" "$configpath/Brewfile.w" | \
         grep -v '^[[:space:]]*$' | \
         grep -v '^[[:space:]]*#' | \
         sort | \
         uniq -u \
         > "$HOMEBREW_BUNDLE_FILE"
 
-	  chmod 444 "$HOMEBREW_BUNDLE_FILE"
+    chmod 444 "$HOMEBREW_BUNDLE_FILE"
 }
 
 if ! command -v brew >/dev/null 2>&1; then

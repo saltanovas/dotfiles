@@ -4,7 +4,7 @@ set -euo pipefail
 
 . "$DOTFILES_ROOT/lib/utils.sh"
 
-NGROK_HOME="$HOME/.config/ngrok"
+NGROK_HOME="$XDG_CONFIG_HOME/ngrok"
 NGROK_CONFIG="$NGROK_HOME/ngrok.yml"
 NGROK_CONFIG_TEMPLATE="$NGROK_HOME/ngrok.dist.yml"
 

@@ -57,6 +57,7 @@ ohai "Updating..."
 git -C "$DOTFILES_ROOT" merge origin/HEAD >/dev/null || abort "Update failed."
 ohai "Update completed."
 
+. "$DOTFILES_ROOT/.config/shell/xdg.sh"
 . "$DOTFILES_ROOT/.config/shell/env.sh"
 . "$DOTFILES_ROOT/.config/shell/path.sh"
 
