@@ -56,6 +56,3 @@ for config in .config/*; do
         *) symlink "$DOTFILES_ROOT/$config" "$HOME/$config" ;;
     esac
 done
-
-# The zsh history file's directory must already exist
-mkdir -p -- "$(dirname -- "$HISTFILE")"

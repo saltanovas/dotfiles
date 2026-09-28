@@ -27,7 +27,8 @@ export TLRC_CONFIG="$XDG_CONFIG_HOME/tlrc/config.toml"
 # Karaf
 export KARAF_DATA="$XDG_STATE_HOME/karaf"
 export KARAF_LOG="$XDG_STATE_HOME/karaf/log"
-export KARAF_OPTS="-Dkaraf.history=$XDG_STATE_HOME/karaf/history"
+export KARAF_HISTORY="$XDG_STATE_HOME/karaf/history"
+export KARAF_OPTS="-Dkaraf.history=$KARAF_HISTORY"
 
 # Disables Apple Terminal session restoration
 export SHELL_SESSIONS_DISABLE=1
