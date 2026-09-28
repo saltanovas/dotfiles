@@ -25,13 +25,3 @@ if brctl status >/dev/null 2>&1; then
     ln -sfn "$icloud/Music" "$HOME/Music/iCloud"
     ln -sfn "$icloud/Wallpapers/Desktop" "$HOME/Pictures/Wallpapers"
 fi
-
-# Create parent directories for history files
-mkdir -p -- \
-    "$(dirname -- "$HISTFILE")" \
-    "$(dirname -- "$LESSHISTFILE")" \
-    "$(dirname -- "$NODE_REPL_HISTORY")" \
-    "$(dirname -- "$PSQL_HISTORY")" \
-    "$(dirname -- "$KARAF_HISTORY")"
-
-[ ! -f "$HOME/.zsh_history" ] || mv -- "$HOME/.zsh_history" "$HISTFILE"
