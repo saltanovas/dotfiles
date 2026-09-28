@@ -13,12 +13,16 @@ isadmin() {
 
 mkbrewfile() {
     local configpath="$XDG_CONFIG_HOME/homebrew"
-    cat "$configpath/Brewfile.p" "$configpath/Brewfile.w" | \
-        grep -v '^[[:space:]]*$' | \
-        grep -v '^[[:space:]]*#' | \
-        sort | \
-        uniq -u \
-        > "$HOMEBREW_BUNDLE_FILE"
+    if iswrk; then
+        cat "$configpath/Brewfile.p" "$configpath/Brewfile.w" | \
+            grep -v '^[[:space:]]*$' | \
+            grep -v '^[[:space:]]*#' | \
+            sort | \
+            uniq -u \
+            > "$HOMEBREW_BUNDLE_FILE"
+    else 
+        cp "$configpath/Brewfile.p" "$HOMEBREW_BUNDLE_FILE"
+    fi
 
     chmod 444 "$HOMEBREW_BUNDLE_FILE"
 }

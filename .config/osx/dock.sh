@@ -42,7 +42,7 @@ defaults write com.apple.dock persistent-others -array-add \
     </dict>'
 
 # Add desired apps to the Dock
-if [[ -d "/Applications/Self Service+.app" ]]; then
+if iswrk; then
 	dock=(
 		"/System/Cryptexes/App/System/Applications/Safari.app"
 		"$HOME/Applications/Copilot.app"
