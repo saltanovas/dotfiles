@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Classify this Mac as a work device when it is enrolled through DEP.
+#
+# This is a stronger signal than the username and indicates that the Mac is
+# assigned to an organization through Automated Device Enrollment.
+#
+# Exit status:
+#   0 — enrolled through DEP
+#   1 — not enrolled, unsupported platform, or status unavailable
+
+[ "$(uname -s)" = "Darwin" ] || exit 1
+command -v profiles >/dev/null 2>&1 || exit 1
+
+profiles status -type enrollment 2>/dev/null | grep -q '^Enrolled via DEP: Yes'
