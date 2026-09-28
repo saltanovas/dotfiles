@@ -2,7 +2,7 @@
 
 DOTFILES_HOSTNAME="github.com"
 DOTFILES_PATH="saltanovas/dotfiles.git"
-DOTFILES_ROOT="$HOME/.dotfiles"
+DOTFILES_ROOT="$HOME/dotfiles"
 
 # String formatters
 if [ -t 1 ]; then _tty_escape() { printf '\033[%sm' "$1"; }; else _tty_escape() { :; }; fi
@@ -56,6 +56,9 @@ fi
 ohai "Updating..."
 git -C "$DOTFILES_ROOT" merge origin/HEAD >/dev/null || abort "Update failed."
 ohai "Update completed."
+
+. "$DOTFILES_ROOT/.config/shell/env.sh"
+. "$DOTFILES_ROOT/.config/shell/path.sh"
 
 for script in "$DOTFILES_ROOT"/bootstrap.d/*.sh; do
     ./"$script" || exit 1
