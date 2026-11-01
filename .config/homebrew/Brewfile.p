@@ -24,6 +24,7 @@ brew "pwgen"
 brew "ripgrep"
 brew "tlrc"
 brew "tree"
+brew "zsh-you-should-use"
 brew "zsh-autosuggestions"
 
 # Development
