@@ -1,0 +1,68 @@
+#!/bin/bash
+
+readonly UPDATE_BREW='brew'
+readonly UPDATE_MISE='mise'
+readonly UPDATE_MOLE='mole'
+
+brewup() {
+    brew update --quiet || return
+
+    # See: https://docs.brew.sh/Manpage#upgrade-options-installed_formulainstalled_cask-
+    echo "Upgrading installed Homebrew formulae..."
+    brew upgrade --no-ask --quiet || return
+    echo "Upgrade completed."
+
+    # See: https://docs.brew.sh/Manpage#cleanup-options-formulacask-
+    echo "Removing old versions of installed Homebrew formulae..."
+    brew cleanup --quiet || return
+    echo "Cleanup completed."
+}
+
+miseup() {
+    mise upgrade &&
+    mise prune &&
+    mise cache prune
+}
+
+moleup() {
+    mole clean &&
+    mole purge --yes </dev/null &&
+    printf 'a\n\n' | mole installer
+}
+
+choices=$(
+    gum choose --no-limit --ordered --selected='*' --height 5 \
+        --label-delimiter ':' \
+        --cursor "› " \
+        --cursor-prefix "◉ " \
+        --selected-prefix "✓ " \
+        --unselected-prefix "○ " \
+        --padding "1 2" \
+        --header "Select update tasks" \
+        --header.foreground 81 \
+        --cursor.foreground 212 \
+        --selected.foreground 42 \
+        "🍺 homebrew:$UPDATE_BREW" \
+        "👨‍🍳 mise:$UPDATE_MISE" \
+        "🧹 mole:$UPDATE_MOLE"
+) || exit 0
+
+if [[ -z "$choices" ]]; then
+    exit 0
+fi
+
+log_dir="$HOME/.local/state/update"
+mkdir -p "$log_dir"
+log_file="$(mktemp "$log_dir/update-$(date '+%Y-%m-%dT%H-%M-%S')")"
+
+while IFS= read -r choice; do
+    case "$choice" in
+        "$UPDATE_BREW") brewup ;;
+        "$UPDATE_MISE") miseup ;;
+        "$UPDATE_MOLE") moleup ;;
+    esac || exit $?
+    hr
+done <<<"$choices" 2>&1 | tee -a "$log_file"
+
+gum style --foreground 42 --bold '╭─ ✦ UPDATE RUN FINISHED'
+gum style --foreground 81 "╰─ ▸ Full run log saved at: $log_file"
