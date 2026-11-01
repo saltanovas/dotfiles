@@ -1,0 +1,5 @@
+# Artifact scans reach six levels below each configured root; add a nearer root for deeper projects.
+
+~/.local
+~/p
+~/w
