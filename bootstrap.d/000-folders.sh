@@ -3,7 +3,7 @@
 typeset -A folders=(
     ["p"]="greaterthan"
     ["w"]="briefcase.fill"
-    ["ss"]="camera.viewfinder"
+    ["s"]="camera.viewfinder"
 )
 
 for fname in "${!folders[@]}"; do

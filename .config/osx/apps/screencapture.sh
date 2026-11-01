@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ========== Screencapture ==========
-mkdir -p "$HOME/Desktop/ss" && defaults write com.apple.screencapture location -string "$HOME/Desktop/ss"
+defaults write com.apple.screencapture location -string "$HOME/Desktop/s"
 #defaults write com.apple.screencapture name -string "Screenshot"
 defaults write com.apple.screencapture include-date -bool true
 defaults write com.apple.screencapture show-thumbnail -bool true
