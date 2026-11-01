@@ -8,7 +8,7 @@ alias ll="ls -lAhG"
 alias duh='du -hs' # [h]uman-readable, [s]ummarize
 
 alias now='date +%s'
-alias cleanup='fd -HI --type f --glob ".DS_Store" -x rm --'
+alias rmds='fd -HI --type f --glob ".DS_Store" --exclude "$HOME/Applications" -x rm --'
 alias pw="pwgen 24 -1 | pbcopy"
 alias uuid="uuidgen | tr '[:upper:]' '[:lower:]' | pbcopy"
 
