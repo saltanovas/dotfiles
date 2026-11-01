@@ -31,26 +31,6 @@ killport() {
     return $rc
 }
 
-nvm() {
-    echo "Use 'mise' instead of 'nvm'."
-    echo
-    echo "Examples:"
-    echo "  mise install"
-    echo "  mise use node@24"
-    echo "  mise current node"
-    return 1
-}
-
-pyenv() {
-    echo "Use 'mise' instead of 'pyenv'."
-    echo
-    echo "Examples:"
-    echo "  mise install"
-    echo "  mise use python@3.14"
-    echo "  mise current python"
-    return 1
-}
-
 a() {
     set -- "$(
         alias | sort |
