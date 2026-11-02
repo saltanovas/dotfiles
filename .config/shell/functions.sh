@@ -31,6 +31,15 @@ killport() {
     return $rc
 }
 
+reload() {
+    source "$XDG_CONFIG_HOME/zsh/.zshenv"
+    source "$XDG_CONFIG_HOME/zsh/.zprofile"
+    source "$XDG_CONFIG_HOME/zsh/.zshrc"
+
+    duti "$XDG_CONFIG_HOME/duti/duti.conf"
+    tmux source-file "$XDG_CONFIG_HOME/tmux/tmux.conf"
+}
+
 a() {
     set -- "$(
         alias | sort |
