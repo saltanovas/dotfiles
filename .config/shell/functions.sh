@@ -31,6 +31,17 @@ killport() {
     return $rc
 }
 
+cps() {
+    files=("$HOME/s"/*.png(N))
+    (( ${#files} )) || { echo "No screenshots found"; return 1; }
+
+    osascript - "$files[-1]" <<'APPLESCRIPT'
+on run argv
+    set the clipboard to (read (POSIX file (item 1 of argv)) as «class PNGf»)
+end run
+APPLESCRIPT
+}
+
 reload() {
     source "$XDG_CONFIG_HOME/zsh/.zshenv"
     source "$XDG_CONFIG_HOME/zsh/.zprofile"
