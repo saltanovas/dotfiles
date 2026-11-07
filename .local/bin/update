@@ -20,7 +20,7 @@ brewup() {
 
 miseup() {
     mise upgrade &&
-    mise prune &&
+    mise prune --yes &&
     mise cache prune
 }
 
@@ -53,7 +53,7 @@ fi
 
 log_dir="$HOME/.local/state/update"
 mkdir -p "$log_dir"
-log_file="$(mktemp "$log_dir/update-$(date '+%Y-%m-%dT%H-%M-%S')")"
+log_file="$(mktemp "$log_dir/update-$(date '+%Y-%m-%dT%H-%M-%S').txt")"
 
 while IFS= read -r choice; do
     case "$choice" in
