@@ -240,6 +240,8 @@ bindkey -M emacs $'\e[100~' cut-selection
 # Backspace
 bindkey -M emacs '^?' selection-backspace
 
+bindkey -M emacs '^U' backward-kill-line
+
 # Delete / Fn+Backspace
 bindkey -M emacs $'\e[3~' selection-delete
 
