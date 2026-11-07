@@ -1,0 +1,56 @@
+[metadata]
+name = "dirs"
+description = "Select a directory"
+requirements = ["awk", "cd", "cut", "exec", "fd", "ls", "printf", "sort"]
+
+[source]
+shell = "zsh"
+command = '''
+{
+  printf '%s\n' '.' '..'
+  fd --type d --hidden --no-ignore --color=never \
+    --exclude '**/.git/*' \
+    --exclude '**/node_modules/*' \
+    --exclude '**/.yarn/*' |
+    awk '{ print length($0) "\t" $0 }' |
+    sort -n |
+    cut -f2-
+} | while IFS= read -r label; do
+  dir=$label
+  [[ $dir == . ]] && dir='.'
+  [[ $dir == .. ]] && dir='..'
+  printf '%s\t%s\n' "$label" "${dir:A}"
+done
+'''
+display = "{split:\\t:0}"
+output = "{split:\\t:1}"
+no_sort = true
+frecency = false
+
+[preview]
+command = [
+  "printf '\\033[38;2;48;86;82m\\033[1;38;2;230;237;243;48;2;48;86;82m \\342\\200\\212A–Z\\342\\200\\212 \\033[0;38;2;48;86;82m\\033[0;38;2;166;173;200m  Name\\033[0m\\n\\n'; CLICOLOR_FORCE=1 ls -lAhG -- '{split:\\t:1}'",
+  "printf '\\033[38;2;103;67;48m\\033[1;38;2;230;237;243;48;2;103;67;48m TIME \\033[0;38;2;103;67;48m\\033[0;38;2;166;173;200m  Newest first ↓\\033[0m\\n\\n'; CLICOLOR_FORCE=1 ls -lAhGt -- '{split:\\t:1}'",
+  "printf '\\033[38;2;77;57;105m\\033[1;38;2;230;237;243;48;2;77;57;105m SIZE \\033[0;38;2;77;57;105m\\033[0;38;2;166;173;200m  Largest first ↓\\033[0m\\n\\n'; CLICOLOR_FORCE=1 ls -lAhGS -- '{split:\\t:1}'",
+]
+
+[ui]
+layout = "landscape"
+preview_panel = { size = 60, header = "{split:\\t:1}", word_wrap = true }
+
+[keybindings]
+enter = "actions:enter_dir"
+
+[actions.enter_dir]
+description = "Browse selected directory"
+shell = "zsh"
+command = '''
+dir='{split:\t:1}'
+if [[ ${dir:A} == ${PWD:A} ]]; then
+  CLICOLOR_FORCE=1 ls -lAhG
+  exit 0
+fi
+cd -- "$dir" || exit
+exec tv dirs --inline --no-status-bar --input-header "$PWD"
+'''
+mode = "execute"

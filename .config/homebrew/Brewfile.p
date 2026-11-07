@@ -1,5 +1,5 @@
 # ========================================
-# 🔠Fonts
+# 🔠 Fonts
 # ========================================
 cask "font-jetbrains-mono-nerd-font"
 
@@ -22,6 +22,7 @@ brew "git"
 brew "gum"
 brew "pwgen"
 brew "ripgrep"
+brew "television"
 brew "tlrc"
 brew "tree"
 brew "zsh-you-should-use"

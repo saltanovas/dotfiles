@@ -1,0 +1,58 @@
+[metadata]
+name = "text"
+description = "Search file contents"
+requirements = ["rg", "bat", "open"]
+
+[source]
+command = '''
+rg . \
+    --no-heading --with-filename --line-number \
+    --color=always \
+    --colors 'path:fg:137,180,250' \
+    --colors 'path:style:nobold' \
+    --colors 'line:fg:127,132,156' \
+    --colors 'match:none' \
+    --colors 'match:fg:205,214,244' \
+    --trim \
+    --hidden \
+    --glob '!.git' \
+    --glob '!.DS_Store' \
+    --glob '!.yarn' \
+    --glob '!node_modules'
+'''
+ansi = true
+output = '{strip_ansi|split:\::..2}'
+frecency = false
+
+[preview]
+command = '''
+bat \
+    --paging=never --color=always --wrap=never \
+    --terminal-width "$(stty size < /dev/tty | cut -d ' ' -f2)" \
+    --style=numbers \
+    --highlight-line {strip_ansi|split:\::1} \
+    -- "{strip_ansi|split:\::0}"
+'''
+offset = '{strip_ansi|split:\::1}'
+
+[ui]
+input_bar = { header = " text " }
+preview_panel = { header = ' {strip_ansi|split:\::0} ' }
+
+[keybindings]
+enter = "actions:edit"
+
+[actions.edit]
+description = "Open selected matches in VS Code"
+shell = "zsh"
+mode = "fork"
+separator = "\n"
+command = '''
+while IFS=: read -r file line text; do
+    [[ -n "$file" ]] || continue
+    file=${file:A}
+    open "vscode://file${file// /%20}:${line}"
+done <<'TV_SELECTED_MATCHES'
+{strip_ansi}
+TV_SELECTED_MATCHES
+'''

@@ -1,0 +1,44 @@
+[metadata]
+name = "files"
+description = "Find files, including hidden files"
+requirements = ["bat", "fd", "open"]
+
+[source]
+command = '''
+fd --type f --hidden \
+    --exclude .git \
+    --exclude .DS_Store \
+    --exclude .yarn \
+    --exclude node_modules
+'''
+
+[preview]
+command = '''
+bat \
+    --paging=never --color=always --wrap=never \
+    --terminal-width "$(stty size < /dev/tty | cut -d ' ' -f2)" \
+    --style=numbers \
+    -- "{}"
+'''
+
+[ui]
+input_bar = { header = " files " }
+preview_panel = { header = ' {} ' }
+
+[keybindings]
+enter = "actions:edit"
+
+[actions.edit]
+description = "Edit in VS Code"
+shell = "zsh"
+mode = "fork"
+separator = "\n"
+command = '''
+while IFS= read -r file; do
+    [[ -n "$file" ]] || continue
+    file=${file:A}
+    open "vscode://file${file// /%20}"
+done <<'TV_SELECTED_FILES'
+{strip_ansi}
+TV_SELECTED_FILES
+'''

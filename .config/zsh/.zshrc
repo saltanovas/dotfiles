@@ -1,17 +1,16 @@
 PROMPT=$'%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%n@%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]\n└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
 RPROMPT=$'%(?.. %? %F{red}%Bx%b%F{reset})%(1j. %j %F{yellow}%Bbg %b%F{reset}.)'
 
-source "$XDG_CONFIG_HOME/shell/alias"
+source "$XDG_CONFIG_HOME/shell/aliases.sh"
 source "$XDG_CONFIG_HOME/shell/functions.sh"
-eval "$(mise activate zsh)"
 
 # ------------------------------------------------------------------------------
 # History
 # ------------------------------------------------------------------------------
 # More: https://unix.stackexchange.com/a/273863
-HISTFILE="$XDG_STATE_HOME/zsh/history"
-HISTSIZE=1000000              # Number of commands kept in memory during the current shell session
-SAVEHIST=100000               # Number of commands written to the history file
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export HISTSIZE=1000000       # Number of commands kept in memory during the current shell session
+export SAVEHIST=100000        # Number of commands written to the history file
 setopt INC_APPEND_HISTORY     # Write to the history file immediately, not when the shell exits.
 setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
 setopt HIST_IGNORE_DUPS       # Don't record an entry that was just recorded again.
@@ -44,7 +43,6 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview "${aliases[ll]} -- \$realpath"
 zstyle ':fzf-tab:*' continuous-trigger enter
 # Ensure colors match by using FZF_DEFAULT_OPTS.
 zstyle ":fzf-tab:*" use-ff-default-opts yes
-eval "$(fzf --zsh)"
 
 # Add inline suggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
@@ -56,3 +54,7 @@ bindkey -e
 # Make the Escape binding respond quickly while still allowing Alt/Option keys
 KEYTIMEOUT=3
 source "$ZDOTDIR/zle-keybindings.zsh"
+
+eval "$(fzf --zsh)"
+eval "$(mise activate zsh)"
+eval "$(tv init zsh)"

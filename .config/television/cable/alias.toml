@@ -1,0 +1,24 @@
+[metadata]
+name = "alias"
+description = "Select a shell alias"
+requirements = ["pbcopy", "bat"]
+
+[source]
+shell = "bash"
+command = '''
+source ~/Desktop/p/dotfiles/.config/shell/aliases.sh
+alias |
+  sed -e ':a' -e '/\\$/N; s/[[:blank:]]*\\\n[[:blank:]]*/ /; ta' |
+  bat --language=sh --color=always --style=numbers --paging=never
+'''
+ansi = true
+output = "{strip_ansi|replace:s/^[ ]*[0-9]+ //|trim|replace:s/^alias[ ]+//|split:=:0}"
+frecency = false
+
+[keybindings]
+ctrl-y = "actions:copy"
+
+[actions.copy]
+description = "Copy alias name"
+command = "printf '%s' '{strip_ansi|replace:s/^[ ]*[0-9]+ //|trim|replace:s/^alias[ ]+//|split:=:0}' | pbcopy"
+mode = "fork"

@@ -49,31 +49,5 @@ reload() {
 
     duti "$XDG_CONFIG_HOME/duti/duti.conf"
     tmux source-file "$XDG_CONFIG_HOME/tmux/tmux.conf"
-}
-
-a() {
-    set -- "$(
-        alias | sort |
-            while IFS= read -r definition; do
-                set -- "${definition%%=*}" "${definition#*=}"
-                eval "set -- \"\$1\" $2"
-                case $2 in
-                    *' ') printf "%s\t|\t'%s'\n" "$1" "$2" ;;
-                    *)    printf '%s\t|\t%s\n' "$1" "$2" ;;
-                esac
-            done |
-            column -t -s "$(printf '\t')" |
-            fzf --exact --ignore-case --no-multi \
-                --height 90% --layout reverse --border rounded \
-                --pointer "▸" --highlight-line \
-                --color 'hl:81,hl+:81,fg+:255,bg+:236,pointer:42' \
-                --delimiter ' +\| +' \
-                --accept-nth '{1}' \
-                --preview 'printf "%s\n" {2..}' \
-                --preview-window 'down,3,wrap,border-top'
-    )"
-    [ -n "$1" ] || return 0
-    gum style --foreground 42 --bold "╭─ ✦ $1"
-    gum style --foreground 81 "╰─ ▸ $(alias "$1" | sed 's/^[^=]*=//')"
-    eval "$1"
+    tv update-channels
 }
