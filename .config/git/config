@@ -8,6 +8,9 @@
 [push]
     autoSetupRemote = true
 
+[rebase]
+    autoStash = true
+
 [include]
     path = ~/.config/delta/config
 
