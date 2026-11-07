@@ -15,15 +15,8 @@ alias ll='ls -lAhG '
 alias lls='ll -S'
 alias llt='ll -t'
 
-# Search
-# 'xargs -I {}' treats the whole line as one argument, preserving the space 
-alias ff='fd --type f --hidden \
-    --exclude .git \
-    --exclude .DS_Store \
-    | fzf \
-    | xargs -I {} realpath "{}" \
-    | tee /dev/tty >(pbcopy) \
-    | xargs -I {} code -- "{}"'
+# Kill
+alias kport='print -z -- "$(command kport)"'
 
 # Output & copy
 alias cpwd='pwd | tee >(pbcopy)'
@@ -58,3 +51,10 @@ alias greset='git reset --soft HEAD~1'
 alias gundo='git reset --soft ORIG_HEAD'
 alias gp='git push'
 alias gpf='git push --force'
+
+# Reload
+alias rtv='tv update-channels'
+alias rt='tmux source-file "$XDG_CONFIG_HOME/tmux/tmux.conf"'
+alias rd='duti "$XDG_CONFIG_HOME/duti/duti.conf"'
+alias rz='source "$XDG_CONFIG_HOME/zsh/.zshrc" && source "$XDG_CONFIG_HOME/zsh/.zprofile" && source "$XDG_CONFIG_HOME/zsh/.zshenv"'
+alias rr='rtv && rt && rd && rz'

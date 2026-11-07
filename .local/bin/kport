@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+
+# Browse network sockets and print a kill command for selected processes.
+# Dependencies: lsof, awk, fzf.
+
+for dependency in lsof awk fzf; do
+    if ! command -v "$dependency" >/dev/null 2>&1; then
+        printf 'ports: missing dependency: %s\n' "$dependency" >&2
+        exit 1
+    fi
+done
+
+sockets=$(lsof +c 0 -nP -i)
+
+rows=$(awk '
+    BEGIN {
+        printf "%-6s %-24s %-5s %-13s %s\n",
+            "PID", "PROCESS", "PROTO", "STATE", "ADDRESS"
+    }
+
+    NR > 1 {
+        pid      = $2
+        process  = $1
+        protocol = $8
+        address  = $9
+        state    = $10
+
+        gsub(/\\x20/, " ", process)
+        gsub(/[()]/, "", state)
+
+        color = 90
+        if (state == "LISTEN")
+            color = 32
+        else if (state == "ESTABLISHED")
+            color = 33
+
+        printf "%-6s \033[36m%-24.24s\033[0m \033[34m%-5s\033[0m \033[%sm%-13s\033[0m %s\n",
+            pid, process, protocol, color, state, address
+    }
+' <<< "$sockets")
+
+# Use the space below the current prompt instead of opening fullscreen.
+picker_height='40%'
+if [[ -r /dev/tty && -w /dev/tty ]]; then
+    terminal_rows=$(stty size < /dev/tty 2>/dev/null)
+    terminal_rows=${terminal_rows%% *}
+    printf '\033[6n' > /dev/tty
+    if IFS= read -r -s -d R -t 1 cursor_position < /dev/tty; then
+        cursor_row=${cursor_position#*$'\033['}
+        cursor_row=${cursor_row%%;*}
+        if [[ $terminal_rows =~ ^[0-9]+$ && $cursor_row =~ ^[0-9]+$ ]]; then
+            remaining_rows=$((terminal_rows - cursor_row + 1))
+            if (( remaining_rows > 0 )); then
+                picker_height=$remaining_rows
+            fi
+        fi
+    fi
+fi
+
+selected=$(fzf \
+    --height="$picker_height" \
+    --min-height=1 \
+    --ansi \
+    --multi \
+    --layout=reverse \
+    --header-lines=1 \
+    --highlight-line \
+    --no-border \
+    --margin=0 \
+    --padding=0,1 \
+    --input-border=rounded \
+    --input-label=' Ports ' \
+    --input-label-pos=2 \
+    --no-list-border \
+    --no-header-lines-border \
+    --info=hidden \
+    --prompt='❯ ' \
+    --pointer='> ' \
+    --marker='✓ ' \
+    --bind='tab:toggle+down,btab:toggle+up' \
+    --bind='result:transform-input-label:printf " Ports · %s/%s " "$FZF_MATCH_COUNT" "$FZF_TOTAL_COUNT"' \
+    --color='border:#585b70,label:#a6adc8,input-label:#89b4fa:bold,header:yellow:bold,hl:#f9e2af:bold,hl+:#f9e2af:bold' \
+    --color='fg:#cdd6f4,fg+:#ffffff,bg+:#313244,pointer:#89b4fa,marker:#a6e3a1:bold' \
+    <<< "$rows"
+) || exit $?
+
+pids=$(awk '
+    $1 ~ /^[0-9]+$/ && !seen[$1]++ {
+        printf "%s%s", separator, $1
+        separator = " "
+    }
+' <<< "$selected")
+
+[[ -n $pids ]] && printf 'kill -- %s\n' "$pids"
