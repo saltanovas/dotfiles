@@ -45,14 +45,21 @@ backup() {
 
 ohai "Symlinking configuration files..."
 
-symlink "$DOTFILES_ROOT/.config/zsh/.zshenv" "$HOME" || exit 1
 # Prettier walks upward all the way to filesystem root; no XDG file path support
 symlink "$DOTFILES_ROOT/.config/prettier/.prettierrc.yaml" "$HOME"
 symlink "$DOTFILES_ROOT/.config/jetbrains/.settings.json" "$HOME/Library/Application Support/JetBrains/Toolbox"
 
-for config in .config/*; do
-    case "$(basename "$config")" in
-        "raycast" | "homebrew") for file in "$DOTFILES_ROOT/$config"/*; do symlink "$file" "$HOME/$config"; done ;;
-        *) symlink "$DOTFILES_ROOT/$config" "$HOME/$config" ;;
+for config in "$DOTFILES_ROOT/.config"/*; do
+    name="${config##*/}"
+    case "$name" in
+        raycast | homebrew | mole | television)
+            for entry in "$config"/*; do
+                [[ -f "$entry" ]] || continue
+                symlink "$entry" "$XDG_CONFIG_HOME/$name"
+            done
+            ;;
+        *)
+            symlink "$config" "$XDG_CONFIG_HOME"
+            ;;
     esac
 done
