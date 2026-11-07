@@ -39,18 +39,4 @@ layout = "landscape"
 preview_panel = { size = 60, header = "{split:\\t:1}", word_wrap = true }
 
 [keybindings]
-enter = "actions:enter_dir"
-
-[actions.enter_dir]
-description = "Browse selected directory"
-shell = "zsh"
-command = '''
-dir='{split:\t:1}'
-if [[ ${dir:A} == ${PWD:A} ]]; then
-  CLICOLOR_FORCE=1 ls -lAhG
-  exit 0
-fi
-cd -- "$dir" || exit
-exec tv dirs --inline --no-status-bar --input-header "$PWD"
-'''
-mode = "execute"
+enter = "confirm_selection"
