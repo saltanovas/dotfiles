@@ -1,0 +1,20 @@
+[metadata]
+name = "zsh-history"
+description = "Search complete Zsh history entries"
+requirements = ["zsh", "bat"]
+
+[source]
+shell = "zsh"
+command = '''
+zmodload zsh/parameter
+fc -p "${HISTFILE:-$HOME/.zsh_history}"
+print -s -- __tv_history_end__
+for event in ${(Onk)history}; do
+  print -r -- "${history[$event]//$'\n'/ ↵ }"
+done |
+  bat --paging=never --color=always --style=numbers --wrap=never
+''' 
+ansi = true
+output = "{strip_ansi|replace:s/^[ ]*[0-9]+ //|replace:s/ ↵ /\n/g}"
+no_sort = true
+frecency = false
