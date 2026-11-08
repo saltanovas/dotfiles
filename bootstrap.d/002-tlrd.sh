@@ -1,9 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail
-
-. "$DOTFILES_ROOT/lib/utils.sh"
-
 TLRC_CUSTOM_PAGES_NAMESPACE="custom"
 TLRC_CUSTOM_PAGES_DIR="$HOME/Library/Caches/tlrc/pages.$TLRC_CUSTOM_PAGES_NAMESPACE/common"
 

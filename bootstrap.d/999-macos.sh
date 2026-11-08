@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. "$DOTFILES_ROOT/lib/utils.sh"
-
 [ "$(uname)" = "Darwin" ] || exit 0
 
 # Close any open System Preferences panes to prevent them from overriding settings we are about to change
@@ -11,8 +9,7 @@ ohai "Configuring macOS settings..."
 
 if ! ls "$HOME/Library/Mail" &>/dev/null; then
     ohai "⚠️ Full Disk Access is required"
-    ack "Terminal window is going to be closed and System Settings will open." \
-        "Once the access is granted, run the script again." || abort "Operation aborted."
+    gum confirm $'System Settings will open to Full Disk Access.\n'$'Grant access to your terminal app, then run this script again.' || abort "Operation aborted."
     open "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles" && exit
 fi
 

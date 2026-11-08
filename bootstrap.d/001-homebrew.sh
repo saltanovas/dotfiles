@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. "$DOTFILES_ROOT/lib/utils.sh"
-
 isadmin() {
     for group in $(id -Gn); do
         case "$group" in

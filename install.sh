@@ -30,14 +30,9 @@ hr() {
 }
 
 if [ ! -d "$DOTFILES_ROOT" ]; then
-    ohai "Dotfiles repository is not found. Initializing..."
-    git clone "https://${DOTFILES_HOSTNAME}/${DOTFILES_PATH}" "$DOTFILES_ROOT" >/dev/null
-    ohai "Dotfiles repository initialized at $DOTFILES_ROOT"
-    exec "$DOTFILES_ROOT/bootstrap.sh"
-    exit 0
+    ohai "Initializing..."
+    git clone --quiet "https://${DOTFILES_HOSTNAME}/${DOTFILES_PATH}" "$DOTFILES_ROOT"
 fi
-
-ohai "Dotfiles directory is found at $DOTFILES_ROOT..."
 
 if [ ! -d "$DOTFILES_ROOT/.git" ]; then
     abort "Dotfiles directory is not a git repository."
@@ -54,8 +49,7 @@ else
 fi
 
 ohai "Updating..."
-git -C "$DOTFILES_ROOT" merge origin/HEAD >/dev/null || abort "Update failed."
-ohai "Update completed."
+git -C "$DOTFILES_ROOT" merge --quiet origin/HEAD || abort "Update failed."
 
 . "$DOTFILES_ROOT/.config/shell/xdg.sh"
 . "$DOTFILES_ROOT/.config/shell/env.sh"
@@ -67,8 +61,3 @@ for script in "$DOTFILES_ROOT"/bootstrap.d/*.sh; do
 done
 
 ohai "Dotfiles setup completed successfully! A reboot is a must for all changes to take effect."
-if ask "Reboot now?"; then
-    osascript -e 'tell application "System Events" to restart'
-else
-    ohai "Reboot skipped."
-fi

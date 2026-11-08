@@ -17,6 +17,9 @@ case "$(command -v brew 2>/dev/null)" in
         export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications" ;;
 esac
 
+# Gum
+export GUM_CONFIRM_PROMPT_FOREGROUND="#AF87FF"
+
 # Application config
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/node/history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"

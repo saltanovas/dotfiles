@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. "$DOTFILES_ROOT/lib/utils.sh"
-
 symlink() {
     local src="$1" dest="$2"
 

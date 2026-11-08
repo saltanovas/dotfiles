@@ -1,9 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail
-
-. "$DOTFILES_ROOT/lib/utils.sh"
-
 NGROK_HOME="$XDG_CONFIG_HOME/ngrok"
 NGROK_CONFIG="$NGROK_HOME/ngrok.yml"
 NGROK_CONFIG_TEMPLATE="$NGROK_HOME/ngrok.dist.yml"
@@ -19,8 +15,7 @@ open() {
 }
 
 set_authtoken() {
-    ack "You will be redirected to the official ngrok dashboard to obtain an authtoken." \
-        "Copy the token and return here to enter it."
+    gum confirm $'You will be redirected to the official ngrok dashboard to obtain an authtoken.\nCopy the token and return here to enter it.'
     open "https://dashboard.ngrok.com/get-started/your-authtoken"
 
     local authtoken
