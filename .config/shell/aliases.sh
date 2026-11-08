@@ -19,9 +19,10 @@ alias llt='ll -t'
 alias kport='print -z -- "$(command kport)"'
 
 # Output & copy
+alias copy='pbcopy'
 alias cpwd='pwd | tee >(pbcopy)'
 alias cnow='date +%s | tee >(pbcopy)'
-alias cpw='pwgen -s -y -1 24 | tee >(pbcopy)'
+alias cpw='pw | tee >(pbcopy)'
 alias cuuid="uuidgen | tr '[:upper:]' '[:lower:]' | tee >(pbcopy)"
 
 alias duh='du -hs' # [h]uman-readable, [s]ummarize
@@ -43,6 +44,7 @@ alias tvh='print -zr -- "$(tv zsh-history --inline --no-status-bar)"'
 alias tvgl='tv git-log'
 
 # Tools
+alias pw='head -c 32 /dev/urandom | base64'
 alias tunnel='ssh -R 443:localhost:80 v2@connect.ngrok-agent.com http'
 alias yt='yt-dlp -x -o "%(title)s.%(ext)s"'
 
