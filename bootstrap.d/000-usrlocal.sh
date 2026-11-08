@@ -12,12 +12,14 @@ for folder in "$DOTFILES_ROOT/.local/share"/*; do
     ln -sfn "$folder" "$HOME/.local/share/$(basename "$folder")"
 done
 
-# Create parent directories for history files
-mkdir -p -- \
-    "$(dirname -- "$HISTFILE")" \
-    "$(dirname -- "$LESSHISTFILE")" \
-    "$(dirname -- "$NODE_REPL_HISTORY")" \
-    "$(dirname -- "$PSQL_HISTORY")" \
-    "$(dirname -- "$KARAF_HISTORY")"
+migrate_history() {
+    [ -n "$2" ] && [ "$2" != "-" ] || return 0
+    mkdir -p "$(dirname "$2")" || return
+    [ ! -f "$1" ] || mv -f "$1" "$2"
+}
 
-[ ! -f "$HOME/.zsh_history" ] || mv -- "$HOME/.zsh_history" "$HISTFILE"
+migrate_history "$HOME/.zsh_history" "${HISTFILE:-}"
+migrate_history "$HOME/.lesshst" "${LESSHISTFILE:-}"
+migrate_history "$HOME/.node_repl_history" "${NODE_REPL_HISTORY:-}"
+migrate_history "$HOME/.psql_history" "${PSQL_HISTORY:-}"
+migrate_history "$HOME/.karaf/karaf.history" "${KARAF_HISTORY:-}"
