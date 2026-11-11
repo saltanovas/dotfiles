@@ -13,6 +13,7 @@ brew "tmux"
 # 🛠️ Shell Utilities
 # ========================================
 # Core
+brew "age"
 brew "bat"
 brew "delta"
 brew "fd"
