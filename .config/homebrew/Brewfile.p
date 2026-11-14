@@ -33,7 +33,6 @@ brew "awscli"
 brew "gh"
 brew "libpq"
 brew "mise"
-cask "ngrok"
 
 # macOS integration
 brew "duti"
