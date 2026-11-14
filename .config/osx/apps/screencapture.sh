@@ -1,7 +1,12 @@
 #!/bin/bash
 
 # ========== Screencapture ==========
-defaults write com.apple.screencapture location -string "$HOME/Desktop/s"
+if [ "$(sw_vers -productVersion | cut -d. -f1)" -ge 27 ]; then
+    screenshot_key=location-screenshot
+else
+    screenshot_key=location
+fi
+defaults write com.apple.screencapture "$screenshot_key" -string "$HOME/Desktop/s"
 #defaults write com.apple.screencapture name -string "Screenshot"
 defaults write com.apple.screencapture include-date -bool true
 defaults write com.apple.screencapture show-thumbnail -bool true
