@@ -2,8 +2,6 @@
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias .p='cd "$HOME/p"'
-alias .w='cd "$HOME/w"'
 
 # Quick edit
 alias cfg='code "$XDG_CONFIG_HOME" "$DOTFILES_ROOT"'
