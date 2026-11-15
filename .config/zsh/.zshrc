@@ -1,6 +1,12 @@
 PROMPT=$'%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%n@%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]\n└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
 RPROMPT=$'%(?.. %? %F{red}%Bx%b%F{reset})%(1j. %j %F{yellow}%Bbg %b%F{reset}.)'
 
+setopt autocd cd_silent    # change directory just by typing its name
+cdpath=("." ".." "$HOME" "$HOME/Desktop" "$HOME/p" "$HOME/w") # search order for relative directory names
+setopt correct             # auto correct mistakes
+setopt interactivecomments # allow comments in interactive mode
+disable r
+
 source "$XDG_CONFIG_HOME/shell/aliases.sh"
 source "$XDG_CONFIG_HOME/shell/functions.sh"
 
