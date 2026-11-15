@@ -1,0 +1,109 @@
+[
+    {
+        "defaults": {
+            "link": {
+                "create": true,
+                "relink": true,
+                "backup": true
+            },
+            "shell": {
+                "stdout": true,
+                "stderr": true
+            }
+        }
+    },
+    {
+        "create": {
+            "~/p": {},
+            "~/s": {},
+            "~/w": {},
+            "~/.ssh": { "mode": 448 }
+        }
+    },
+    {
+        "link": {
+            "~/Desktop/p": "$HOME/p",
+            "~/Desktop/s": "$HOME/s",
+            "~/Desktop/w": "$HOME/w",
+            "~/Music/iCloud": {
+                "path": "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Music",
+                "if": "brctl status",
+                "ignore-missing": true
+            },
+            "~/Pictures/Wallpapers": {
+                "path": "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Wallpapers/Desktop",
+                "if": "brctl status",
+                "ignore-missing": true
+            },
+            "~/.local/bin/": {
+                "glob": true,
+                "path": ".local/bin/*"
+            },
+            "~/.local/share/": {
+                "glob": true,
+                "path": ".local/share/*",
+                "exclude": [".local/share/tlrc"]
+            },
+            "~/.local/share/tlrc/": {
+                "glob": true,
+                "path": ".local/share/tlrc/*"
+            },
+            "~/.prettierrc.yaml": ".config/prettier/.prettierrc.yaml",
+            "~/.ssh/config": ".config/ssh/config",
+            "~/Library/Application Support/JetBrains/Toolbox/.settings.json": ".config/jetbrains/.settings.json",
+            "~/Library/Application Support/Code/User/settings.json": ".config/vscode/settings.json",
+            "~/.vscode/extensions/": {
+                "glob": true,
+                "path": ".config/vscode/extensions/*"
+            },
+            "~/.config/alacritty": ".config/alacritty",
+            "~/.config/bat": ".config/bat",
+            "~/.config/chrome": ".config/chrome",
+            "~/.config/delta": ".config/delta",
+            "~/.config/duti": ".config/duti",
+            "~/.config/git": ".config/git",
+            "~/.config/homebrew/": {
+                "glob": true,
+                "path": ".config/homebrew/*"
+            },
+            "~/.config/jetbrains": ".config/jetbrains",
+            "~/.config/kitty": ".config/kitty",
+            "~/.config/mise": ".config/mise",
+            "~/.config/mole/": {
+                "glob": true,
+                "path": ".config/mole/*"
+            },
+            "~/.config/mpv": ".config/mpv",
+            "~/.config/ngrok": ".config/ngrok",
+            "~/.config/npm": ".config/npm",
+            "~/.config/osx": ".config/osx",
+            "~/.config/prettier": ".config/prettier",
+            "~/.config/raycast/": {
+                "glob": true,
+                "path": ".config/raycast/*"
+            },
+            "~/.config/shell": ".config/shell",
+            "~/.config/ssh": ".config/ssh",
+            "~/.config/television/": {
+                "glob": true,
+                "path": ".config/television/*.toml"
+            },
+            "~/.config/television/cable/": {
+                "glob": true,
+                "path": ".config/television/cable/*.toml"
+            },
+            "~/.config/tlrc": ".config/tlrc",
+            "~/.config/tmux": ".config/tmux",
+            "~/.config/vim": ".config/vim",
+            "~/.config/vscode": ".config/vscode",
+            "~/.config/zsh": ".config/zsh"
+        }
+    },
+    {
+        "shell": [
+            ["duti \"$XDG_CONFIG_HOME/duti/duti.conf\""],
+            ["mise upgrade --quiet"],
+            ["tv update-channels >/dev/null"]
+        ]
+    }
+]

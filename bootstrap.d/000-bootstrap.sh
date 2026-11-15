@@ -38,5 +38,6 @@ fi
 ohai "Installing Homebrew formulae listed in the $HOMEBREW_BUNDLE_FILE"
 mkbrewfile
 brew bundle
-
 ohai "Homebrew installation completed."
+
+dotbot -c install.json
