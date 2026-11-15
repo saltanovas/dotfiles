@@ -8,6 +8,9 @@ cask "font-jetbrains-mono-nerd-font"
 # ========================================
 cask "alacritty"
 brew "tmux"
+brew "fzf-tab"
+brew "zsh-you-should-use"
+brew "zsh-autosuggestions"
 
 # ========================================
 # 🛠️ Shell Utilities
@@ -18,18 +21,15 @@ brew "bat"
 brew "delta"
 brew "fd"
 brew "fzf"
-brew "fzf-tab"
 brew "git"
-brew "gum"
 brew "ripgrep"
 brew "television"
 brew "tlrc"
 brew "tree"
-brew "zsh-you-should-use"
-brew "zsh-autosuggestions"
 
 # Development
 brew "awscli"
+brew "dotbot"
 brew "gh"
 brew "libpq"
 brew "mise"
@@ -43,7 +43,8 @@ brew "mole"
 brew "mpv"
 brew "yt-dlp"
 
-# Clumpsy utilities, consider replacement
+# Clumpsy utilities, consider replacement or removal
+brew "gum"
 brew "mailsy"
 brew "teamookla/speedtest/speedtest"
 
