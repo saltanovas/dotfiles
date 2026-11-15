@@ -4,60 +4,20 @@ DOTFILES_HOSTNAME="github.com"
 DOTFILES_PATH="saltanovas/dotfiles.git"
 DOTFILES_ROOT="$HOME/dotfiles"
 
-# String formatters
-if [ -t 1 ]; then _tty_escape() { printf '\033[%sm' "$1"; }; else _tty_escape() { :; }; fi
-tty_reset="$(_tty_escape '0')"
-tty_bold="$(_tty_escape '1')"
-tty_blue="$(_tty_escape '1;34')"
-tty_red="$(_tty_escape '1;31')"
-
-# Logging
-ohai() { printf "%b==>%b %s%b\n" "$tty_blue" "$tty_bold" "$@" "$tty_reset"; }
-abort() {
-    printf "%bError:%b %s\n" "$tty_red" "$tty_reset" "$1" >&2
-    [ "$#" -gt 1 ] && shift && printf "%s\n" "$@" >&2
-    exit 1
-}
-
-COLS="$(tput cols)"
-if [ "$COLS" -le 0 ]; then COLS="${COLUMNS:-80}"; fi
-
-# shellcheck disable=SC2120
-hr() {
-    for WORD in "${@:-#}"; do
-        printf '%*s' "$COLS" ' ' | sed "s/ /$WORD/g" | grep -o "^.\{$COLS\}"
-    done
-}
-
-if [ ! -d "$DOTFILES_ROOT" ]; then
-    ohai "Initializing..."
-    git clone --quiet "https://${DOTFILES_HOSTNAME}/${DOTFILES_PATH}" "$DOTFILES_ROOT"
-fi
+ohai() { printf '\033[1;34m==>\033[0m %s\n' "$*"; }
 
 if [ ! -d "$DOTFILES_ROOT/.git" ]; then
-    abort "Dotfiles directory is not a git repository."
-fi
-
-if output=$(git -C "$DOTFILES_ROOT" config --get remote.origin.url 2>&1); then
-    if [[ "$output" != *"$DOTFILES_HOSTNAME"[:/]"$DOTFILES_PATH" ]]; then
-        abort "Dotfiles directory points to an unexpected remote repository." \
-            "Expected: ${DOTFILES_HOSTNAME}[:/]${DOTFILES_PATH}" \
-            "Actual: $output"
-    fi
+    git clone --quiet "https://${DOTFILES_HOSTNAME}/${DOTFILES_PATH}" "$DOTFILES_ROOT" || exit
 else
-    abort "Failed to get a remote URL of dotfiles repository: $output"
+    git -C "$DOTFILES_ROOT" merge --quiet origin/HEAD || exit
 fi
-
-ohai "Updating..."
-git -C "$DOTFILES_ROOT" merge --quiet origin/HEAD || abort "Update failed."
 
 . "$DOTFILES_ROOT/.config/shell/xdg.sh"
 . "$DOTFILES_ROOT/.config/shell/env.sh"
 . "$DOTFILES_ROOT/.config/shell/path.sh"
 
-for script in "$DOTFILES_ROOT"/bootstrap.d/*.sh; do
-    ./"$script" || exit 1
-    hr
+for script in bootstrap.d/*.sh; do
+    ./"$script" || exit
 done
 
 ohai "Dotfiles setup completed successfully! A reboot is a must for all changes to take effect."
