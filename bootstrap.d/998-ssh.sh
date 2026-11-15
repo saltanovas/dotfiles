@@ -1,21 +1,21 @@
 #!/bin/bash
 
-SSH_HOME="$HOME/.ssh"
-SSH_KEY_NAME="id_ed25519"
+SSH_KEY_PATH="$HOME/.ssh/id_ed25519"
 SSH_KEY_TITLE="$(
     username=$(id -un)
     serial=$(system_profiler SPHardwareDataType | grep "Serial Number" | awk '{print $NF}')
     printf "%s@%s" "$username" "$serial"
 )"
 
-mkdir -p "$SSH_HOME"
-chmod 700 "$SSH_HOME"
+[[ -e "$SSH_KEY_PATH" || -e "$SSH_KEY_PATH.pub" ]] || ssh-keygen -t ed25519 -f "$SSH_KEY_PATH" || exit 1
 
-for f in "$DOTFILES_ROOT/.config/ssh/"*; do
-    ln -sfn "$f" "$SSH_HOME"
-done
+if ! gh auth status --hostname github.com >/dev/null 2>&1; then
+    echo "Logging in to GitHub..."
+    gh auth login --hostname github.com --web --git-protocol ssh --skip-ssh-key
+fi
 
-ssh-keygen -t ed25519 -f "$SSH_HOME/$SSH_KEY_NAME"
-
-echo "Adding public key to your GitHub account..."
-gh ssh-key add "$SSH_HOME/$SSH_KEY_NAME".pub --title "$SSH_KEY_TITLE"
+titles=$(gh api --paginate user/keys --jq '.[].title') || exit 1
+if ! grep -Fxq -- "$SSH_KEY_TITLE" <<< "$titles"; then
+    echo "Adding public key to your GitHub account..."
+    gh ssh-key add "$SSH_KEY_PATH.pub" --title "$SSH_KEY_TITLE"
+fi
