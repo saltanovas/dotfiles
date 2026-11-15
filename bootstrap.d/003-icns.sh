@@ -1,20 +1,15 @@
 #!/bin/bash
 
-ICONS_HOME="$DOTFILES_ROOT/icns"
-
-if ! command -v fileicon >/dev/null; then
-    echo "Unable to set custom app icons: fileicon is not found"
-    exit 1
-fi
-
+icons_home="$DOTFILES_ROOT/icns"
 typeset -A app_icons=(
-    ["Alacritty.app"]="$ICONS_HOME/alacritty/alacritty-scanlines.png"
-    ["VLC.app"]="$ICONS_HOME/vlc.icns"
-    ["Copilot.app"]="$ICONS_HOME/copilot.icns"
+    ["Alacritty.app"]="$icons_home/alacritty.icns"
+    ["VLC.app"]="$icons_home/vlc.icns"
+    ["Copilot.app"]="$icons_home/copilot.icns"
 )
-
 # '!' returns keys, without it would return values
 for app in "${!app_icons[@]}"; do
+    command -v fileicon >/dev/null || break
+
     appdir=""
     for base in "/Applications" "$HOME/Applications"; do
         [[ -d "$base/$app" ]] && appdir="$base/$app" && break
