@@ -1,6 +1,6 @@
 # Configuration options: https://github.com/tldr-pages/tlrc#configuration-options
 [cache]
-dir = "~/.cache/tlrc"
+dir = "~/.local/share/tlrc"
 # Update once every 30 days
 max_age = 720
 # Language resolution is priority-based, left to right.
