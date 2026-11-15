@@ -2,7 +2,6 @@
 
 [general]
 import = []
-working_directory = "/Users/saltanovas/desktop/p"
 live_config_reload = true
 ipc_socket = true
 
@@ -44,9 +43,8 @@ color = "#101010"
 [terminal]
 shell.program = "/opt/homebrew/bin/tmux"
 shell.args = [
-    "new-session",
-    "-As", "p", # [a]ttach to the [s]ession 'p' if it exists or create it
-    "-n", "main" # name the initial window 'main' if session is created
+    "new-session", "-As", "m", # [a]ttach to the [s]ession named 'm' if it exists or create it
+    "-n", "main", # name the initial window 'main' if session is created
 ]
 
 [keyboard]
