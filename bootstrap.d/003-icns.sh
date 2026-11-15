@@ -1,10 +1,9 @@
 #!/bin/bash
 
-icons_home="$DOTFILES_ROOT/icns"
 typeset -A app_icons=(
-    ["Alacritty.app"]="$icons_home/alacritty.icns"
-    ["VLC.app"]="$icons_home/vlc.icns"
-    ["Copilot.app"]="$icons_home/copilot.icns"
+    ["Alacritty.app"]="$DOTFILES_ROOT/icns/alacritty.icns"
+    ["VLC.app"]="$DOTFILES_ROOT/icns/vlc.icns"
+    ["Copilot.app"]="$DOTFILES_ROOT/icns/copilot.icns"
 )
 # '!' returns keys, without it would return values
 for app in "${!app_icons[@]}"; do
@@ -17,7 +16,11 @@ for app in "${!app_icons[@]}"; do
 
     [[ -z "$appdir" ]] && continue
     icon="${app_icons[$app]}"
-    fileicon set "$appdir" "$icon"
+    fileicon set "$appdir" "$icon" > /dev/null
 done
+
+xattr -w 'com.apple.icon.folder#S' '{"sym":"greaterthan"}' "$HOME/p"
+xattr -w 'com.apple.icon.folder#S' '{"sym":"briefcase.fill"}' "$HOME/w"
+xattr -w 'com.apple.icon.folder#S' '{"sym":"camera.viewfinder"}' "$HOME/s"
 
 killall Dock
