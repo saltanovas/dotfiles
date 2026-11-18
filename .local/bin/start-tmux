@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -x /opt/homebrew/bin/tmux ]; then
+    tmux=/opt/homebrew/bin/tmux
+else
+    tmux="$HOME/opt/homebrew/bin/tmux"
+fi
+
+exec "$tmux" new-session -As m -n main
