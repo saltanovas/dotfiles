@@ -103,7 +103,10 @@
         "shell": [
             ["duti \"$XDG_CONFIG_HOME/duti/duti.conf\""],
             ["mise upgrade --quiet"],
-            ["tv update-channels >/dev/null"]
+            ["tv update-channels >/dev/null"],
+            [
+                "gh auth status --hostname github.com >/dev/null 2>&1 || gh auth login --hostname github.com --web --git-protocol ssh --skip-ssh-key"
+            ]
         ]
     }
 ]
