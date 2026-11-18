@@ -1,5 +1,4 @@
 # See https://alacritty.org/config-alacritty.html
-
 [general]
 import = []
 live_config_reload = true
@@ -40,12 +39,9 @@ animation = "EaseOut"
 duration = 450
 color = "#101010"
 
-[terminal]
-shell.program = "/opt/homebrew/bin/tmux"
-shell.args = [
-    "new-session", "-As", "m", # [a]ttach to the [s]ession named 'm' if it exists or create it
-    "-n", "main", # name the initial window 'main' if session is created
-]
+[terminal.shell]
+program = "/bin/bash"
+args = ["-c", "exec \"$HOME/.local/bin/start-tmux\""]
 
 [keyboard]
 bindings = [
