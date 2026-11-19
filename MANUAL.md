@@ -13,6 +13,11 @@
     open "x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture"
     ```
 
+## Change desktop picture
+
+1. Open `~/Pictures/Wallpapers`, which is symlinked to the desktop wallpapers in iCloud Drive.
+2. Pick a wallpaper, right-click it and select `Set Desktop Picture`.
+
 ## Add personal internet account
 
 ```bash
