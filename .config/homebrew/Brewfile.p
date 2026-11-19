@@ -7,6 +7,7 @@ cask "font-jetbrains-mono-nerd-font"
 # 📟 Terminal
 # ========================================
 cask "alacritty"
+brew "bash"
 brew "tmux"
 brew "fzf-tab"
 brew "zsh-you-should-use"
