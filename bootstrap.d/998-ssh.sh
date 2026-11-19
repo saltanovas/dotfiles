@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 SSH_KEY_PATH="$HOME/.ssh/id_ed25519"
 SSH_KEY_TITLE="$(

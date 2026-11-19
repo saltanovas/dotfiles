@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 app="$HOME/Applications/mpv.app"
 bundleid="io.mpv"

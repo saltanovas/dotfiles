@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 migrate_history() {
     [ -n "$2" ] && [ "$2" != "-" ] || return 0

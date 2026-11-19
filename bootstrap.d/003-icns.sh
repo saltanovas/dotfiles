@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 typeset -A app_icons=(
     ["Alacritty.app"]="$DOTFILES_ROOT/icns/alacritty.icns"
@@ -17,7 +17,7 @@ for app in "${!app_icons[@]}"; do
 
     [[ -z "$appdir" ]] && continue
     icon="${app_icons[$app]}"
-    fileicon set "$appdir" "$icon" > /dev/null
+    fileicon set $appdir "$icon" > /dev/null
 done
 
 xattr -w 'com.apple.icon.folder#S' '{"sym":"greaterthan"}' "$HOME/p"

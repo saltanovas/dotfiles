@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 isadmin() {
     for group in $(id -Gn); do
