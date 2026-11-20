@@ -56,6 +56,8 @@ bindings = [
     { key = "Right", mods = "Shift", chars = "\u001b[1;2C" },
 
     # Option
+    { key = "Up", mods = "Alt", action = "None" },
+    { key = "Down", mods = "Alt", action = "None" },
     { key = "Back", mods = "Alt", chars = "\u001b\u007f" },
     { key = "Left", mods = "Alt", chars = "\u001bb" },
     { key = "Right", mods = "Alt", chars = "\u001bf" },
