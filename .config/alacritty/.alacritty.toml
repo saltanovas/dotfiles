@@ -41,7 +41,7 @@ color = "#101010"
 
 [terminal.shell]
 program = "/bin/bash"
-args = ["-c", "exec \"$HOME/.local/bin/start-tmux\""]
+args = ["-c", "exec \"$HOME/.local/bin/tmux-start\""]
 
 [keyboard]
 bindings = [
