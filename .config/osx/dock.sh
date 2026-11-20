@@ -60,7 +60,7 @@ else
 		"$HOME/Applications/IntelliJ IDEA Ultimate.app"
 		"$HOME/Applications/GoLand.app"
 		"$HOME/Applications/DataGrip.app"
-		"$HOME/Applications/kitty.app"
+		"$HOME/Applications/Alacritty.app"
 		"$HOME/Applications/Spotify.app"
 	)
 fi
