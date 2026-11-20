@@ -4,8 +4,8 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # Quick edit
-alias cfg='code "$XDG_CONFIG_HOME" "$DOTFILES_ROOT"'
-alias dot='config'
+alias config='code "$XDG_CONFIG_HOME" "$DOTFILES_ROOT"'
+alias dot='code "$DOTFILES_ROOT"'
 alias som='code "$HOME/w/code/som-se-eoc"'
 
 # List
