@@ -96,7 +96,8 @@
             "~/.config/tmux": ".config/tmux",
             "~/.config/vim": ".config/vim",
             "~/.config/vscode": ".config/vscode",
-            "~/.config/zsh": ".config/zsh"
+            "~/.config/zsh": ".config/zsh",
+            "~/.zshenv": ".config/zsh/.zshenv"
         }
     },
     {
