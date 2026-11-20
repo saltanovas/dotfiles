@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Arguments:
+# $1: Notification type: success, warning, or error
+# $2: Label to show next to the message
+# $3: The actual message to show
+
 type=${1:?Usage: tmux-notify TYPE LABEL MESSAGE}
 label=${2:?Missing label}
 text=${3:?Missing message}
