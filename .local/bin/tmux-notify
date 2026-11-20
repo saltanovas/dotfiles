@@ -1,0 +1,64 @@
+#!/bin/bash
+
+type=${1:?Usage: tmux-notify TYPE LABEL MESSAGE}
+label=${2:?Missing label}
+text=${3:?Missing message}
+tmux=$(
+    if [ -x /opt/homebrew/bin/tmux ]; then
+        printf "/opt/homebrew/bin/tmux"
+    else
+        printf "$HOME/opt/homebrew/bin/tmux"
+    fi
+)
+
+case "$type" in
+    success)
+        accent='#739B57'
+        background='#253329'
+        icon='✓'
+    ;;
+    warning)
+        accent='#FF963D'
+        background='#382B20'
+        icon='!'
+    ;;
+    error)
+        accent='#D76767'
+        background='#382326'
+        icon='✕'
+    ;;
+    *)
+        printf 'Unknown notification type: %s\n' "$type" >&2
+        exit 2
+    ;;
+esac
+
+# Escape literal hashes so labels and text aren't parsed as tmux formats.
+label=${label//#/##}
+text=${text//#/##}
+
+# Preserve the original style across overlapping notifications.
+if ! "$tmux" show-options -g @notify-original-style >/dev/null 2>&1; then
+    "$tmux" set -gF @notify-original-style '#{message-style}'
+fi
+
+# Only the latest notification's timer should restore the style.
+token="$$-$RANDOM"
+"$tmux" set -g @notify-token "$token"
+
+"$tmux" set -g message-style \
+    'fg=#E6EDF3,bg=default,fill=default,width=100%,align=left'
+
+"$tmux" display-message -d 1500 \
+    "#[bg=$accent,fg=#171616,bold] $icon $label \
+#[nobold,fg=$accent,bg=default]\
+#[fg=#45494F,bg=default,reverse]\
+#[noreverse,fg=#E6EDF3,bg=#45494F] $text \
+#[fg=#45494F,bg=default]"
+
+"$tmux" run-shell -b -d 1.5 -C \
+    "if-shell -F '#{==:#{@notify-token},$token}' {
+        set -gF message-style '#{@notify-original-style}'
+        set -gu @notify-original-style
+        set -gu @notify-token
+    }"
