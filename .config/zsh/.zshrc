@@ -39,6 +39,7 @@ autoload -Uz compinit
 compinit -i -d "$ZCOMPDUMP"
 
 # Configure completion matching
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu no
 # Include hidden entries only when generating completion candidates
