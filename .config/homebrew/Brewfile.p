@@ -47,7 +47,6 @@ brew "yt-dlp"
 # Clumpsy utilities, consider replacement or removal
 brew "gum"
 brew "mailsy"
-brew "teamookla/speedtest/speedtest"
 
 # ========================================
 # 🖥️ Apps
@@ -116,7 +115,7 @@ vscode "github.copilot"
 # GitHub Copilot chat
 vscode "github.copilot-chat"
 # Color theme
-vscode "saltanovas.theme-darcula-intellij"
+vscode "saltanovas.themes"
 # Icon theme
 vscode "chadalen.vscode-jetbrains-icon-theme"
 # Product theme
