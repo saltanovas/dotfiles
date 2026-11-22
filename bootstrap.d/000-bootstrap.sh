@@ -21,8 +21,6 @@ mkbrewfile() {
     else 
         cp "$configpath/Brewfile.p" "$HOMEBREW_BUNDLE_FILE"
     fi
-
-    chmod 444 "$HOMEBREW_BUNDLE_FILE"
 }
 
 if ! command -v brew >/dev/null 2>&1; then
@@ -35,9 +33,9 @@ if ! command -v brew >/dev/null 2>&1; then
     fi
 fi
 
-ohai "Installing Homebrew formulae listed in the $HOMEBREW_BUNDLE_FILE"
+echo "Installing Homebrew formulae listed in the $HOMEBREW_BUNDLE_FILE"
 mkbrewfile
-brew bundle
-ohai "Homebrew installation completed."
+brew bundle --verbose
+echo "Homebrew installation completed."
 
 dotbot -c install.json
