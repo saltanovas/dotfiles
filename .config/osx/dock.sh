@@ -25,7 +25,7 @@ defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock showhidden -bool false
 
 # Add Downloads folder to the Dock
-defaults write com.apple.dock persistent-apps -array ""
+defaults write com.apple.dock persistent-others -array ""
 defaults write com.apple.dock persistent-others -array-add \
 	'<dict>
         <key>tile-data</key>
@@ -53,15 +53,15 @@ if iswrk; then
 	)
 else
 	dock=(
-		"$HOME/Applications/Google Chrome.app"
-		"$HOME/Applications/ChatGPT.app"
-		"$HOME/Applications/Notion.app"
-		"$HOME/Applications/Visual Studio Code.app"
-		"$HOME/Applications/IntelliJ IDEA Ultimate.app"
-		"$HOME/Applications/GoLand.app"
-		"$HOME/Applications/DataGrip.app"
-		"$HOME/Applications/Alacritty.app"
-		"$HOME/Applications/Spotify.app"
+		"/Applications/Google Chrome.app"
+		"/Applications/ChatGPT.app"
+		"/Applications/Notion.app"
+		"/Applications/Visual Studio Code.app"
+		"/Applications/IntelliJ IDEA.app"
+		"/Applications/GoLand.app"
+		"/Applications/DataGrip.app"
+		"/Applications/kitty.app"
+		"/Applications/Spotify.app"
 	)
 fi
 

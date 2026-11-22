@@ -1,9 +1,13 @@
 #!/bin/bash
 
+SCRIPT_DIR="$(cd -- "$(dirname -- "$0")" && pwd)" || exit 1
+
 # Load custom key remaps
-plist="com.local.KeyRemapping.plist"
-if [[ -f "$plist" ]]; then
-    ln -sfn "$plist" "$HOME/Library/LaunchAgents/$plist"
+plist_name="com.local.KeyRemapping.plist"
+plist_path="$SCRIPT_DIR/$plist_name"
+if [[ -f "$plist_path" ]]; then
+    mkdir -p "$HOME/Library/LaunchAgents"
+    ln -sfn "$plist_path" "$HOME/Library/LaunchAgents/$plist_name"
 fi
 
 # Set the function (Fn) key behavior
@@ -14,4 +18,4 @@ defaults write com.apple.HIToolbox AppleFnUsageType -int 0
 # Hold Fn to use function keys
 defaults write NSGlobalDomain com.apple.keyboard.fnState -bool false
 
-./hotkeys.sh
+"$SCRIPT_DIR/hotkeys.sh"

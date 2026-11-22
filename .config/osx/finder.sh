@@ -19,7 +19,7 @@ defaults write com.apple.finder FXRemoveOldTrashItems -bool true
 /usr/libexec/PlistBuddy \
     -c "Set :TrashViewSettings:IconViewSettings:arrangeBy grid" \
     -c "Set :TrashViewSettings:IconViewSettings:showIconPreview true" \
-    -c "Set :TrashViewSettings:IconViewSettings:GroupBy Date Added" \
+    -c "Set :TrashViewSettings:GroupBy 'Date Added'" \
     "$HOME/Library/Preferences/com.apple.finder.plist"
 
 # ========================================
@@ -47,8 +47,6 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 # Show the ~/Library folder
 chflags nohidden ~/Library
-# Show the /Volumes folder
-chflags nohidden /Volumes
 
 # ========== Layout ==========
 # Always open in icon view

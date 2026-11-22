@@ -125,6 +125,7 @@ services=(
     "com.apple.Terminal - Search man Page Index in Terminal - searchManPages"
 )
 $PB -c "Delete :NSServicesStatus" "$pbs_plist" 2>/dev/null || true
+$PB -c "Add :NSServicesStatus dict" "$pbs_plist"
 for service in "${services[@]}"; do
     $PB -c "Add :NSServicesStatus:'$service':enabled_context_menu bool false" "$pbs_plist"
     $PB -c "Add :NSServicesStatus:'$service':enabled_services_menu bool false" "$pbs_plist"

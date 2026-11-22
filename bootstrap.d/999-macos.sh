@@ -1,38 +1,38 @@
 #!/usr/bin/env bash
 
+OSX_CONFIG="$DOTFILES_ROOT/.config/osx"
+
 [ "$(uname)" = "Darwin" ] || exit 0
 
 # Close any open System Preferences panes to prevent them from overriding settings we are about to change
 osascript -e 'tell application "System Preferences" to quit'
 
-ohai "Configuring macOS settings..."
+echo "Configuring macOS settings..."
 
 if ! ls "$HOME/Library/Mail" &>/dev/null; then
-    ohai "⚠️ Full Disk Access is required"
-    gum confirm $'System Settings will open to Full Disk Access.\n'$'Grant access to your terminal app, then run this script again.' || abort "Operation aborted."
+    printf "%s\n\n" "⚠️ Full Disk Access is required"
+    gum confirm $'System Settings will open to Full Disk Access.\n'$'Grant access to your terminal app, then run this script again.' || exit
     open "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles" && exit
 fi
 
-./apps/init.sh
+"$OSX_CONFIG/apps/init.sh"
 
-./hid/init.sh
+"$OSX_CONFIG/hid/init.sh"
 
-./keymap/init.sh
-./input.sh
-./sound.sh
+"$OSX_CONFIG/keymap/init.sh"
+"$OSX_CONFIG/input.sh"
+"$OSX_CONFIG/sound.sh"
 
-./appearance.sh
-./menubar.sh
-./dock.sh
-./hotcorners.sh
+"$OSX_CONFIG/appearance.sh"
+"$OSX_CONFIG/menubar.sh"
+"$OSX_CONFIG/dock.sh"
+"$OSX_CONFIG/hotcorners.sh"
 
-./finder.sh
-./desktop.sh
-./lockscreen.sh
+"$OSX_CONFIG/finder.sh"
+"$OSX_CONFIG/desktop.sh"
+"$OSX_CONFIG/lockscreen.sh"
 
-./missioncontrol.sh
-./windowmanager.sh
+"$OSX_CONFIG/missioncontrol.sh"
+"$OSX_CONFIG/windowmanager.sh"
 
-./sleep.sh
-
-ohai "macOS configuration has completed successfully."
+echo "macOS configuration has completed successfully."

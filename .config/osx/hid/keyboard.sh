@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Key repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain KeyRepeat -int 2
 # Delay until key repeat
 defaults write NSGlobalDomain InitialKeyRepeat -int 25
 # Disable press-and-hold for keys in favor of key repeat
