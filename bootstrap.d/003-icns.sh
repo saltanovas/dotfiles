@@ -2,7 +2,6 @@
 
 typeset -A app_icons=(
     ["Alacritty.app"]="$DOTFILES_ROOT/icns/alacritty.icns"
-    ["kitty.app"]="$DOTFILES_ROOT/icns/kitty.icns"
     ["VLC.app"]="$DOTFILES_ROOT/icns/vlc.icns"
     ["Copilot.app"]="$DOTFILES_ROOT/icns/copilot.icns"
 )
