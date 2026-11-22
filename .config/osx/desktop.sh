@@ -24,6 +24,6 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 # Remove all widgets
 # cfprefsd-compliant solution, where '-' is stdout.
 # The '-o -' indicates plutil to pipe output to stdout and the following '-' indicates reading from stdin
-defaults export com.apple.notificationcenterui - | \
-    plutil -replace widgets.instances -json '[]' -o - - | \
-    defaults import com.apple.notificationcenterui -
+# defaults export com.apple.notificationcenterui - | \
+#     plutil -replace widgets.instances -json '[]' -o - - | \
+#     defaults import com.apple.notificationcenterui -
