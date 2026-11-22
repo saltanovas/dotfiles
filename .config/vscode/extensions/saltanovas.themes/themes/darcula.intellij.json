@@ -465,6 +465,7 @@
                 "punctuation.separator.colon.access.control.cpp",
                 "punctuation.separator.key-value.js",
                 "punctuation.separator.key-value.makefile",
+                "punctuation.separator.statement.and.shell",
                 "source.groovy.embedded.source",
                 "source.shell variable"
             ],
