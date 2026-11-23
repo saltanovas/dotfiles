@@ -52,6 +52,7 @@
     "[toml]": { "editor.defaultFormatter": "tamasfe.even-better-toml" },
     "[xml]": { "editor.defaultFormatter": "redhat.vscode-xml" },
     "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
         "*.plist": "binaryPlistEditor.edit"
     },
     "files.associations": {
