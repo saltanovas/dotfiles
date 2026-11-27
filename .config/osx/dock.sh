@@ -27,7 +27,7 @@ defaults write com.apple.dock showhidden -bool false
 # Add Downloads folder to the Dock
 defaults write com.apple.dock persistent-others -array ""
 defaults write com.apple.dock persistent-others -array-add \
-	'<dict>
+    '<dict>
         <key>tile-data</key>
         <dict>
             <key>file-data</key>
@@ -43,29 +43,29 @@ defaults write com.apple.dock persistent-others -array-add \
 
 # Add desired apps to the Dock
 if iswrk; then
-	dock=(
-		"/System/Cryptexes/App/System/Applications/Safari.app"
-		"$HOME/Applications/Copilot.app"
-		"$HOME/Applications/Obsidian.app"
-		"$HOME/Applications/Visual Studio Code.app"
-		"$HOME/Applications/kitty.app"
-		"$HOME/Applications/Spotify.app"
-	)
+    dock=(
+        "/System/Cryptexes/App/System/Applications/Safari.app"
+        "$HOME/Applications/Copilot.app"
+        "$HOME/Applications/Obsidian.app"
+        "$HOME/Applications/Visual Studio Code.app"
+        "$HOME/Applications/kitty.app"
+        "$HOME/Applications/Spotify.app"
+    )
 else
-	dock=(
-		"/Applications/Google Chrome.app"
-		"/Applications/ChatGPT.app"
-		"/Applications/Notion.app"
-		"/Applications/Visual Studio Code.app"
-		"/Applications/IntelliJ IDEA.app"
-		"/Applications/GoLand.app"
-		"/Applications/DataGrip.app"
-		"/Applications/kitty.app"
-		"/Applications/Spotify.app"
-	)
+    dock=(
+        "/Applications/Google Chrome.app"
+        "/Applications/ChatGPT.app"
+        "/Applications/Visual Studio Code.app"
+        "/Applications/IntelliJ IDEA.app"
+        "/Applications/GoLand.app"
+        "/Applications/DataGrip.app"
+        "/Applications/kitty.app"
+        "/Applications/Notion.app"
+        "/Applications/Spotify.app"
+    )
 fi
 
 defaults write com.apple.dock persistent-apps -array ""
 for dockItem in "${dock[@]}"; do
-	defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>'"$dockItem"'</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>'"$dockItem"'</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 done
