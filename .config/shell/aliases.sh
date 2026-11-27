@@ -23,6 +23,8 @@ alias cnow='date +%s | tee >(pbcopy)'
 alias cpw='pw | tee >(pbcopy)'
 alias cuuid="uuidgen | tr '[:upper:]' '[:lower:]' | tee >(pbcopy)"
 
+alias c='clear'
+alias q='exit'
 alias duh='du -hs' # [h]uman-readable, [s]ummarize
 alias sudo='sudo ' # See: http://wiki.archlinux.org/index.php/Sudo#Passing_aliases
 alias rmds='fd -HI --type f --glob ".DS_Store" --exclude "$HOME/Applications" -x rm --'
