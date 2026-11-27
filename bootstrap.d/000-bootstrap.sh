@@ -38,4 +38,4 @@ mkbrewfile
 brew bundle --verbose
 echo "Homebrew installation completed."
 
-dotbot -c install.json
+dotbot -c "$DOTFILES_ROOT/install.json"
