@@ -71,6 +71,69 @@
     "git.blame.editorDecoration.enabled": true,
 
     "chat.viewSessions.orientation": "stacked",
+    "chat.tools.terminal.autoApprove": {
+        "awk": true,
+        "basename": true,
+        "cmp": true,
+        "command": true,
+        "continue": true,
+        "defaults": true,
+        "delta": true,
+        "df": true,
+        "diff": true,
+        "dirname": true,
+        "du": true,
+        "fd": true,
+        "file": true,
+        "jar": true,
+        "javap": true,
+        "jq": true,
+        "plutil": true,
+        "printf": true,
+        "read": true,
+        "realpath": true,
+        "rg": true,
+        "stat": true,
+        "strings": true,
+        "tee": true,
+        "tr": true,
+        "true": true,
+        "uniq": true,
+        "unzip": true,
+        "which": true,
+        "zipinfo": true
+    },
+
+    // ── Java: code lenses ───────────────────────────────────────────────
+    "java.referencesCodeLens.enabled": true, // "N references" above declarations
+    "java.implementationCodeLens": "all", // "N implementations" on interfaces and methods
+    // ── Java: inlay hints ───────────────────────────────────────────────
+    "java.inlayHints.variableTypes.enabled": false, // type behind `var`
+    "java.inlayHints.parameterTypes.enabled": true, // lambda parameter types
+    "java.inlayHints.parameterNames.enabled": "all", // parameter names at call sites
+    "java.inlayHints.parameterNames.exclusions": [
+        "*.List.of",
+        "*.Set.of",
+        "*.Map.of",
+        "org.slf4j.Logger.*",
+        "java.lang.Math.*"
+    ],
+    // ── Java: on save ───────────────────────────────────────────────────
+    "editor.codeActionsOnSave": { "source.organizeImports": "explicit" },
+    "java.sources.organizeImports.starThreshold": 99, // never collapse to wildcard imports
+    "java.cleanup.actions": [
+        "renameFileToType",
+        "addOverride",
+        "instanceofPatternMatch",
+        "lambdaExpressionFromAnonymousClass",
+        "switchExpression",
+        "tryWithResource",
+        "stringConcatToTextBlock",
+        "redundantModifiers"
+    ],
+    // ── Java: build & dependencies ──────────────────────────────────────
+    "java.configuration.updateBuildConfiguration": "automatic", // reload pom/gradle changes without asking
+    "java.maven.downloadSources": true, // real sources when jumping into libraries
 
     "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark",
     "workbench.productIconTheme": "icons-carbon",
