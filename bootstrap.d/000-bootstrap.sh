@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+iswrk() {
+    if type -P iswrk >/dev/null 2>&1; then
+        command iswrk
+    else
+        profiles status -type enrollment 2>/dev/null | grep -q '^Enrolled via DEP: Yes'
+    fi
+}
+
 isadmin() {
     for group in $(id -Gn); do
         case "$group" in
@@ -24,7 +32,7 @@ mkbrewfile() {
 }
 
 if ! command -v brew >/dev/null 2>&1; then
-    ohai "Installing Homebrew..."
+    echo "Installing Homebrew..."
     if isadmin; then
         NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || exit $?
     else
