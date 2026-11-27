@@ -65,6 +65,11 @@
 
     "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
     "terminal.integrated.fontSize": 12,
+
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.blame.editorDecoration.enabled": true,
+
     "chat.viewSessions.orientation": "stacked",
 
     "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark",
