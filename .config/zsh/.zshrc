@@ -56,6 +56,7 @@ zstyle ":fzf-tab:*" use-ff-default-opts yes
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-you-should-use/you-should-use.plugin.zsh
 
 # Apply personal line-editor bindings
 bindkey -e
