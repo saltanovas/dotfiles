@@ -25,12 +25,12 @@
 
     "editor.fontFamily": "JetBrainsMono Nerd Font",
     "editor.fontSize": 13,
-    "editor.lineHeight": 23,
+    "editor.lineHeight": 24,
     "window.zoomLevel": -0.2,
     "editor.lineDecorationsWidth": 0, // Width between line numbers and code. Unofficial, yet works
     "editor.tabSize": 4,
     "editor.detectIndentation": false,
-    "editor.insertSpaces": true, // Use spaces as indentation characters instead of tabs
+    "editor.insertSpaces": true, // Use spaces as indentation instead of tabs
     "editor.renderControlCharacters": true,
     "editor.renderFinalNewline": "on",
     "editor.fontLigatures": false, // e.g. != is shown as ≠
