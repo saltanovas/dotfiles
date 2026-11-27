@@ -48,6 +48,8 @@
                 "glob": true,
                 "path": ".local/share/tlrc/*"
             },
+            "~/.bash_profile": ".config/bash/.bash_profile",
+            "~/.bashrc": ".config/bash/.bashrc",
             "~/.prettierrc.yaml": ".config/prettier/.prettierrc.yaml",
             "~/Library/Application Support/JetBrains/Toolbox/.settings.json": ".config/jetbrains/.settings.json",
             "~/Library/Application Support/Code/User/settings.json": ".config/vscode/settings.json",
@@ -55,8 +57,10 @@
                 "glob": true,
                 "path": ".config/vscode/extensions/*"
             },
+            "~/.zshenv": ".config/zsh/.zshenv",
             "~/.config/alacritty": ".config/alacritty",
             "~/.config/bat": ".config/bat",
+            "~/.config/bash": ".config/bash",
             "~/.config/chrome": ".config/chrome",
             "~/.config/delta": ".config/delta",
             "~/.config/duti": ".config/duti",
@@ -94,8 +98,7 @@
             "~/.config/tmux": ".config/tmux",
             "~/.config/vim": ".config/vim",
             "~/.config/vscode": ".config/vscode",
-            "~/.config/zsh": ".config/zsh",
-            "~/.zshenv": ".config/zsh/.zshenv"
+            "~/.config/zsh": ".config/zsh"
         }
     },
     {
