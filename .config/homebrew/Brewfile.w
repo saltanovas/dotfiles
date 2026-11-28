@@ -27,6 +27,7 @@ cask "camunda-modeler"
 # ========================================
 # Blocked
 # ========================================
+cask "chatgpt"
 cask "jetbrains-toolbox"
 cask "intellij-idea"
 cask "goland"
